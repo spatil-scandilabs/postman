@@ -6,62 +6,6 @@
   },
   "item": [
     {
-      "name": "Generate Token",
-      "item": [
-        {
-          "name": "Generate Token",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
-                  "",
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"apitoken copied successfully\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "848e82e8-336c-465e-8727-35dc0f61cd31",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "apikey",
-                  "value": "autopnckey1",
-                  "type": "text"
-                },
-                {
-                  "key": "apisecret",
-                  "value": "autopnckey2",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{URL}}/api/authtoken",
-            "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "861b3307-584e-48c6-b84c-a604bfeaffe9"
-    },
-    {
       "name": "TEST: NPI Type verification",
       "item": [
         {
