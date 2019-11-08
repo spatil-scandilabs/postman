@@ -1,0 +1,1567 @@
+{
+  "info": {
+    "_postman_id": "3d6105d8-7265-48a1-8bb0-c28cc00b56f1",
+    "name": "API2.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Generate Token",
+      "item": [
+        {
+          "name": "Generate Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                  "",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"apitoken copied successfully\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "c07411c8-99d0-424f-9c2a-d686d86deba0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "apikey",
+                  "value": "autopnckey1",
+                  "type": "text"
+                },
+                {
+                  "key": "apisecret",
+                  "value": "autopnckey2",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{URL}}/api/authtoken",
+            "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "96b148dd-b314-4156-b362-794c74fcafbc"
+    },
+    {
+      "name": "TEST- NPI Type Verification",
+      "item": [
+        {
+          "name": "Type-2 NPI",
+          "item": [
+            {
+              "name": "Valid Type-2 NPI",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi\"))+\" is a Type TWO NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"TWO\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "3031f657-3e4d-469a-93ea-2852bd0448fd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi}}",
+                "description": "NPI(Type 2)= Valid"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type-2 NPI: Present in application(same partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi1\"))+\" is a Type TWO NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"TWO\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "ef09837d-be4d-4833-b9bd-46d251457020",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi1}}",
+                "description": "NPI(Type 2)= Invalid (present in the application with same partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type-2 NPI: Present in application(different partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi2\"))+\" is a Type TWO NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"TWO\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "1c8181b6-be92-4f1c-a0a6-309fed1cd136",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi2}}",
+                "description": "NPI(Type 2)= Invalid (present in the application with different partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type-2 NPI: Not present in application and NPPS registry",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi3\"))+\" is a UNKNOWN Type NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "445eebe5-a0d7-4e72-88f1-161c2a2575ff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi3}}",
+                "description": "NPI(Type 2)= Invalid (Not present in the application and NPPS registry)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type- 2 NPI",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi4\"))+\" is a UNKNOWN Type NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "846bfdc9-000e-442c-9afa-33bf6d7f0a9c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi4}}",
+                "description": "NPI Type 2= Invalid"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "e5925d37-4d56-4343-8f5e-b9764f4ce951",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Type-1 NPI",
+          "item": [
+            {
+              "name": "Valid Type-1 NPI",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi5\"))+\" is a Type ONE NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"ONE\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "979cb380-dc65-4b5e-a393-0830d658b1ab",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "value": "{{auth_id_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "auth_token",
+                    "value": "{{auth_token_value}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi5}}",
+                "description": "NPI(Type 1)= Valid"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type-1 NPI: Present in application(same partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi6\"))+\" is a ONE Type NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"ONE\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "7a5599ae-86b2-4695-998a-25f5b12ca426",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi6}}",
+                "description": "NPI(Type 1)= Invalid (present in the application with same partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type-1 NPI: Present in application(different partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi7\"))+\" is a ONE Type NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"ONE\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "7e1ec376-8215-43e9-b5cf-8f31160c3ab4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi7}}",
+                "description": "NPI(Type 1)= Invalid (present in the application with different partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type-1 NPI: Not present in application and NPPS registry",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi8\"))+\" is a UNKNOWN Type NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "171d58e2-f432-40cc-b059-64d5065010bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi8}}",
+                "description": "NPI(Type 1)= Invalid (Not present in the application and NPPS registry)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Type- 1 NPI",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi9\"))+\" is a UNKNOWN Type NPI\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "c8d60534-eaa1-4e9e-9a06-ed0ef3a98896",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/npitype/{{npi9}}",
+                "description": "NPI= Invalid"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "8459bab7-a0a0-401e-83a2-f844759826f2",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "d28d5491-298c-49e4-87e2-9af6860d8edf"
+    },
+    {
+      "name": "TEST: Partner specific plans",
+      "item": [
+        {
+          "name": "Valid Partner",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Plan Id is present\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"planId\");",
+                  "});",
+                  "",
+                  "pm.test(\"Legacy Label is present\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"legacyLabel\");",
+                  "});",
+                  "",
+                  "pm.test(\"Plan Type is present\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"type\");",
+                  "});",
+                  "",
+                  "pm.test(\"Unique Plan Id is present\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"uniquePlanId\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "051f52f7-c851-4dfb-8637-ead105125cc1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "auth_id",
+                "value": "{{auth_id_value}}",
+                "type": "text"
+              },
+              {
+                "key": "auth_token",
+                "value": "{{auth_token_value}}",
+                "type": "text"
+              }
+            ],
+            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/plans",
+            "description": "Partner= Valid"
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid Partner (Different Partner)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                  "});",
+                  "",
+                  "pm.test(\"Partner not found\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"false\");",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "897319fa-0a66-4e22-a8d8-789d97efae45",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "auth_id",
+                "type": "text",
+                "value": "{{auth_id_value}}"
+              },
+              {
+                "key": "auth_token",
+                "type": "text",
+                "value": "{{auth_token_value}}"
+              }
+            ],
+            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/plans",
+            "description": "Partner= Invalid (Different Partner)"
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid Partner (Not exist)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                  "});",
+                  "",
+                  "pm.test(\"Partner not found\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"false\");",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "e37bcfa3-8f32-4e83-8a7e-05cf5f421d48",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "auth_id",
+                "type": "text",
+                "value": "{{auth_id_value}}"
+              },
+              {
+                "key": "auth_token",
+                "type": "text",
+                "value": "{{auth_token_value}}"
+              }
+            ],
+            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/plans",
+            "description": "Partner= Invalid (Not present in the application)"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "8068d472-dfad-41d3-83d3-8d928ecc673f"
+    },
+    {
+      "name": "TEST: Partner and Site specific plans",
+      "item": [
+        {
+          "name": "Case1: Valid Partner and different Site combinations",
+          "item": [
+            {
+              "name": "Valid Partner and Site",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan Id is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"planId\");",
+                      "});",
+                      "",
+                      "pm.test(\"Legacy Label is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"legacyLabel\");",
+                      "});",
+                      "",
+                      "pm.test(\"Plan Type is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"type\");",
+                      "});",
+                      "",
+                      "pm.test(\"Unique Plan Id is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"uniquePlanId\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "8b7d92a7-64f3-48f9-b1fe-719a38280d90",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/plans",
+                "description": "Partner= Valid; \nSite= Valid"
+              },
+              "response": []
+            },
+            {
+              "name": "Valid Partner and Invalid Site (Different Site, Same Partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan Id is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"planId\");",
+                      "});",
+                      "",
+                      "pm.test(\"Legacy Label is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"legacyLabel\");",
+                      "});",
+                      "",
+                      "pm.test(\"Plan Type is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"type\");",
+                      "});",
+                      "",
+                      "pm.test(\"Unique Plan Id is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"uniquePlanId\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "30c9b2e7-bad5-43b0-ae80-dbf45f2d1854",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId1}}/plans",
+                "description": "Partner= Valid; \nSite= Invalid (Different Site, Same Partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Valid Partner and Invalid Site (Different Partner's Site)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Site not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "4d6fe0e0-5f43-4580-8cd3-e4073cfbe207",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId2}}/plans",
+                "description": "Partner= Valid; \nSite= Invalid (Different Partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Valid Partner and Invalid Site (Not present in the application)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Site not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "44722caf-2cb2-48ef-a0ad-9c2716918bc5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId3}}/plans",
+                "description": "Partner= Valid; \nSite= Invalid (Not present in the application)"
+              },
+              "response": []
+            },
+            {
+              "name": "Valid Partner and Invalid Site (Wrong Site Id)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Site not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "c117dce8-c519-4ead-b313-7446923dec16",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId4}}/plans",
+                "description": "Partner= Valid; \nSite= Invalid (Wrong Site Id)"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "13e422b3-b46a-4341-af06-37b37186725d",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Case2: Different Partner and different Site combinations",
+          "item": [
+            {
+              "name": "Invalid Partner and valid Site",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "0ca713ff-42f8-4f66-9527-8ff9de569986",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId}}/plans",
+                "description": "Partner= Invalid (Different Partner); \nSite= Valid"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner and invalid Site(Different Site, same Partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "4ce36b1b-e12f-4bcc-8fad-bb4f5c0bbf42",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId1}}/plans",
+                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Different Site, same Partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner and invalid Site(Different Partner's Site)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "1007b2fe-22c5-4d10-a7a7-42d2268788b4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId2}}/plans",
+                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Different Partner's Site)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner and invalid Site(Not present in the application)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "73ab2795-f764-4fcf-a3bd-759806d2f390",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId3}}/plans",
+                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Not present in the application)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner and invalid Site(Wrong Site Id)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "801bcdbc-8a65-4f84-91e4-227358c9705f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId4}}/plans",
+                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Wrong Site Id)"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "867db231-8560-4381-821b-7581e2a43949",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Case3: Wrong Partner and different Site combinations",
+          "item": [
+            {
+              "name": "Invalid Partner(Not present) and Valid Site",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "a9d56359-236c-4114-84e0-665ea69ce8ca",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}/plans",
+                "description": "Partner= Invalid(Not present in the application); \nSite= Valid"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner(Not present) and Invalid Site(Different Site, Same Partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "9ca9d701-c1fc-46a0-9bdf-6f61b6c4b713",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId1}}/plans",
+                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Different Site, same Partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner(Not present) and Invalid Site(Different Partner's Site)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "e2494e8b-963e-4d78-afa8-fa431b77f838",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId2}}/plans",
+                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Different Partner's Site)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner(Not present) and Invalid Site(Not present in the application)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "a8109515-1f2e-4c83-a2d0-271a3a516667",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId3}}/plans",
+                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Not present in the application)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner(Not present) and Invalid Site(Wrong Site Id)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "});",
+                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "e2aa3871-6c37-4151-8cb9-a586a7f448c8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId3}}/plans",
+                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Wrong Site Id)"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "976e9cd5-23ad-4375-a4fb-75a003b31cb4",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "03099bbe-18d2-41e3-b691-ae7839fe7b35"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "65741959-64b0-4d23-b71d-0ec31ed116fa",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "da0e49dd-2179-47eb-a4ae-895c6b2cfbf3",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "e706a2ff-6e2a-4cf8-b6ae-69a913b84b9f",
+      "key": "npi",
+      "value": "1649240540",
+      "type": "string"
+    },
+    {
+      "id": "4af65483-f691-4f37-b972-1d3c5a171f34",
+      "key": "npi1",
+      "value": "1073819710",
+      "type": "string"
+    },
+    {
+      "id": "7ce4f8cb-3e3f-4f2e-8081-18b8ebf61dc8",
+      "key": "npi2",
+      "value": "1063828648",
+      "type": "string"
+    },
+    {
+      "id": "65bdcf86-c5dd-4742-83f9-ec366ab9f576",
+      "key": "npi3",
+      "value": "4319737249",
+      "type": "string"
+    },
+    {
+      "id": "58351b61-f616-4a27-9d0e-6ad12fb3595d",
+      "key": "npi4",
+      "value": "bnmeufku8",
+      "type": "string"
+    },
+    {
+      "id": "24d849d7-d638-45b5-8624-a60a1c315388",
+      "key": "npi5",
+      "value": "1518016351",
+      "type": "string"
+    },
+    {
+      "id": "09abed05-35b6-4d6f-80f4-867cbb447a1e",
+      "key": "npi6",
+      "value": "1114903994",
+      "type": "string"
+    },
+    {
+      "id": "863b1b02-6ac9-4e79-8395-e44966779b8a",
+      "key": "npi7",
+      "value": "1376655704",
+      "type": "string"
+    },
+    {
+      "id": "c13715b4-0863-4f90-b00e-39a53a86e62c",
+      "key": "npi8",
+      "value": "1975429873",
+      "type": "string"
+    },
+    {
+      "id": "835b1bbb-16b3-4597-8b4f-f5c661ca482f",
+      "key": "npi9",
+      "value": "wft51234u",
+      "type": "string"
+    },
+    {
+      "id": "4a1a9aba-0b87-47d3-b4db-7fd90a34f387",
+      "key": "partnerShortName",
+      "value": "PNC",
+      "type": "string"
+    },
+    {
+      "id": "257aa379-3c63-4a62-8233-98a95b3490ca",
+      "key": "partnerShortName2",
+      "value": "TRIZETTO",
+      "type": "string"
+    },
+    {
+      "id": "4036919d-097e-4140-ad26-784e351d19dc",
+      "key": "partnerShortName3",
+      "value": "TESTPARTNER",
+      "type": "string"
+    },
+    {
+      "id": "e39db6ee-1bec-48fa-ae42-ce4cfe8108bd",
+      "key": "siteId",
+      "value": "PNCSiteId",
+      "type": "string"
+    },
+    {
+      "id": "04bf3f46-e565-4f38-ada7-b7afcadaaf7a",
+      "key": "siteId1",
+      "value": "jaredpnc",
+      "type": "string"
+    },
+    {
+      "id": "9681dfca-f798-487c-b009-98434f37ce68",
+      "key": "siteId2",
+      "value": "api13id",
+      "type": "string"
+    },
+    {
+      "id": "c4a9139e-83d4-4824-b896-4e67ad55d4de",
+      "key": "siteId3",
+      "value": "1234abcd",
+      "type": "string"
+    },
+    {
+      "id": "dee24bcc-8575-4f90-9cc3-5ad99a07075a",
+      "key": "siteId4",
+      "value": "fsdf asfas sadfasd",
+      "type": "string"
+    }
+  ]
+}
