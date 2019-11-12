@@ -50,12 +50,12 @@
                   "formdata": [
                     {
                       "key": "apikey",
-                      "value": "pncbank",
+                      "value": "pnckey1",
                       "type": "text"
                     },
                     {
                       "key": "apisecret",
-                      "value": "pncbank1!",
+                      "value": "pnckey2",
                       "type": "text"
                     }
                   ]
@@ -525,6 +525,65 @@
                     "{{npi}}",
                     "plans",
                     "{{planId}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Plans associated with Type 2 Copy",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "030b23af-a04e-468d-b143-b19102b18b7d",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan \"+(pm.globals.get(\"planId\"))+\" is associated with \"+(pm.globals.get(\"npi\"))+\" for Medical Group \"+(pm.globals.get(\"taxId\")), function () {",
+                      "    pm.expect(pm.response.text()).to.include(pm.globals.get(\"planId\"));",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "304c55a9-527d-49ee-908b-f9d8fd88dc85",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/plans?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "plans"
                   ],
                   "query": [
                     {
