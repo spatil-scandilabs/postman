@@ -99,7 +99,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/plans?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
                   "host": [
                     "{{URL}}"
                   ],
@@ -111,10 +111,7 @@
                     "sites",
                     "{{siteId}}",
                     "medical-groups",
-                    "{{taxId}}",
-                    "practices",
-                    "{{npi}}",
-                    "plans"
+                    "{{taxId}}"
                   ],
                   "query": [
                     {
@@ -605,6 +602,36 @@
         }
       ],
       "_postman_id": "72d707ab-cf40-464b-98d1-88362a3659c8"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "bfeb5e7f-db04-46c2-a0a3-d780201ff4ba",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "79f650bf-d349-4d1a-a0e9-5857f57cc6fd",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "9f6d7f68-5bc4-48af-9595-b8813ae55703",
+      "key": "partnerShortName",
+      "value": "PNC",
+      "type": "string"
     }
   ]
 }
