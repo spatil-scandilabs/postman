@@ -20,7 +20,7 @@
                     "id": "ac463c24-64b1-4427-ad66-904a9bb7adea",
                     "exec": [
                       "var jsonData = JSON.parse(responseBody);",
-                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                      "pm.variables.set(\"auth_token_value\", jsonData.apitoken);",
                       "",
                       "pm.test(\"Status code is 200\", function () {",
                       "    pm.response.to.have.status(200);",
@@ -628,19 +628,19 @@
   ],
   "variable": [
     {
-      "id": "bd1fcf7b-c54f-409c-91c0-99fc8c2d3c88",
+      "id": "77b181cf-1d27-4a75-ae9d-455e6d09fb46",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "abe40753-63e5-460e-b5df-ee01e7a9c0b4",
+      "id": "24fac684-1619-4e79-a275-6ebc48049347",
       "key": "auth_id_value",
       "value": "pnckey1",
       "type": "string"
     },
     {
-      "id": "44c75ca6-0f14-49e7-a4b7-7c7bf36ae90e",
+      "id": "a85f2219-b20e-45d4-9c3b-aa56d81b1e91",
       "key": "auth_token_value",
       "value": "",
       "type": "string"
