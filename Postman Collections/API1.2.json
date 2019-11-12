@@ -20,7 +20,7 @@
                     "id": "ac463c24-64b1-4427-ad66-904a9bb7adea",
                     "exec": [
                       "var jsonData = JSON.parse(responseBody);",
-                      "pm.setVariable(\"auth_token_value\", jsonData.apitoken);",
+                      "pm.variables(\"auth_token_value\", jsonData.apitoken);",
                       "",
                       "pm.test(\"Status code is 200\", function () {",
                       "    pm.response.to.have.status(200);",
@@ -628,19 +628,19 @@
   ],
   "variable": [
     {
-      "id": "7bc943c2-281d-4b82-a740-3bb08cb2e1e8",
+      "id": "a8d8118d-860d-4a42-b7d0-c787a8b86a73",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "1ad98fba-eb82-4114-bd3f-4779ebba8883",
+      "id": "4df020e2-618a-42f1-925a-bad2383d8891",
       "key": "auth_id_value",
       "value": "pnckey1",
       "type": "string"
     },
     {
-      "id": "1c052c0e-64de-48d0-949d-2af25b7fa60a",
+      "id": "ac512c12-f821-47cd-bcd7-9c473b125808",
       "key": "auth_token_value",
       "value": "",
       "type": "string"
