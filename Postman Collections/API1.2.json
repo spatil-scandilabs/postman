@@ -1,0 +1,551 @@
+{
+  "info": {
+    "_postman_id": "ebaad7c2-e012-4431-9cb9-6ab85097a033",
+    "name": "API1.2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Multiple Contact Requests",
+      "item": [
+        {
+          "name": "Token Generate",
+          "item": [
+            {
+              "name": "TOKEN GENERATE",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ac463c24-64b1-4427-ad66-904a9bb7adea",
+                    "exec": [
+                      "var jsonData = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"apitoken copied successfully\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                      "});",
+                      "",
+                      "//var randomMedicalGroupTinForAPI1_2 = Math.floor(Math.random() * 900000000) + 100000000;",
+                      "//postman.setEnvironmentVariable(\"randomMgTin_1\", randomMedicalGroupTinForAPI1_2);",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "42bbb6eb-55a9-4892-8491-668f93082b16",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "apikey",
+                      "value": "pncbank",
+                      "type": "text"
+                    },
+                    {
+                      "key": "apisecret",
+                      "value": "pncbank1!",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{URL}}/api/authtoken"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "6aee5933-bf7f-484c-853f-ee21d74da1bd",
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Type 2 Location",
+          "item": [
+            {
+              "name": "Add single plan to Type-2 NPI",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0d36bdb6-9e18-4395-aaf3-0ebb59f5d751",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan \"+pm.variables.get(\"planId1\")+\" added successfully to the Type 1 location \"+pm.variables.get(\"npi\"), function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"true\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "1c9fecfb-baec-4086-a87f-624fa556649c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"enrollmentUnit\": \"GROUP\",\r\n  \"legacyId\": \"\",\r\n  \"madaketPayerId\": \"\",\r\n  \"planId\": \"0tp1\",\r\n  \"name\": \"000 Test Plan 1\",\r\n  \"transactionTypesSetting\": [\r\n    {\r\n      \"transactionType\": \"CSI\",\r\n      \"workflowGUID\": \"\"\r\n    },\r\n    {\r\n      \"transactionType\": \"EDI\",\r\n      \"workflowGUID\": \"\"\r\n    }\r\n  ],\r\n  \"type\": \"INSTITUTIONAL\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/plans/{{planId}}?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "plans",
+                    "{{planId}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add Medical Group",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0d36bdb6-9e18-4395-aaf3-0ebb59f5d751",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan \"+pm.variables.get(\"planId1\")+\" added successfully to the Type 1 location \"+pm.variables.get(\"npi\"), function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"true\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "966f02ff-17ef-48eb-bb20-09f88165c274",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"accountLinkage\": \"TIN\",\n    \"billingAddress\": {\n      \"city\": \"SAN ANTONIO\",\n      \"state\": \"TX\",\n      \"street1\": \"7272 WURZBACH RD\",\n      \"street2\": \"STE 601\",\n      \"zip\": \"78240\"\n    },\n    \"billingContact\": {\n      \"email\": null,\n      \"fax\": null,\n      \"firstName\": null,\n      \"gender\": null,\n      \"jobTitle\": null,\n      \"lastName\": null,\n      \"middleName\": null,\n      \"nameTitle\": null,\n      \"nameTitlePrefix\": null,\n      \"nameTitleSuffix\": null,\n      \"phone\": 9765433432,\n      \"ssn\": null\n    },\n    \"customIds\": [\n      \n    ],\n    \"groupName\": \"DEER OAKS CONSULTATION SERVICES\",\n    \"primaryContacts\": [\n       {\n        \"address\": {\n          \"city\": \"San Antonio\",\n          \"state\": \"TX\",\n          \"street1\": \"7272 Wurzbach Rd Ste 601\",\n          \"zip\": \"78240\"\n        },\n        \"person\": {\n          \"email\": \"tanvi+53@madakethealth.com\",\n          \"fax\": null,\n          \"firstName\": \"tanzie\",\n          \"gender\": \"UNKNOWN\",\n          \"jobTitle\": \"Senior Supervisor\",\n          \"lastName\": \"Caz\",\n          \"middleName\": null,\n          \"nameTitle\": null,\n          \"nameTitlePrefix\": null,\n          \"nameTitleSuffix\": null,\n          \"phone\": 2106753410,\n          \"ssn\": null\n        },\n        \"primaryContact\": true\n      },\n            {\n        \"address\": {\n          \"city\": \"San Antonio\",\n          \"state\": \"TX\",\n          \"street1\": \"7272 Wurzbach Rd\",\n          \"street2\": \"Ste 701\",\n          \"zip\": \"78240\"\n        },\n        \"person\": {\n          \"email\": \"tanvi+122@madakethealth.com\",\n          \"fax\": null,\n          \"firstName\": \"Rosey\",\n          \"gender\": \"UNKNOWN\",\n          \"jobTitle\": \"Systems  Manager\",\n          \"lastName\": \"Lugo\",\n          \"middleName\": null,\n          \"nameTitle\": null,\n          \"nameTitlePrefix\": \"\",\n          \"nameTitleSuffix\": null,\n          \"phone\": 2106153410,\n          \"ssn\": null\n        },\n        \"primaryContact\": true\n      }\n    ],\n    \"sharedTaxId\": false,\n    \"siteId\": \"2322\",\n    \"supportedTransactionTypes\": [\n      \"EDI\",\n      \"ERA\",\n      \"ELIGIBILITY\",\n      \"CSI\",\n      \"EFT\"\n    ],\n    \"taxId\": \"742870760\",\n    \"taxIdIsSSN\": false\n  }"
+                },
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/742870760?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "742870760"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add multiple Plans to Type-2 NPI",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2e8a3c63-cc24-4462-837f-24e83f436d44",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plans added successfully to the Practice location \"+(pm.variables.get(\"npi\")), function () {",
+                      "    pm.expect(pm.response.text()).to.include(pm.variables.get(\"planId\"));",
+                      "});",
+                      "",
+                      "pm.test(\"All plans added successfully to the \"+pm.variables.get(\"npi\"), function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"listItemResults\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "cc6eb77b-67b0-4cf0-a997-a28e67b4263c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"enrollmentUnit\": \"GROUP\",\n    \"legacyId\": \"LID1, LID2, LID3, LID4\",\n    \"madaketPayerId\": \"\",\n    \"name\": \"000 Test Plan 2\",\n    \"planId\": \"0tp2\",\n    \"transactionTypesSetting\": [\n      {\n        \"transactionType\": \"EDI\"\n      },\n      {\n        \"transactionType\": \"EFT\"\n      },\n      {\n        \"transactionType\": \"ERA\"\n      },\n      {\n        \"transactionType\": \"CSI\"\n      },\n      {\n        \"transactionType\": \"ELIGIBILITY\"\n      }\n    ],\n    \"type\": \"INSTITUTIONAL\"\n  },\n  {\n    \"enrollmentUnit\": \"GROUP\",\n    \"legacyId\": \"legacyId_value\",\n    \"madaketPayerId\": \"\",\n    \"name\": \"000 Test Plan 3\",\n    \"planId\": \"0tp3\",\n    \"transactionTypesSetting\": [\n      {\n        \"transactionType\": \"EDI\"\n      },\n      {\n        \"transactionType\": \"EFT\"\n      },\n      {\n        \"transactionType\": \"ERA\"\n      },\n      {\n        \"transactionType\": \"CSI\"\n      },\n      {\n        \"transactionType\": \"ELIGIBILITY\"\n      }\n    ],\n    \"type\": \"INSTITUTIONAL\"\n  }\n]"
+                },
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/plans?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "plans"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create single enrollments for Type-2 Practice location",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "c0076aab-9c08-4016-970b-50f1f1c290d3",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment created successfully for Medical Group \"+(pm.environment.get(\"randomMgTin_1\"))+\", Practice Location \"+(pm.variables.get(\"npi\"))+\" and Plan \"+pm.variables.get(\"planId\"), function () {",
+                      "    pm.expect(pm.response.text()).to.include(pm.environment.get(\"randomMgTin_1\"));",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment Request is generated successfully\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"requestId\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "5e9a8ddd-6a3b-432a-95d0-9b6ffca3f13f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payerPlansToEnroll\": [\n    {\n      \"planId\": \"NewPlan191\",\n      \"transactionTypesToEnroll\": [\n        {\n          \"transactionType\": \"ERA\"\n        }\n      ]\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/enrollments?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "enrollments"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create multiple enrollments for Type-2 Practice location",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "c0076aab-9c08-4016-970b-50f1f1c290d3",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment created successfully for Medical Group \"+(pm.environment.get(\"randomMgTin_1\"))+\", Practice Location \"+(pm.variables.get(\"npi\"))+\" and Plan \"+pm.variables.get(\"planId\"), function () {",
+                      "    pm.expect(pm.response.text()).to.include(pm.environment.get(\"randomMgTin_1\"));",
+                      "});",
+                      "",
+                      "pm.test(\"Enrollment Request is generated successfully\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"requestId\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "94199025-de2d-44f9-bae4-001984dcd23b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payerPlansToEnroll\": [\n    {\n      \"planId\": \"0tp2\",\n      \"transactionTypesToEnroll\": [\n        {\n          \"transactionType\": \"EDI\"\n        }\n      ]\n    },\n    {\n      \"planId\": \"0tp3\",\n      \"planPayerName\": \"000 Test Plan 3\",\n      \"transactionTypesToEnroll\": [\n        {\n          \"transactionType\": \"CSI\"\n        }\n      ]\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/enrollments?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "enrollments"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Plans associated with Type 2",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "030b23af-a04e-468d-b143-b19102b18b7d",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan \"+(pm.globals.get(\"planId\"))+\" is associated with \"+(pm.globals.get(\"npi\"))+\" for Medical Group \"+(pm.globals.get(\"taxId\")), function () {",
+                      "    pm.expect(pm.response.text()).to.include(pm.globals.get(\"planId\"));",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "614271d4-3ce4-4f78-a605-8357702c5b27",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/plans?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "plans"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Plan Id associated with Type 2 location without legacy label",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "56a8ac9f-8c75-44fa-b278-305a382228da",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan \"+(pm.globals.get(\"planId\"))+\" is associated with \"+(pm.globals.get(\"npi\"))+\" for Medical Group \"+(pm.globals.get(\"taxId\")), function () {",
+                      "    pm.expect(pm.response.text()).to.include(pm.globals.get(\"planId\"));",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "2000bfd6-c2d9-4117-b965-a9ae66b04b55",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/plans/{{planId}}?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "host": [
+                    "{{URL}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1.2",
+                    "partners",
+                    "{{partnerShortName}}",
+                    "sites",
+                    "{{siteId}}",
+                    "medical-groups",
+                    "{{taxId}}",
+                    "practices",
+                    "{{npi}}",
+                    "plans",
+                    "{{planId}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "{{auth_id_key}}",
+                      "value": "{{auth_id_value}}"
+                    },
+                    {
+                      "key": "{{auth_token_key}}",
+                      "value": "{{auth_token_value}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "499165cd-1b5d-479a-a53c-1c40e0d3b855",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "72d707ab-cf40-464b-98d1-88362a3659c8"
+    }
+  ]
+}
