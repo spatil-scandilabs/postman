@@ -99,7 +99,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}?auth_id={{auth_id_value}}&auth_token={{auth_token_value}}",
                   "host": [
                     "{{URL}}"
                   ],
@@ -115,11 +115,11 @@
                   ],
                   "query": [
                     {
-                      "key": "{{auth_id_key}}",
+                      "key": "auth_id",
                       "value": "{{auth_id_value}}"
                     },
                     {
-                      "key": "{{auth_token_key}}",
+                      "key": "auth_token",
                       "value": "{{auth_token_value}}"
                     }
                   ]
@@ -628,7 +628,7 @@
   ],
   "variable": [
     {
-      "id": "9f6d7f68-5bc4-48af-9595-b8813ae55703",
+      "id": "aaed056e-dbd9-454e-a8d6-46445ddb3c81",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
