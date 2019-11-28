@@ -2166,7 +2166,18 @@
           },
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "auth_id",
+                "value": "{{auth_id_value}}",
+                "type": "text"
+              },
+              {
+                "key": "auth_token",
+                "value": "{{auth_token_value}}",
+                "type": "text"
+              }
+            ],
             "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
             "description": "List enrollments of TRIZETTO partner"
           },
@@ -2200,109 +2211,109 @@
   ],
   "variable": [
     {
-      "id": "9ad45bb3-ce0b-4cb4-b345-7d9891432c1f",
+      "id": "19ac1d8c-39a2-4c82-b385-bfb02d37e16a",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "be6f4403-a841-4c2f-98b8-68a6ea35adfe",
+      "id": "f71d2e53-7255-48a2-b513-a217f1400bf4",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "e5a80ed8-43ce-49a9-907e-e5f698120317",
+      "id": "b12fccfb-78b3-4157-90a4-0c189130bb15",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "16bfea1d-740c-4a80-a0bc-28b07346933c",
+      "id": "8d2a5aae-0b4e-4982-9d69-7c65f2e68336",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "9117610a-c9ca-4fa7-9313-09fabed1140c",
+      "id": "4250c121-c504-49a4-baa7-09eadeb73eb7",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "5f234805-62cd-464f-963f-eb0e186695f2",
+      "id": "d83d051a-5b92-4d60-9717-b59e100a735d",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "24fb9449-1bca-41f4-b350-9cd787ae3c0d",
+      "id": "d85c4b31-f210-478a-b67b-6629bfc4309c",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "11598c0a-a5d0-4c2a-be76-0bcefe5211cf",
+      "id": "89c6a3a2-074c-4b39-a6d3-08c2f6ef4f0e",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "3552a3b2-397d-48d0-924e-35e6c4e3c846",
+      "id": "5c9ea7ff-e466-4b76-95b4-42fbfebb9525",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "c50e4827-9537-4eec-be77-0dfed73e93f4",
+      "id": "00b666f7-6746-48b7-892c-c62f38fbf134",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "00f7a369-1f95-4cd1-8dea-b6b97c6e8b70",
+      "id": "8aa748c1-6244-4e11-9ee9-949568f4b844",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "98a58227-37c8-488c-b9d7-5ccfd910cbd9",
+      "id": "4e9226a8-d4ac-4886-9a0a-efaf854c10cd",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "4128dbd2-d427-44b7-92d0-49a30d29f1b2",
+      "id": "cb8a9d10-44e2-4fd9-971b-5103edbf7b77",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "963071d5-da5c-4a70-8823-ec3582f45218",
+      "id": "136cc89b-5218-4417-bbc1-15e40c9c5975",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "228c11f4-1a74-41a1-926a-a2bc2c87145b",
+      "id": "12d4bb1c-e95f-4543-8771-e826e1047f8d",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "a7336568-4f06-4f10-93b7-688f2f869561",
+      "id": "227ec426-ea4b-432d-ae7b-c81f9ff469c9",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "e4aee118-00d0-4b4b-92ec-1cdd7b522412",
+      "id": "abf21803-de5b-4882-9d9e-e28b8d638b16",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "412ff9fa-7da8-44ba-b1f5-ec317e760bc1",
+      "id": "567a448e-5d68-4423-90e0-534bf4062486",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
