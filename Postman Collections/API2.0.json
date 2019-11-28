@@ -2176,8 +2176,18 @@
                 "key": "auth_token",
                 "value": "{{auth_token_value}}",
                 "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
               }
             ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"createdFrom\": \"2009-06-15T13:45:30\",\n  \"createdTo\": \"2009-06-15T13:45:30\",\n  \"customPayerId\": \"PLAN123\",\n  \"enrollmentRequestId\": 12345,\n  \"enrollmentUnit\": \"GROUP\",\n  \"individualNPI\": 1234567890,\n  \"joinedToEnrollmentRequestId\": 12345,\n  \"medicalGroupTIN\": 123456789,\n  \"modifiedFrom\": \"2009-06-15T13:45:30\",\n  \"modifiedTo\": \"2009-06-15T13:45:30\",\n  \"ownerString\": \"ee0fbd7c-d695-40c9-ad7a-c8cb6b690577\",\n  \"pageNumber\": 0,\n  \"pageSize\": 25,\n  \"partnerAdminShortName\": \"PNC\",\n  \"payerName\": \"Test Payer\",\n  \"planType\": \"INSTITUTIONAL\",\n  \"practiceLocationNPI\": 1234567890,\n  \"resolutionState\": \"APPROVED\",\n  \"siteId\": 12345,\n  \"startIndex\": 0,\n  \"status\": \"ON_HOLD\",\n  \"targetCompletionDate\": \"2009-06-15\",\n  \"transactionTypes\": [\n    \"CSI\"\n  ],\n  \"workflowId\": 12345\n}"
+            },
             "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
             "description": "List enrollments of TRIZETTO partner"
           },
@@ -2211,109 +2221,109 @@
   ],
   "variable": [
     {
-      "id": "19ac1d8c-39a2-4c82-b385-bfb02d37e16a",
+      "id": "6a383edf-e341-45e1-b3da-4cd190d3f5f8",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "f71d2e53-7255-48a2-b513-a217f1400bf4",
+      "id": "fa5c5a9b-fa38-4883-94db-15941ce292b9",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "b12fccfb-78b3-4157-90a4-0c189130bb15",
+      "id": "12ac12a5-ce79-4cf0-a279-cdb29e7bf3cf",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "8d2a5aae-0b4e-4982-9d69-7c65f2e68336",
+      "id": "658baff5-72a4-4425-ab3b-7597c39958b1",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "4250c121-c504-49a4-baa7-09eadeb73eb7",
+      "id": "7a5fc288-9206-4302-87a8-622e101a182c",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "d83d051a-5b92-4d60-9717-b59e100a735d",
+      "id": "e7f6b507-af56-4802-a303-317a67efcc68",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "d85c4b31-f210-478a-b67b-6629bfc4309c",
+      "id": "5abbade3-bbd1-44b5-a258-2128ed7afa01",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "89c6a3a2-074c-4b39-a6d3-08c2f6ef4f0e",
+      "id": "d91e8518-0607-4231-9fce-3567feb8ed95",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "5c9ea7ff-e466-4b76-95b4-42fbfebb9525",
+      "id": "9dcd9c06-d48d-498d-a621-3c4766fb98b0",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "00b666f7-6746-48b7-892c-c62f38fbf134",
+      "id": "95ccdfab-8fb1-4c31-bf43-6ce34938b66c",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "8aa748c1-6244-4e11-9ee9-949568f4b844",
+      "id": "491021e7-97b8-4ada-9ba2-579c20bcd739",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "4e9226a8-d4ac-4886-9a0a-efaf854c10cd",
+      "id": "35e48ca5-2a78-406e-a970-6a5f06c44342",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "cb8a9d10-44e2-4fd9-971b-5103edbf7b77",
+      "id": "36e4f9fe-932e-4361-b48a-8e0d8c130b4c",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "136cc89b-5218-4417-bbc1-15e40c9c5975",
+      "id": "9b44fd8d-a0f2-41be-b52d-5ac106e598e2",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "12d4bb1c-e95f-4543-8771-e826e1047f8d",
+      "id": "bb55e23a-ea03-402b-8446-8bd5d6c641a0",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "227ec426-ea4b-432d-ae7b-c81f9ff469c9",
+      "id": "6c7ca065-13d8-4add-9cc3-40ef1c985273",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "abf21803-de5b-4882-9d9e-e28b8d638b16",
+      "id": "682101f6-9b82-4d27-8987-759215b0fed2",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "567a448e-5d68-4423-90e0-534bf4062486",
+      "id": "557481ad-e23b-4397-b641-7151d1c49e14",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
