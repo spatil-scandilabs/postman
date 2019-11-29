@@ -2195,15 +2195,61 @@
         },
         {
           "name": "Enrollment status for other partner",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "67de08ec-7d5c-4cdc-a41d-9ac24f28d592",
+                "exec": [
+                  "pm.test(\"Response should contains an error\", function () {",
+                  "    pm.response.to.have.status(412);",
+                  "    pm.response.to.be.error;",
+                  "    pm.response.to.have.jsonBody(\"error\");",
+                  "});",
+                  "",
+                  "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                  "});",
+                  "",
+                  "pm.test(\"Partner not found\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"false\");",
+                  "})",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
           "_postman_id": "55f5846f-d4a4-4ee1-aa05-1d08f622a98e",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
           "request": {
-            "method": "GET",
-            "header": [],
-            "url": "",
-            "description": "Expecting test fail: listing enrollment status for other partner"
+            "method": "POST",
+            "header": [
+              {
+                "key": "auth_id",
+                "type": "text",
+                "value": "{{auth_id_value}}"
+              },
+              {
+                "key": "auth_token",
+                "type": "text",
+                "value": "{{auth_token_value}}"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"medicalGroupTIN\": 137000,\n  \"practiceLocationNPI\": 1073819710,\n  \"partnerAdminShortName\": \"TRIZETTO\",\n  \"siteId\": \"PNCSiteId\",\n  \"payerName\": \"Test Payer\",\n  \"customPayerId\": \"0TPNC1\",\n  \"transactionTypes\": [\n    \"CSI\"\n  ],\n  \"workflowId\": 18280,\n  \"modifiedFrom\": \"2019-06-15T12:00:00\",\n  \"modifiedTo\": \"2019-11-15T12:00:00\",\n  \"pageNumber\": 0,\n  \"pageSize\": 25,\n  \"startIndex\": 0\n}"
+            },
+            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
+            "description": "Expecting test fail: listing enrollment status for other valid partner"
           },
           "response": []
         }
@@ -2235,109 +2281,109 @@
   ],
   "variable": [
     {
-      "id": "3e7eb418-b806-41ce-81fc-acd71bdf1ffb",
+      "id": "e4fa202a-04ae-4a69-8c76-459b27d77840",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "f062828a-c1da-4db7-9e56-fdd17111da00",
+      "id": "b21b5497-9f2d-4332-af66-1c398e762fb1",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "2ebb633b-77b4-40b3-b7c5-7f1da3d5f7dd",
+      "id": "aa4bf599-8afc-4025-9d2b-c44965a50129",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "21c6ffc0-bba1-438b-9fe3-fe7855f9211c",
+      "id": "b3a28cc9-3fce-4f2e-ad35-22b3679561d3",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "9050d54a-1f00-4d64-8c4b-05aa68e7d8eb",
+      "id": "8976c3e2-ecbf-49ac-8c9d-a3dfea6eba25",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "2fd83515-36af-47ea-b129-b9ecf0a7b124",
+      "id": "8af5e9e9-6269-42dd-aa31-0737e9231e42",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "549a9bae-dc49-4314-bc14-e9439f93a4fc",
+      "id": "97337af6-3468-43b7-b361-1c4464e32a34",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "b5c6d285-8d32-42a2-8a6b-2419c41f8c3a",
+      "id": "8066ee82-ed47-428a-9ff6-5221f4bcb8bd",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "2a04f212-5717-4205-abc0-181e7571542a",
+      "id": "8814d88d-eb5e-4bcc-b591-6e25fb23b689",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "8fcd7ad6-fa03-4216-a357-8ee802c86bf2",
+      "id": "4f7f1014-6d09-4bea-8546-996d125b3675",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "8632b6c6-f0bc-4bad-a9f9-0e2643064f98",
+      "id": "9da18b84-c977-49a4-bf69-9d22f840516b",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "d515f7d1-ac2a-462c-8f34-ab0d2fe74e91",
+      "id": "944a75af-0692-4d39-a4e3-0c6071e714dc",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "8f657b87-142b-4f54-868a-767c7e2d2f52",
+      "id": "886cedd8-149b-49a6-815f-5e6dcc6f97f0",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "a91d16f4-145c-4f0a-8f18-6bf7a8e12322",
+      "id": "790ecd39-d553-4976-8bd3-ed5c1fa76bc4",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "c8999bd9-0176-4c47-bb3c-bf757759465e",
+      "id": "efc9a30a-a175-447b-9106-8df395cf5bdf",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "9a1fea37-6299-40d5-81b6-fe85dd95066a",
+      "id": "11afd31e-d6ff-4640-bcb0-691c179bbee0",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "29c9491b-6657-411b-9ca2-d33eaab31b02",
+      "id": "6d1b55d7-6335-4226-9b45-92874764268b",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "7cf19351-7cb6-41eb-82a8-3caad7da4544",
+      "id": "87b590e1-d193-4e96-9387-c0cc880348eb",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
