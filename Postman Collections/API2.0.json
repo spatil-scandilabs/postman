@@ -2454,7 +2454,7 @@
                   "",
                   "var data = JSON.parse(responseBody);",
                   "pm.test(\"Verify Error cause\", function () {",
-                  "    pm.expect(jsonData.businessErrors.businessErrorKey).is.to.equal(\"JSON_ELEMENT_INVALID\"); ",
+                  "    pm.expect(data).to.have.property(\"businessErrorKey\",\"JSON_ELEMENT_INVALID\"); ",
                   "});",
                   "",
                   "var data = JSON.parse(responseBody);",
@@ -2524,109 +2524,109 @@
   ],
   "variable": [
     {
-      "id": "4f29f381-473e-4779-9dcb-b842a3600e08",
+      "id": "1fdd218e-4037-48e2-8591-a179db955920",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "2910567c-6d6e-4bf1-a1b1-a3e1d95a68ec",
+      "id": "7de1bd5f-9775-47dc-8cff-7f082a303d8a",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "2e0decb8-9c58-4405-84be-52de6429100c",
+      "id": "267a861a-6755-41d5-ae38-30fb239666a6",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "bedb59db-55b0-4a08-b49d-70d97252abb9",
+      "id": "7bfe1e8e-59e6-4831-b254-3f12df23053c",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "24ce0a5d-e8a8-4651-83d5-77d9da2c9b0b",
+      "id": "1d9aa28c-526e-42ac-af8a-2b575ad06d24",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "cfb7ca8b-2460-414c-ba25-173e79bf927f",
+      "id": "e19803ea-40cc-485c-88b6-a842219d1884",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "c13a36a1-e1f1-401b-8b70-1e1beebec877",
+      "id": "41552ea3-d3df-4394-9864-ba57143186fa",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "2000525a-7b09-40da-a572-de08edcde3a3",
+      "id": "7a5c7eb6-a3fb-4579-b8d3-e2035ad4700e",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "825d23bb-10cc-4bb6-aa06-8aef127c7cb7",
+      "id": "21c35147-d69b-4bdb-8cf8-16066a382c8d",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "2a0c46d3-8635-43ab-a7e1-383fe619ab62",
+      "id": "f6920256-4329-4899-b2ad-984df8029ee5",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "1bf2609c-8830-4867-90b2-4c96c5bd854e",
+      "id": "218352e6-9369-4318-9d48-1ca87fba5a89",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "29828985-8c01-4954-87e2-beccf9887d1a",
+      "id": "d4ae5abc-95aa-405b-a97f-23539bc45756",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "8f884a47-fa75-4ebb-92cd-42e5ef31012b",
+      "id": "8c84f539-adc4-4cf6-a26b-6ae6968964c2",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "f6dd6f01-a74b-4be5-a925-19dc998d9a5e",
+      "id": "97c08d12-a5ec-4cc0-8c41-35c327ca1238",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "78960880-fc7b-43a4-b9a1-f9130d1b225d",
+      "id": "b2c4d1a0-597c-48ba-866f-134474af3a50",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "55ed7fd2-9bdb-4b9b-b8fe-35fe3040aee8",
+      "id": "6d833a2b-3d93-466a-b21d-6b0a62b6c607",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "75c0ab34-614d-4d7d-8f29-47f36ae56b2f",
+      "id": "ae4b4b5d-58ba-48f3-90c8-a4a9db8b69f0",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "60e8b345-1b92-4135-9187-f4689f2f9480",
+      "id": "000e3fb4-1a4b-40ed-8145-56d6a2680034",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
