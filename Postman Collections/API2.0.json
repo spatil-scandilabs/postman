@@ -2478,7 +2478,17 @@
                   "     pm.expect(pm.response.text()).to.include(\"URI parameter partnerShortName does not match with partnerShortName in JSON\");",
                   "});",
                   "",
-                  ""
+                  "var jsonData = JSON.parse(responseBody);",
+                  "var responseCode = jsonData.error.httpReturnCode;",
+                  "var message = jsonData.error.message;",
+                  "",
+                  "if(responseCode === expectedReponseCode){",
+                  "    tests[\"Response code should be:  \" + expectedReponseCode] = (expectedReponseCode == responseCode);",
+                  "    tests[\"Response message should be:  \" + expectedMessage] = (message == expectedMessage);",
+                  "} else{",
+                  "    tests[\"Response code should be:  \" + expectedReponseCode] = false;",
+                  "    tests[\"Response message should be:  \" + expectedMessage] = false;",
+                  "}"
                 ],
                 "type": "text/javascript"
               }
@@ -2609,109 +2619,109 @@
   ],
   "variable": [
     {
-      "id": "8f636af5-3756-440a-95a5-c2deefdd5b0a",
+      "id": "7df256a0-e654-4dc4-b7f2-27b440fe7221",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "1a6f9197-5d48-4ce8-b043-7c7b26cd171e",
+      "id": "1ccdfb8a-ffc3-4c88-b0c1-79f674de6777",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "7d228843-ed37-4a50-a0e8-e3def80f4f76",
+      "id": "fa5e48ab-0134-4350-84c4-1cc98ca56f24",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "c781f11c-bdc8-4cdd-aae1-6abd900a85a9",
+      "id": "aea2bc00-de1e-4362-9681-6b780d88e09f",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "7aec76c7-900c-4939-b02a-e4a3b495ca81",
+      "id": "3226d456-6667-41a9-96dd-f6529f1f296e",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "b64df095-7d03-4626-85df-22fe92012513",
+      "id": "0f18fbb3-1e61-40ab-b35d-b3f8c634b532",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "135b9bf6-695a-4c97-8b12-caed6c604f2e",
+      "id": "912c5e04-0f92-4577-86ca-5b61cf199d84",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "6b8d915f-a6d2-4af2-9c23-1216e4880d04",
+      "id": "8fef2a2c-4b01-41fa-8d2c-c835b9437bd4",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "a8f6fdee-58e5-4a58-b9f0-96dbf1a8c314",
+      "id": "adcc696e-ce59-4736-8ff5-896acf4908d2",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "52970844-5e3a-4831-9c6a-a3f5eda0fec1",
+      "id": "ecacb9c7-74be-4db4-9700-85eb9c22ab76",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "cb1af40d-457a-401e-9885-8aa957c54851",
+      "id": "b6866d80-3ab7-4b7f-9a23-0f12f721edc8",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "77cf1ef1-f13f-40e3-98cc-b3af99b4172d",
+      "id": "83e9980e-8296-4f15-af35-5da60a57b3f9",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "024842ce-7317-4aa2-92ae-efe200f98c26",
+      "id": "398d49c7-4e14-413e-8d62-524bf376f4c7",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "7420ed3d-7bfc-4121-b8f3-50f8b828f781",
+      "id": "ccdbb4ef-a630-48e1-85ee-3ef503564945",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "9bf0ec50-4088-40f0-9913-2fb8ba48ed94",
+      "id": "59ac2411-20a8-4b7f-8a54-f169b8011174",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "a60d7302-072f-4705-bec5-24cbd14a24fa",
+      "id": "a1ea3580-57bc-460c-a802-e78361102fcd",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "aa4b7f5d-2fae-4c25-9dfa-d2c8b56525e6",
+      "id": "34aafd52-96e5-439b-a850-195372ed4639",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "31518671-b3ee-4e82-9888-376e3294a7ff",
+      "id": "ab5af118-0811-429e-aa4d-446bef670a12",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
