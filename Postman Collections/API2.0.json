@@ -2519,6 +2519,9 @@
                   "    pm.response.to.have.jsonBody(\"enrollmentRequestsByPracticeNpi\");",
                   "});",
                   "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"value should be \" + value] = jsonData.error.httpReturnCode;",
+                  "",
                   "pm.test(\"Response should be ok\", function () {",
                   "    if (responseCode.code === 200) {",
                   "        setNextRequest('Next API Call');  // I didn't realize I needed this",
@@ -2591,109 +2594,109 @@
   ],
   "variable": [
     {
-      "id": "bda5c7e5-9643-41c9-8e46-64a2dbf9dc8d",
+      "id": "003080d8-0e7e-4844-b968-c265dad8919e",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "f6d9f753-b203-4b2e-8ac0-27dcfe23cdd7",
+      "id": "c818c1c9-8216-4f30-bec5-977e79cea10e",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "ca21c1ed-2fcb-4061-b32d-ff6e7d103ab8",
+      "id": "104d5d82-e1e4-4938-bcee-278c31117e17",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "13284d45-47be-48ba-83b9-87d7d2579a4b",
+      "id": "f01bee14-ae1d-4357-bb4e-8353f6cdd98b",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "63ffa662-14f3-4b79-86f1-97209fc0d503",
+      "id": "e0aab5d6-2eb5-41eb-bb13-bd2264b87ab3",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "270f8271-98b4-412c-9cba-ce0cc3af3513",
+      "id": "26049249-c31d-4f16-8f5f-358fc99df44c",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "fdb905f3-49a1-42b5-8a7b-d05a2678f185",
+      "id": "de5691d7-892d-4d7a-a204-77a5dd5fc9aa",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "825993ff-9018-47f4-8b9c-1c18593b0db5",
+      "id": "dc6a446f-c48b-4221-ba09-39929f773aea",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "e55710fb-0510-4351-ad68-06bd1e87d8c0",
+      "id": "1fa4f4c9-a2b9-467d-9e03-c895d034ef75",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "c7a62d9b-097e-4da9-b27e-92cb2aeec4f4",
+      "id": "a3b5a64f-42e0-403a-891c-e8c43aebd0cf",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "aebdfaf0-df52-44a6-bcdc-55f0a60448b7",
+      "id": "89a32d9e-6019-4ffb-be4a-874c5597f919",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "492e79e1-68a2-4d21-986b-3a17d75abbdc",
+      "id": "c0b43059-dd50-4fed-8aef-0d18c1aa3eb5",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "0eb4b80f-0d53-499d-94b6-6322835dc8f6",
+      "id": "d218f871-56f2-4923-823b-4ada3ed46247",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "e44f5742-ae2d-4436-8e5b-921856dac851",
+      "id": "29fda08e-17ca-4408-8c0f-665715754c3b",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "2489c46d-4b1e-4941-a95d-9a7719fc2248",
+      "id": "d9c76c28-9316-4cea-8663-6c6ec0eba340",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "5ad23c02-cceb-44ab-82f6-3c40aca3e956",
+      "id": "3caa4a78-c100-49e9-b097-5fa1db6a90de",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "a50ae1d6-66c4-4f60-8df4-b1063f61f603",
+      "id": "dfff37c1-753b-41da-9c04-39606cada671",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "fa141362-ecef-4761-ad33-217ae133ee0f",
+      "id": "cafc5fa4-d2be-4816-9b11-2f6718c4d77b",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
