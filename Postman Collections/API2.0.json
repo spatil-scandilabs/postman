@@ -2452,6 +2452,7 @@
                   "     pm.expect(pm.response.text()).to.include(\"URI parameter partnerShortName does not match with partnerShortName in JSON\");",
                   "});",
                   "",
+                  "/*",
                   "var data = JSON.parse(responseBody);",
                   "pm.test(\"Verify Error cause\", function () {",
                   "    pm.expect(data.error.businessErrors.businessErrorKey).is.to.equal(\"JSON_ELEMENT_INVALID\"); ",
@@ -2459,7 +2460,8 @@
                   "",
                   "var data = JSON.parse(responseBody);",
                   "tests[\"Error cause\"] = data.error.businessErrors.businessErrorKey === \"JSON_ELEMENT_INVALID\";",
-                  "tests[\"Error message\"] = data.error.businessErrors.message === \"URI parameter partnerShortName does not match with partnerShortName in JSON\";"
+                  "tests[\"Error message\"] = data.error.businessErrors.message === \"URI parameter partnerShortName does not match with partnerShortName in JSON\";",
+                  "*/"
                 ],
                 "type": "text/javascript"
               }
@@ -2498,6 +2500,11 @@
         }
       ],
       "_postman_id": "09d11bae-0192-405c-92e9-5528f697602f"
+    },
+    {
+      "name": "PUT: Partners site",
+      "item": [],
+      "_postman_id": "90c8bc89-293f-498f-823f-ba2c1cfe1f31"
     }
   ],
   "event": [
@@ -2524,109 +2531,109 @@
   ],
   "variable": [
     {
-      "id": "8a81fc1b-4029-4667-abcd-bf944cbba9a2",
+      "id": "1b8824e7-5a98-4008-800c-85e51923cf35",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "35d94bb5-384a-4688-93f9-c9e85cc22c38",
+      "id": "51701fb0-4830-48b2-9ef6-fd23caf5cd57",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "515258df-9ea5-4ac9-811a-6c87d476c90b",
+      "id": "82f89e60-6478-493f-aec7-d1e722882316",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "5b990841-3719-483a-95a5-86abc41f250e",
+      "id": "55a6b665-5013-43c9-bc3a-d5368cda66fe",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "466b88fe-17c6-4197-ba11-aecea3b31fea",
+      "id": "89f7f55c-a905-40a9-a4c2-30bc60d54d98",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "74b46ddd-02b5-48c1-aee0-5bfbcb85df3c",
+      "id": "ab763425-b41a-4f50-bc0e-315cddab735c",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "6ae6a531-fe39-4867-9f21-910ba2ac3b98",
+      "id": "8a85da5d-ec49-4cc3-b845-643c67bc07ec",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "4888da65-2008-4a72-b55b-fb487a520897",
+      "id": "c041cc45-845e-4e74-a62d-a48a9b434877",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "724770ea-a52c-49a3-901f-6abe89d3b722",
+      "id": "8315d5f0-d3f6-4db1-9974-372052b3d71b",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "73ec12ef-8c4e-4d54-8049-f00ff0bda2d0",
+      "id": "046bf16b-933a-4793-baad-a368f09fb426",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "7fe94921-7f8f-453f-9ac8-1637fc6055b7",
+      "id": "12b65444-1141-44d3-af8a-5f9d484bbd43",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "7eeba126-e501-4251-bfd8-384487948adf",
+      "id": "7a0ed289-ad6c-47db-99c9-db1b79ba8672",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "334b0af8-dcb9-4598-9f41-18d0b582ebb9",
+      "id": "55b8e5ad-04aa-4c08-8ed0-efae196b6cc7",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "ccd48b4e-0787-4cfb-a004-fb5f542a27f1",
+      "id": "bf1b3db6-d5c4-4c17-b3f6-e75b41ea3b82",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "57cda7d7-1d6c-4b8e-9ce5-62dbdab116e9",
+      "id": "2dda3ba2-14fb-45c3-a77d-16aa2cb4a906",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "4c8c2a68-24c5-47c8-8a2b-5fcf0f1cab6b",
+      "id": "bb6567cf-3c6e-4fce-97eb-81ffdc410f1e",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "a944543d-a3a5-4960-b44d-b6ebca5fb814",
+      "id": "681da54f-ef74-49e1-8f13-7110f8169e88",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "a3007c6a-21c9-4e2c-86aa-0d7f89873ea8",
+      "id": "c68d4dd4-b43f-4861-9d61-f9729281d36e",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
