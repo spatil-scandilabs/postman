@@ -2465,8 +2465,10 @@
               "script": {
                 "id": "3713c267-b09e-4651-896f-b91b88141eda",
                 "exec": [
+                  "const expectedReponseCode = 412;",
+                  "",
                   "pm.test(\"Response should contains an error\", function () {",
-                  "    pm.response.to.have.status(412);",
+                  "    pm.response.to.have.status(expectedReponseCode);",
                   "    pm.response.to.be.error;",
                   "    pm.response.to.have.jsonBody(\"error\");",
                   "});",
@@ -2539,7 +2541,6 @@
                   "const putVerificationTokenMessage = \"1 failure condition:  Put verification token not found in header\";",
                   "var isFailedDueToPutVerificationToken = false;",
                   "",
-                  "",
                   "pm.test(\"Response should contains success\", function () {",
                   "    pm.response.to.have.status(expectedReponseCode);",
                   "    pm.response.to.be.error;",
@@ -2549,27 +2550,9 @@
                   "var jsonData = JSON.parse(responseBody);",
                   "var responseCode = jsonData.error.httpReturnCode;",
                   "var message = jsonData.error.message;",
-                  "if(responseCode == 404 && message == ){",
-                  "    tests[\"value should be \" + jsonData.error.httpReturnCode] = true;",
-                  "}",
-                  "",
-                  "",
-                  "/*",
-                  "pm.test(\"Response should be ok\", function () {",
-                  "    pm.response.to.not.be.error;",
-                  "    pm.response.to.have.jsonBody(\"success\");",
-                  "    pm.response.to.have.jsonBody(\"enrollmentRequestsByPracticeNpi\");",
-                  "});",
-                  "*/",
-                  "",
-                  "/*pm.test(\"Response should be ok\", function () {",
-                  "    if (responseCode.code === 200) {",
-                  "        setNextRequest('Next API Call');  // I didn't realize I needed this",
-                  "    } else {",
-                  "        setNextRequest(null);",
-                  "    }",
-                  "});*/",
-                  ""
+                  "if(responseCode == 404 && message == putVerificationTokenMessage){",
+                  "    tests[\"Failed because of missing put verification token\"] = false;",
+                  "}"
                 ],
                 "type": "text/javascript"
               }
@@ -2634,109 +2617,109 @@
   ],
   "variable": [
     {
-      "id": "64236ded-a3bb-4e95-8a37-ff8523c28b30",
+      "id": "5b047a3a-c3b5-4ab9-90a0-96e1da216c15",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "796d7f14-23ca-4e64-abc7-25e3d0b4f917",
+      "id": "5ad4e48a-f4ed-4368-9923-003d595150f1",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "c20b425e-708e-44a9-a0e9-d74d08eb5c54",
+      "id": "185d2e4b-d363-47b2-b6b6-9f5d3fa2a715",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "173e936e-5fcc-4dda-9d7d-d4fe35067f91",
+      "id": "ff92df3f-68c4-4a04-b81e-19f296524a00",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "c3d560d4-2f32-4bc2-bee0-d921f0e1d4c4",
+      "id": "b544cd1d-bc46-465a-8486-7dd18b7892c4",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "c6ca5b5b-9108-4165-89a2-e5e47eaaadc0",
+      "id": "2f6fe9be-dc00-4e86-9cb1-ad824d6ebe86",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "33b48459-2dc2-4475-b396-85aa27713027",
+      "id": "637f5bb5-4d82-4f77-8afe-6d1eeb194597",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "94a71ec7-385d-4b0f-badb-26bcfeff299a",
+      "id": "0db217b3-a01d-4264-8d2a-66cccf7f495c",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "1ad437d7-3f5c-499b-8a30-34b3ab15dc05",
+      "id": "6b31817e-ef1d-4323-ab5b-ecd63f31756c",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "31088662-ef38-4872-85aa-25678d83264e",
+      "id": "7bfb73a0-4377-4cd4-8358-0ec90758c54f",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "6315db05-e842-4084-93f6-e961b3121942",
+      "id": "fe54f355-d9fa-4e9a-8cf3-af59e9593885",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "9f76332d-b38e-4c73-8caa-0b370cc46436",
+      "id": "e4651fb8-ff07-4875-bfb0-7740e8e5a329",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "1a3f80a3-1881-490f-9668-544d27ad8efa",
+      "id": "2cf635be-ac8b-4167-9c2e-1296ce6961ec",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "7c6d9710-38ab-4d64-be01-6097e9e7b19c",
+      "id": "79604a4c-d0da-4165-96fa-f826f6be3fc4",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "3a62e8d3-a61f-4506-a82e-1c58effec837",
+      "id": "f602f6c3-c9e3-44e5-869e-fdf5d2b38c7e",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "8650adac-511c-459b-b554-b943c7332bc3",
+      "id": "05d3e0f4-4a94-4911-bbcc-a34d7f9b14bf",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "d25b6bc0-3909-4008-bff0-764b2988bc9e",
+      "id": "64f02577-3b0c-4766-a882-371fb0212487",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "2109ba98-c94e-4895-a8fd-da374c08c4db",
+      "id": "52b5d5ff-5f29-4fde-83f0-ed8fb047d7cb",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
