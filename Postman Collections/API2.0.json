@@ -2331,19 +2331,23 @@
               "script": {
                 "id": "3713c267-b09e-4651-896f-b91b88141eda",
                 "exec": [
+                  "const expectedMessage = \"1 failure condition: URI parameter siteId does not match with siteId in JSON\";",
+                  "const expectedReponseCode = 412;",
+                  "",
                   "pm.test(\"Response should contains an error\", function () {",
-                  "    pm.response.to.have.status(412);",
+                  "    pm.response.to.have.status(expectedReponseCode);",
                   "    pm.response.to.be.error;",
                   "    pm.response.to.have.jsonBody(\"error\");",
                   "});",
+                  "",
                   "",
                   "var jsonData = JSON.parse(responseBody);",
                   "var responseCode = jsonData.error.httpReturnCode;",
                   "var message = jsonData.error.message;",
                   "",
-                  "if(responseCode === 412){",
-                  "    tests[\"Response code should be:  \" + responseCode] = true;",
-                  "    tests[\"Response message should be:  \" + message] = (message === \"1 failure condition: URI parameter siteId does not match with siteId in JSON\");",
+                  "if(responseCode === expectedReponseCode){",
+                  "    tests[\"Response code should be:  \" + expectedReponseCode] = (expectedReponseCode == responseCode);",
+                  "    tests[\"Response message should be:  \" + expectedMessage] = (message == expectedMessage);",
                   "}",
                   "",
                   ""
@@ -2607,109 +2611,109 @@
   ],
   "variable": [
     {
-      "id": "761e8294-62b1-42ce-bb40-adf68a79eca8",
+      "id": "c46b5830-bd57-4294-8702-d072af848fb8",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "304f26c9-b7f7-4619-9db3-065984848cc0",
+      "id": "25e92f8c-e93f-43e3-8372-50b26be7351f",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "995e96c6-6124-43e4-bbda-a9c27b65d1e1",
+      "id": "11042f68-07c0-4364-9730-0ba69cb7b1ab",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "e928833e-56bf-4875-a058-c6e817bb483f",
+      "id": "431ebd24-c812-4b9b-ad6e-7ddd648c6ee4",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "1cc989bf-449e-4b24-8cf9-3947946b359c",
+      "id": "447a4620-e8c8-42d1-b88e-077fe18e3268",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "716fc2b5-1c1a-4c9e-9859-ce20b8819bb3",
+      "id": "046e4899-5c04-48f7-9d59-abbec15ec76e",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "5623da51-42c9-4132-863e-8b4324f85d08",
+      "id": "f51c101f-470e-4e8d-9c54-77253b15682e",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "346bbfa8-1152-40ad-b7be-dcd3a2485771",
+      "id": "8b516621-fa3d-4131-b54d-da1cd698d444",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "610d71bf-d4aa-474f-96fc-292d9a7fde90",
+      "id": "9302fa57-5c72-4f99-898c-ce08c7c2ecf6",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "41555c26-991f-4563-9e2a-9ed29c86d2e0",
+      "id": "e0ad9d61-cff1-44f5-bfb6-00a020d57ef9",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "30169751-bbbf-4344-a7a2-89a9af0d1c53",
+      "id": "a354e3f2-a660-4fb1-ae5f-395de4ad1adc",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "82364bff-0241-4b13-9a50-909fd71a5537",
+      "id": "01671ccb-e05d-468e-b3b8-8469d8b3e1d3",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "390042a1-c701-4608-a922-4c037289e57a",
+      "id": "550e1ede-5c17-4b22-83f1-0e92c8c5ee34",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "c29d3228-a312-4d7c-87c7-cbf453c2dcab",
+      "id": "505b7454-ce74-4cbe-a5d7-e426ad986297",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "efb69199-97a4-4a7d-929a-d557d5e2ea3e",
+      "id": "8f599d37-5b9d-4287-b683-a1f843bba4c9",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "2d3022c4-2623-4487-a47a-57c86205aecb",
+      "id": "36e32938-099c-4c54-a170-9c980cce8e3c",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "65b65e66-e577-4bf6-86a5-ea95cf52765e",
+      "id": "149b0a89-4847-44dd-8def-78dfc0d3f913",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "82eda358-4045-4426-b818-0b2fb0facce8",
+      "id": "53f40b1c-b9ed-466d-a202-1d3d82b79c13",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
