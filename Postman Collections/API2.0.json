@@ -2515,7 +2515,9 @@
                 "exec": [
                   "",
                   "var jsonData = JSON.parse(responseBody);",
-                  "if(jsonData.error.httpReturnCode === 404){",
+                  "var responseCode = jsonData.error.httpReturnCode;",
+                  "var message = jsonData.error.message;",
+                  "if(responseCode === 404){",
                   "    tests[\"value should be \" + jsonData.error.httpReturnCode] = true;",
                   "}",
                   "",
@@ -2600,109 +2602,109 @@
   ],
   "variable": [
     {
-      "id": "d6c89a11-788a-400c-bfea-948defccf27b",
+      "id": "f5290512-0bda-4f5e-82b4-8c9443692412",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "35fcc7b2-fdec-4c0a-b20c-ca93905e4dde",
+      "id": "28c16132-68a4-4522-8028-0de6e80e49f5",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "6068b4ee-acca-42f9-905d-f172fdb84eec",
+      "id": "8bcbf8c0-4ffd-40b3-b0c6-8c52688c154a",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "818c0dea-c322-4dfb-b820-1159a6a96df4",
+      "id": "b278e06f-4a81-437d-9c5c-32461faa0544",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "45426d75-ed1e-438c-a36f-bcaad9d29b20",
+      "id": "460716ec-b1a3-46e7-a39f-506f47199464",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "326b3a6e-ab4d-4eb0-a9b9-2d90ff97b794",
+      "id": "d25f1f26-b5e3-483a-8aa2-cf15a5a57c58",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "3e96c914-e486-400a-99ee-92a0fa3b90e4",
+      "id": "b49cb47d-aed9-4228-bfb5-6623f72c6aa5",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "14be062d-abeb-4269-ad08-00e7d4d1e306",
+      "id": "ec00d929-2b00-4680-bc80-7e9e3befbe4f",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "a5f5ef6d-b1df-42fa-a4f2-805a9e4add06",
+      "id": "d0c626fb-c6cb-4a2d-bf4e-6aacf9a07637",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "8a3094f2-6372-4870-8782-1283a3a4d66f",
+      "id": "7d3c4aa6-2189-40e3-b2ea-00843db3c875",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "1875586d-f4ef-4bf9-889c-cb1a80b3cd22",
+      "id": "4469aba9-3d0c-4228-b77b-51c0b10fbb3a",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "0b598391-3be2-45c0-92e9-9bc94b6b4ff9",
+      "id": "dcdeedde-7c8a-4639-bb38-076c21a34b8a",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "0f5d6743-08bb-4b08-9363-ef614c25a309",
+      "id": "b8dc10f6-c2bb-44e6-9ae8-6844bde73947",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "34d97695-7c48-469c-b2c5-b8e61773bd6b",
+      "id": "7831aa05-51cb-4f75-86be-e23485570dcb",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "4e24c3da-bd1c-450d-9c0c-cb4464c48b8a",
+      "id": "40404765-4c63-4bd1-8202-61da78e8337e",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "70bed585-f898-4dd5-9ff6-f0376e0187e8",
+      "id": "9e252503-6fc3-4a67-aff7-74e059f0587c",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "ff7877fa-453c-4366-b01b-3e66c362d843",
+      "id": "282bb7a6-b8ba-46d1-8e45-c78a2fcc2e48",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "323f4f0e-58ff-40c3-b784-1209fa29f1d6",
+      "id": "e436c725-703b-45a8-9095-f0e9659c0a81",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
