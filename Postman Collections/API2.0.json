@@ -2397,7 +2397,7 @@
               "script": {
                 "id": "3713c267-b09e-4651-896f-b91b88141eda",
                 "exec": [
-                  "const expectedMessage = \"1 failure condition: URI parameter siteId does not match with siteId in JSON\";",
+                  "const expectedMessage = \"1 failure condition: URI parameter partnerShortName does not match with partnerShortName in JSON\";",
                   "const expectedReponseCode = 412;",
                   "",
                   "pm.test(\"Response should contains an error\", function () {",
@@ -2413,8 +2413,14 @@
                   "var jsonData = JSON.parse(responseBody);",
                   "var responseCode = jsonData.error.httpReturnCode;",
                   "var message = jsonData.error.message;",
-                  "/*tests[\"Error cause\"] = data.responseHeader.businessErrorKey === \"JSON_ELEMENT_INVALID\";",
-                  "tests[\"Error message\"] = data.responseHeader.message === \"URI parameter partnerShortName does not match with partnerShortName in JSON\";*/"
+                  "",
+                  "if(responseCode === expectedReponseCode){",
+                  "    tests[\"Response code should be:  \" + expectedReponseCode] = (expectedReponseCode == responseCode);",
+                  "    tests[\"Response message should be:  \" + expectedMessage] = (message == expectedMessage);",
+                  "} else{",
+                  "    tests[\"Response code should be:  \" + expectedReponseCode] = false;",
+                  "    tests[\"Response message should be:  \" + expectedMessage] = false;",
+                  "}"
                 ],
                 "type": "text/javascript"
               }
@@ -2529,6 +2535,7 @@
               "script": {
                 "id": "c1e57fb0-a221-44ef-9723-deade8c40267",
                 "exec": [
+                  "const expectedReponseCode = 200;",
                   "",
                   "var jsonData = JSON.parse(responseBody);",
                   "var responseCode = jsonData.error.httpReturnCode;",
@@ -2618,109 +2625,109 @@
   ],
   "variable": [
     {
-      "id": "daebcaa3-dc39-4d9c-bc83-90f0036f4a72",
+      "id": "979350c5-8b3b-453d-b812-347b7c3c6b79",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "9aa01ada-9743-4516-b94c-fed856ffdc44",
+      "id": "251b7dc4-30c9-4b9f-9302-76e715fae09a",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "5b7c3bdf-4b5b-4fee-908c-ddadf5a44c9b",
+      "id": "0a2eea29-a7c9-4279-b4ee-1409c26ca491",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "dc73c8b6-5d45-4455-a375-943297bea741",
+      "id": "b8acc6fa-13c9-4e4f-9da0-f2ce7b0d034f",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "d650fe3a-bcbd-4e2e-8ce4-ff5a6dbbe920",
+      "id": "4e706195-e9c6-42cf-a53b-d829ce1c4c60",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "cad3b314-86b2-4e3e-a02d-1e24e4574b33",
+      "id": "39e2d6bf-db62-4bc7-9b73-50c0ec3c6ec1",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "09a2f7c0-c66d-492c-b7bb-d84a0f897cea",
+      "id": "6c61c1c9-c10f-4c90-8de3-b1b50b999563",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "74951253-5c20-4f61-a050-0596dcbb6574",
+      "id": "09174ffd-4325-4563-bb3c-572df89932bc",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "34c5c84e-7340-4c3f-a117-72a11d21694d",
+      "id": "2b5b92e4-e4be-4019-a5b7-6e8c2b3ea700",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "352751aa-9d6d-4729-9a36-1a08a5f6652f",
+      "id": "edc4d456-6a0f-4bf8-b040-ae3f9d1f0be9",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "cdbeeb2a-9b52-41b4-8607-744808e5fd16",
+      "id": "39ffa502-eaa2-4cba-8eba-e342c362c56a",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "d32348ea-2fe9-41f9-9766-f03281b3b086",
+      "id": "eea1e175-e7bb-480a-ae6c-8cce66da035b",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "5901e245-1ca5-4713-9e86-8670f1135798",
+      "id": "89bd8e26-c5dd-49d7-9661-ba032a87548e",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "2e9e54a8-e777-441e-b840-21d00b1a6282",
+      "id": "a4d8f0ce-79ad-4ae5-86e4-fea4f865c6da",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "47ae8bb2-e47e-47cf-8195-d55fa449eb9e",
+      "id": "1eae47be-4f6d-4f71-ae8d-aff212b96b05",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "4ed4ec32-e475-42ad-b5fd-e8f588969b94",
+      "id": "23b721e4-c647-42b6-a7df-668afb349f40",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "e647bf64-a946-4771-9030-fddae09d8dcd",
+      "id": "95ae13fd-31a8-46a8-82e1-31f6d48b063d",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "43d05112-da52-446d-9ee8-02ef3c11ece8",
+      "id": "664f56fa-d4fe-4868-92e4-bfb1675365e7",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
