@@ -62,162 +62,6 @@
       "_postman_id": "96b148dd-b314-4156-b362-794c74fcafbc"
     },
     {
-      "name": "TEST: Partner specific plans",
-      "item": [
-        {
-          "name": "Valid Partner",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Plan Id is present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"planId\");",
-                  "});",
-                  "",
-                  "pm.test(\"Legacy Label is present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"legacyLabel\");",
-                  "});",
-                  "",
-                  "pm.test(\"Plan Type is present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"type\");",
-                  "});",
-                  "",
-                  "pm.test(\"Unique Plan Id is present\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"uniquePlanId\");",
-                  "});",
-                  ""
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "051f52f7-c851-4dfb-8637-ead105125cc1",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "auth_id",
-                "value": "{{auth_id_value}}",
-                "type": "text"
-              },
-              {
-                "key": "auth_token",
-                "value": "{{auth_token_value}}",
-                "type": "text"
-              }
-            ],
-            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/plans",
-            "description": "Partner= Valid"
-          },
-          "response": []
-        },
-        {
-          "name": "Invalid Partner (Different Partner)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
-                "exec": [
-                  "pm.test(\"Status code is 404\", function () {",
-                  "    pm.response.to.have.status(404);",
-                  "});",
-                  "",
-                  "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                  "});",
-                  "",
-                  "pm.test(\"Partner not found\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"false\");",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "897319fa-0a66-4e22-a8d8-789d97efae45",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "auth_id",
-                "type": "text",
-                "value": "{{auth_id_value}}"
-              },
-              {
-                "key": "auth_token",
-                "type": "text",
-                "value": "{{auth_token_value}}"
-              }
-            ],
-            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/plans",
-            "description": "Partner= Invalid (Different Partner)"
-          },
-          "response": []
-        },
-        {
-          "name": "Invalid Partner (Not exist)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
-                "exec": [
-                  "pm.test(\"Status code is 404\", function () {",
-                  "    pm.response.to.have.status(404);",
-                  "});",
-                  "",
-                  "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                  "});",
-                  "",
-                  "pm.test(\"Partner not found\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"false\");",
-                  "})"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e37bcfa3-8f32-4e83-8a7e-05cf5f421d48",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "auth_id",
-                "type": "text",
-                "value": "{{auth_id_value}}"
-              },
-              {
-                "key": "auth_token",
-                "type": "text",
-                "value": "{{auth_token_value}}"
-              }
-            ],
-            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/plans",
-            "description": "Partner= Invalid (Not present in the application)"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "8068d472-dfad-41d3-83d3-8d928ecc673f"
-    },
-    {
       "name": "TEST: Partner and Site specific plans",
       "item": [
         {
@@ -2598,6 +2442,163 @@
           ],
           "_postman_id": "d28d5491-298c-49e4-87e2-9af6860d8edf",
           "_postman_isSubFolder": true
+        },
+        {
+          "name": "TEST: Partner specific plans",
+          "item": [
+            {
+              "name": "Valid Partner",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Plan Id is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"planId\");",
+                      "});",
+                      "",
+                      "pm.test(\"Legacy Label is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"legacyLabel\");",
+                      "});",
+                      "",
+                      "pm.test(\"Plan Type is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"type\");",
+                      "});",
+                      "",
+                      "pm.test(\"Unique Plan Id is present\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"uniquePlanId\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "051f52f7-c851-4dfb-8637-ead105125cc1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "value": "{{auth_id_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "auth_token",
+                    "value": "{{auth_token_value}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/plans",
+                "description": "Partner= Valid"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner (Different Partner)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "897319fa-0a66-4e22-a8d8-789d97efae45",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/plans",
+                "description": "Partner= Invalid (Different Partner)"
+              },
+              "response": []
+            },
+            {
+              "name": "Invalid Partner (Not exist)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "cfe06a5a-7cda-4501-98d7-48edc59771bc",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});",
+                      "",
+                      "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                      "});",
+                      "",
+                      "pm.test(\"Partner not found\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"false\");",
+                      "})"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "e37bcfa3-8f32-4e83-8a7e-05cf5f421d48",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/plans",
+                "description": "Partner= Invalid (Not present in the application)"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "8068d472-dfad-41d3-83d3-8d928ecc673f",
+          "_postman_isSubFolder": true
         }
       ],
       "_postman_id": "69d0f880-59f4-43ba-b3fa-002229db4e2d"
@@ -2637,109 +2638,109 @@
   ],
   "variable": [
     {
-      "id": "30f6c086-371d-458d-8ed9-26e03920ec27",
+      "id": "a6604570-a380-4054-8fd1-b26e6bbe4be3",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "137665d7-8383-415b-a2b2-4484483048d4",
+      "id": "40b0b573-f964-4233-ac26-8985f3ec23f7",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "32902548-a40a-4966-b6a3-2453f1e9192e",
+      "id": "1a44c7c5-8b58-4ecc-a5ea-3922439b554c",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "679bc4c0-2716-4ef3-a768-363ca09415d7",
+      "id": "c145ac2f-82d9-4812-946f-68ffb6f7d7be",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "21e68139-7ec7-4bfc-bb49-c5f77bf9b32e",
+      "id": "fded672a-48f9-4289-9346-b34503a5bf40",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "8928efae-6725-4ba1-b20f-bf3188a860fe",
+      "id": "257ff1fb-ae64-4850-a2c6-6474aa91955c",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "bd4ee513-5482-4a04-9634-ea8958092986",
+      "id": "6311aa2e-d33c-47c8-ab97-1bf5cafd8165",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "c53f6961-ead9-4deb-bc09-2ecfefc55a89",
+      "id": "530275eb-8fc1-47a9-9ad6-6aeffc11e7d5",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "b9c4b26d-f246-4ac5-85c6-e2ca0219a818",
+      "id": "31bb40c3-bcc7-4dd4-b96a-125f2c390f05",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "699f5b33-29f7-4a35-98fd-c33bcb182ed4",
+      "id": "1a35505f-05c8-4902-bfa5-150f7d6a4cbb",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "d3a6767b-c551-4b58-9625-0ef761584bc4",
+      "id": "99c731ba-1259-4b3d-a0e6-695ef85a8efa",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "872baa53-aa5c-4629-ba1f-b611bbd8249f",
+      "id": "d31c8bff-c557-4660-8020-9f1c8079789b",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "a36d44b0-b3f3-4b7b-ab79-917fa1262d84",
+      "id": "201fb4b0-9a20-4122-94ee-aa0c88b4a75d",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "0f2fb40b-df18-4e50-b825-5a3c65f1d5a2",
+      "id": "16973dcc-7f72-481e-a46e-89a5dc23a3e9",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "688d1308-c3a4-4823-adb2-4a8f39a3bcaf",
+      "id": "0bc10eb3-512b-4498-9caf-6e082f5899df",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "38a5c076-e98c-4a10-9b06-7ae77d2e0018",
+      "id": "02132b54-ff75-4957-be56-d8e48f4880c0",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "bad7ce00-0fe3-4f60-93d3-06a5a2ca387b",
+      "id": "1779b2fb-be47-40a2-bd2f-2f465476d71c",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "4eae37b4-92d1-4376-b7ba-194e776f25ec",
+      "id": "75d000fc-5f17-4825-b153-66ee5091b9e4",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
