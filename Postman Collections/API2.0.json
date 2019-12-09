@@ -62,470 +62,6 @@
       "_postman_id": "96b148dd-b314-4156-b362-794c74fcafbc"
     },
     {
-      "name": "TEST- NPI Type Verification",
-      "item": [
-        {
-          "name": "Type-2 NPI",
-          "item": [
-            {
-              "name": "Valid Type-2 NPI",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi\"))+\" is a Type TWO NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"TWO\");",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "3031f657-3e4d-469a-93ea-2852bd0448fd",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi}}",
-                "description": "NPI(Type 2)= Valid"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type-2 NPI: Present in application(same partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi1\"))+\" is a Type TWO NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"TWO\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "ef09837d-be4d-4833-b9bd-46d251457020",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi1}}",
-                "description": "NPI(Type 2)= Invalid (present in the application with same partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type-2 NPI: Present in application(different partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi2\"))+\" is a Type TWO NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"TWO\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "1c8181b6-be92-4f1c-a0a6-309fed1cd136",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi2}}",
-                "description": "NPI(Type 2)= Invalid (present in the application with different partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type-2 NPI: Not present in application and NPPS registry",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi3\"))+\" is a UNKNOWN Type NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "445eebe5-a0d7-4e72-88f1-161c2a2575ff",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi3}}",
-                "description": "NPI(Type 2)= Invalid (Not present in the application and NPPS registry)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type- 2 NPI",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi4\"))+\" is a UNKNOWN Type NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "846bfdc9-000e-442c-9afa-33bf6d7f0a9c",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi4}}",
-                "description": "NPI Type 2= Invalid"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "e5925d37-4d56-4343-8f5e-b9764f4ce951",
-          "_postman_isSubFolder": true
-        },
-        {
-          "name": "Type-1 NPI",
-          "item": [
-            {
-              "name": "Valid Type-1 NPI",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi5\"))+\" is a Type ONE NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"ONE\");",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "979cb380-dc65-4b5e-a393-0830d658b1ab",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "value": "{{auth_id_value}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "auth_token",
-                    "value": "{{auth_token_value}}",
-                    "type": "text"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi5}}",
-                "description": "NPI(Type 1)= Valid"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type-1 NPI: Present in application(same partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi6\"))+\" is a ONE Type NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"ONE\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "7a5599ae-86b2-4695-998a-25f5b12ca426",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi6}}",
-                "description": "NPI(Type 1)= Invalid (present in the application with same partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type-1 NPI: Present in application(different partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi7\"))+\" is a ONE Type NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"ONE\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "7e1ec376-8215-43e9-b5cf-8f31160c3ab4",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi7}}",
-                "description": "NPI(Type 1)= Invalid (present in the application with different partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type-1 NPI: Not present in application and NPPS registry",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi8\"))+\" is a UNKNOWN Type NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "171d58e2-f432-40cc-b059-64d5065010bf",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi8}}",
-                "description": "NPI(Type 1)= Invalid (Not present in the application and NPPS registry)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Type- 1 NPI",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"The given NPI \"+(pm.variables.get(\"npi9\"))+\" is a UNKNOWN Type NPI\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "c8d60534-eaa1-4e9e-9a06-ed0ef3a98896",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/npitype/{{npi9}}",
-                "description": "NPI= Invalid"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "8459bab7-a0a0-401e-83a2-f844759826f2",
-          "_postman_isSubFolder": true
-        }
-      ],
-      "_postman_id": "d28d5491-298c-49e4-87e2-9af6860d8edf"
-    },
-    {
       "name": "TEST: Partner specific plans",
       "item": [
         {
@@ -2597,7 +2133,473 @@
     },
     {
       "name": "GET Requests",
-      "item": [],
+      "item": [
+        {
+          "name": "TEST- NPI Type Verification",
+          "item": [
+            {
+              "name": "Type-2 NPI",
+              "item": [
+                {
+                  "name": "Valid Type-2 NPI",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi\"))+\" is a Type TWO NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"TWO\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "3031f657-3e4d-469a-93ea-2852bd0448fd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi}}",
+                    "description": "NPI(Type 2)= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type-2 NPI: Present in application(same partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi1\"))+\" is a Type TWO NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"TWO\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "ef09837d-be4d-4833-b9bd-46d251457020",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi1}}",
+                    "description": "NPI(Type 2)= Invalid (present in the application with same partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type-2 NPI: Present in application(different partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi2\"))+\" is a Type TWO NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"TWO\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "1c8181b6-be92-4f1c-a0a6-309fed1cd136",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi2}}",
+                    "description": "NPI(Type 2)= Invalid (present in the application with different partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type-2 NPI: Not present in application and NPPS registry",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi3\"))+\" is a UNKNOWN Type NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                          "});",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "445eebe5-a0d7-4e72-88f1-161c2a2575ff",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi3}}",
+                    "description": "NPI(Type 2)= Invalid (Not present in the application and NPPS registry)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type- 2 NPI",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi4\"))+\" is a UNKNOWN Type NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                          "});",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "846bfdc9-000e-442c-9afa-33bf6d7f0a9c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi4}}",
+                    "description": "NPI Type 2= Invalid"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "e5925d37-4d56-4343-8f5e-b9764f4ce951",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Type-1 NPI",
+              "item": [
+                {
+                  "name": "Valid Type-1 NPI",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi5\"))+\" is a Type ONE NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"ONE\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "979cb380-dc65-4b5e-a393-0830d658b1ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "value": "{{auth_id_value}}",
+                        "type": "text"
+                      },
+                      {
+                        "key": "auth_token",
+                        "value": "{{auth_token_value}}",
+                        "type": "text"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi5}}",
+                    "description": "NPI(Type 1)= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type-1 NPI: Present in application(same partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi6\"))+\" is a ONE Type NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"ONE\");",
+                          "});",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "7a5599ae-86b2-4695-998a-25f5b12ca426",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi6}}",
+                    "description": "NPI(Type 1)= Invalid (present in the application with same partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type-1 NPI: Present in application(different partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi7\"))+\" is a ONE Type NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"ONE\");",
+                          "});",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "7e1ec376-8215-43e9-b5cf-8f31160c3ab4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi7}}",
+                    "description": "NPI(Type 1)= Invalid (present in the application with different partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type-1 NPI: Not present in application and NPPS registry",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi8\"))+\" is a UNKNOWN Type NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                          "});",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "171d58e2-f432-40cc-b059-64d5065010bf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi8}}",
+                    "description": "NPI(Type 1)= Invalid (Not present in the application and NPPS registry)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Type- 1 NPI",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "8c18747e-5037-42d4-86fa-d737b7e49fe0",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"The given NPI \"+(pm.variables.get(\"npi9\"))+\" is a UNKNOWN Type NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"UNKNOWN\");",
+                          "});",
+                          "",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "c8d60534-eaa1-4e9e-9a06-ed0ef3a98896",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/npitype/{{npi9}}",
+                    "description": "NPI= Invalid"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "8459bab7-a0a0-401e-83a2-f844759826f2",
+              "_postman_isSubFolder": true
+            }
+          ],
+          "_postman_id": "d28d5491-298c-49e4-87e2-9af6860d8edf",
+          "_postman_isSubFolder": true
+        }
+      ],
       "_postman_id": "69d0f880-59f4-43ba-b3fa-002229db4e2d"
     },
     {
@@ -2635,109 +2637,109 @@
   ],
   "variable": [
     {
-      "id": "eededc50-ebbf-45fe-ad20-9ad5f4119580",
+      "id": "30f6c086-371d-458d-8ed9-26e03920ec27",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "973aa3f7-7e22-4e9d-bd38-f0bbc54feebc",
+      "id": "137665d7-8383-415b-a2b2-4484483048d4",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "1674b56a-e83e-498f-94dc-308a77e95d81",
+      "id": "32902548-a40a-4966-b6a3-2453f1e9192e",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "aefd2203-1b21-455a-a975-b37f34a3d428",
+      "id": "679bc4c0-2716-4ef3-a768-363ca09415d7",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "2eae6e05-596a-4cb3-8e52-afcf9f31616c",
+      "id": "21e68139-7ec7-4bfc-bb49-c5f77bf9b32e",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "1c72f480-cdd7-4646-80ec-b783904c4647",
+      "id": "8928efae-6725-4ba1-b20f-bf3188a860fe",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "47a9325b-5c70-42af-9164-263a984ef821",
+      "id": "bd4ee513-5482-4a04-9634-ea8958092986",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "99e2831e-26b1-4903-9559-36a01a7241d1",
+      "id": "c53f6961-ead9-4deb-bc09-2ecfefc55a89",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "9aa01aed-2a7a-4ed5-8cac-90b567526dd7",
+      "id": "b9c4b26d-f246-4ac5-85c6-e2ca0219a818",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "31317826-e2fd-403e-a16f-5f53618e10f8",
+      "id": "699f5b33-29f7-4a35-98fd-c33bcb182ed4",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "20c94a9f-cc24-42d9-a330-32fe1e47969f",
+      "id": "d3a6767b-c551-4b58-9625-0ef761584bc4",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "b87ddc8e-150a-4d74-9f44-bae9b781bffa",
+      "id": "872baa53-aa5c-4629-ba1f-b611bbd8249f",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "aaf5ef0c-ff51-48a6-adec-892d9c9bcf75",
+      "id": "a36d44b0-b3f3-4b7b-ab79-917fa1262d84",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "c608323e-2bc1-4355-b21a-ab0ebc04ef47",
+      "id": "0f2fb40b-df18-4e50-b825-5a3c65f1d5a2",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "cd782e4d-22aa-4e63-a979-1815ace5eb56",
+      "id": "688d1308-c3a4-4823-adb2-4a8f39a3bcaf",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "425fc816-d971-463b-bacc-abf1ef37b78e",
+      "id": "38a5c076-e98c-4a10-9b06-7ae77d2e0018",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "68889911-0abd-4bbc-89bb-0f383733c07a",
+      "id": "bad7ce00-0fe3-4f60-93d3-06a5a2ca387b",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "f3d3b4de-cbcc-4765-bcb8-561d644a20c2",
+      "id": "4eae37b4-92d1-4376-b7ba-194e776f25ec",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
