@@ -62,730 +62,6 @@
       "_postman_id": "96b148dd-b314-4156-b362-794c74fcafbc"
     },
     {
-      "name": "TEST: Partner specific Sites",
-      "item": [
-        {
-          "name": "Case1: Valid Partner and different Site combinations",
-          "item": [
-            {
-              "name": "Valid Partner and Site",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"Site \"+(pm.variables.get(\"siteId\"))+\" found successfully\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"true\");",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "5d75fe90-cf9a-4361-aea1-38a6c357aa86",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}",
-                "description": "Partner= Valid; \nSite= Valid"
-              },
-              "response": []
-            },
-            {
-              "name": "Valid Partner and Invalid Site (Different Site, Same Partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"Site \"+(pm.variables.get(\"siteId1\"))+\" found successfully\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"true\");",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "dc1035fb-0096-4929-b9c7-96aa8877fccd",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId1}}",
-                "description": "Partner= Valid; \nSite= Invalid (Different Site, Same Partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Valid Partner and Invalid Site (Different Partner's Site)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Site not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "858b0f89-e006-4ed3-b5d2-af1e87134148",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId2}}",
-                "description": "Partner= Valid; \nSite= Invalid (Different Partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Valid Partner and Invalid Site (Not present in the application)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Site not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "5759768f-2d75-40d1-a894-0ccaee7f2628",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId3}}",
-                "description": "Partner= Valid; \nSite= Invalid (Not present in the application)"
-              },
-              "response": []
-            },
-            {
-              "name": "Valid Partner and Invalid Site (Wrong Site Id)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Site not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "dfdc0fc7-1ac0-4459-b603-5b33a75b23f6",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId4}}",
-                "description": "Partner= Valid; \nSite= Invalid (Wrong Site Id)"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "3a0189c3-183d-461a-a0f0-b4112c7f4890",
-          "_postman_isSubFolder": true
-        },
-        {
-          "name": "Case2: Different Partner and different Site combinations",
-          "item": [
-            {
-              "name": "Invalid Partner and valid Site",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "d8327e25-7fa9-4d9c-86f2-e022e6ee9357",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId}}",
-                "description": "Partner= Invalid (Different Partner); \nSite= Valid"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner and invalid Site(Different Site, same Partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "1b6830d1-52e7-482e-8b2a-b41d7ad0dbdf",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId1}}",
-                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Different Site, same Partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner and invalid Site(Different Partner's Site)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "ee30456c-30a5-4d4d-812b-4c365f162cb1",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId2}}",
-                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Different Partner's Site)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner and invalid Site(Not present in the application)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "18ad8c7c-85cf-4797-b07f-2c74f7c1530e",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId3}}",
-                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Not present in the application)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner and invalid Site(Wrong Site Id)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "0a4544ad-079d-4a10-9884-f92b31ce0bbe",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId4}}",
-                "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Wrong Site Id)"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "a5c81c44-c712-4c8c-9fb5-77480404915b",
-          "_postman_isSubFolder": true
-        },
-        {
-          "name": "Case3: Wrong Partner and different Site combinations",
-          "item": [
-            {
-              "name": "Invalid Partner(Not present) and Valid Site",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "5126c06e-a50c-4241-9444-6cf6a8368471",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}",
-                "description": "Partner= Invalid(Not present in the application); \nSite= Valid"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner(Not present) and Invalid Site(Different Site, Same Partner)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "3f47165b-2f3d-4839-b859-a88a27cbb446",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId1}}",
-                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Different Site, same Partner)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner(Not present) and Invalid Site(Different Partner's Site)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "2c74ede9-db6e-48bf-af5f-e63a5c9653df",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId2}}",
-                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Different Partner's Site)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner(Not present) and Invalid Site(Not present in the application)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "f1519b24-c018-4237-b42d-647376363f56",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId3}}",
-                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Not present in the application)"
-              },
-              "response": []
-            },
-            {
-              "name": "Invalid Partner(Not present) and Invalid Site(Wrong Site Id)",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                    "exec": [
-                      "pm.test(\"Status code is 404\", function () {",
-                      "    pm.response.to.have.status(404);",
-                      "});",
-                      "",
-                      "pm.test(\"Partner not found\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"false\");",
-                      "});",
-                      "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "e4af635b-fbed-438d-99c7-f38b2112813f",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  }
-                ],
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId3}}",
-                "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Wrong Site Id)"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "67d1c284-66a4-47f5-9243-de7084558f74",
-          "_postman_isSubFolder": true
-        }
-      ],
-      "_postman_id": "948fddfd-47ed-4dec-8213-654869236f53"
-    },
-    {
       "name": "POST: Partner enrollment statuses",
       "item": [
         {
@@ -2600,6 +1876,731 @@
           ],
           "_postman_id": "03099bbe-18d2-41e3-b691-ae7839fe7b35",
           "_postman_isSubFolder": true
+        },
+        {
+          "name": "TEST: Partner specific Sites",
+          "item": [
+            {
+              "name": "Case1: Valid Partner and different Site combinations",
+              "item": [
+                {
+                  "name": "Valid Partner and Site",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Site \"+(pm.variables.get(\"siteId\"))+\" found successfully\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"true\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "5d75fe90-cf9a-4361-aea1-38a6c357aa86",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}",
+                    "description": "Partner= Valid; \nSite= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Partner and Invalid Site (Different Site, Same Partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"Site \"+(pm.variables.get(\"siteId1\"))+\" found successfully\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"true\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "dc1035fb-0096-4929-b9c7-96aa8877fccd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId1}}",
+                    "description": "Partner= Valid; \nSite= Invalid (Different Site, Same Partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Partner and Invalid Site (Different Partner's Site)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Site not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "858b0f89-e006-4ed3-b5d2-af1e87134148",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId2}}",
+                    "description": "Partner= Valid; \nSite= Invalid (Different Partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Partner and Invalid Site (Not present in the application)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Site not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "5759768f-2d75-40d1-a894-0ccaee7f2628",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId3}}",
+                    "description": "Partner= Valid; \nSite= Invalid (Not present in the application)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Partner and Invalid Site (Wrong Site Id)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Site not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"SITE MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Site not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "dfdc0fc7-1ac0-4459-b603-5b33a75b23f6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId4}}",
+                    "description": "Partner= Valid; \nSite= Invalid (Wrong Site Id)"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "3a0189c3-183d-461a-a0f0-b4112c7f4890",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Case2: Different Partner and different Site combinations",
+              "item": [
+                {
+                  "name": "Invalid Partner and valid Site",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "d8327e25-7fa9-4d9c-86f2-e022e6ee9357",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId}}",
+                    "description": "Partner= Invalid (Different Partner); \nSite= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner and invalid Site(Different Site, same Partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "1b6830d1-52e7-482e-8b2a-b41d7ad0dbdf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId1}}",
+                    "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Different Site, same Partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner and invalid Site(Different Partner's Site)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "ee30456c-30a5-4d4d-812b-4c365f162cb1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId2}}",
+                    "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Different Partner's Site)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner and invalid Site(Not present in the application)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "18ad8c7c-85cf-4797-b07f-2c74f7c1530e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId3}}",
+                    "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Not present in the application)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner and invalid Site(Wrong Site Id)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "0a4544ad-079d-4a10-9884-f92b31ce0bbe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId4}}",
+                    "description": "Partner= Invalid (Different Partner); \nSite= Invalid(Wrong Site Id)"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "a5c81c44-c712-4c8c-9fb5-77480404915b",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Case3: Wrong Partner and different Site combinations",
+              "item": [
+                {
+                  "name": "Invalid Partner(Not present) and Valid Site",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "5126c06e-a50c-4241-9444-6cf6a8368471",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}",
+                    "description": "Partner= Invalid(Not present in the application); \nSite= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner(Not present) and Invalid Site(Different Site, Same Partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "3f47165b-2f3d-4839-b859-a88a27cbb446",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId1}}",
+                    "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Different Site, same Partner)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner(Not present) and Invalid Site(Different Partner's Site)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "2c74ede9-db6e-48bf-af5f-e63a5c9653df",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId2}}",
+                    "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Different Partner's Site)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner(Not present) and Invalid Site(Not present in the application)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "f1519b24-c018-4237-b42d-647376363f56",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId3}}",
+                    "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Not present in the application)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Invalid Partner(Not present) and Invalid Site(Wrong Site Id)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "e4af635b-fbed-438d-99c7-f38b2112813f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId3}}",
+                    "description": "Partner= Invalid(Not present in the application); \nSite= Invalid(Wrong Site Id)"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "67d1c284-66a4-47f5-9243-de7084558f74",
+              "_postman_isSubFolder": true
+            }
+          ],
+          "_postman_id": "948fddfd-47ed-4dec-8213-654869236f53",
+          "_postman_isSubFolder": true
         }
       ],
       "_postman_id": "69d0f880-59f4-43ba-b3fa-002229db4e2d"
@@ -2639,109 +2640,109 @@
   ],
   "variable": [
     {
-      "id": "0dee7e25-e5a1-45a3-86b1-39827c6ab6b4",
+      "id": "73c1dcd4-16d0-494e-b921-d3d5e0d597be",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "6c6ab293-d931-4f6e-9511-559edeea582b",
+      "id": "a2557b1a-f124-4bae-b5ae-85c9bc25eec6",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "4be7fe09-4eeb-460c-a858-c8e616e5b631",
+      "id": "25b6590f-ef14-4911-aca0-5e5d4830eb90",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "ac7ab25c-e467-4da4-8a98-21b0b0724eaf",
+      "id": "bf446bb0-968c-47d6-8e84-0baf726b0ab3",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "0c11553c-4fa7-422f-b15b-c7f584fe60a4",
+      "id": "f0273e70-11bb-42bd-9df3-f763c5cd23b5",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "7ff8ee5f-0d21-4575-a7a7-1428f4c097ec",
+      "id": "f6dde31c-e433-4cc9-a0d6-2de96e381871",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "d8924531-0e28-41f5-b593-01abff2f7421",
+      "id": "dc367ce7-30be-4b11-825a-a7984b54fe35",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "4e3e9d45-f092-45f1-b64c-bb3bdb980c2e",
+      "id": "aa5de863-794b-4dfd-b2a0-1a5c489134ec",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "1de1acb3-8f88-4efd-a640-9f42f2ad99e4",
+      "id": "d8938ae2-cffd-40f4-b32c-38c5e004e79b",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "2f541bb9-2786-4cbd-ba14-83de46a73ba9",
+      "id": "06905ef9-a3da-4197-a27f-80caec03eda2",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "fe0c9403-6c1b-4377-8038-b22daa02da5a",
+      "id": "89f177e5-a8ae-4a11-9477-99212e1ffc98",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "e5caa626-270e-4fda-a894-493d7cba3e68",
+      "id": "0ecc7e34-bf70-4b52-9534-e68e039a3413",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "e40031fe-bf3e-4af0-aec1-6f98d9943296",
+      "id": "fc5e59b5-6689-45c3-988c-4d0505109f0b",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "544e9041-6f71-4e03-b14e-91a332ced036",
+      "id": "90f900df-4604-4199-9d4e-5306fed07a28",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "c5bfb98b-08ae-4dbe-b07d-588f75c44712",
+      "id": "45375ca5-abd2-4350-a721-19fe710f3015",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "d6857838-3be4-4573-add5-50bf32abbb6b",
+      "id": "0073391f-593a-4d85-8899-56318897dee4",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "feb9c027-62af-4155-88ba-f623ff541997",
+      "id": "7a6c4121-9c10-4613-8a6e-47a0f5a34215",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "dbf1c708-e58d-49cd-a580-14305d2a7d06",
+      "id": "0ac43bef-32fe-4fe8-80f7-a63c2dc76ba0",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
