@@ -435,73 +435,6 @@
       "_postman_id": "09d11bae-0192-405c-92e9-5528f697602f"
     },
     {
-      "name": "PUT: Partners site",
-      "item": [
-        {
-          "name": "Partners site",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c1e57fb0-a221-44ef-9723-deade8c40267",
-                "exec": [
-                  "const expectedReponseCode = 200;",
-                  "const putVerificationTokenMessage = \"1 failure condition:  Put verification token not found in header\";",
-                  "var isFailedDueToPutVerificationToken = false;",
-                  "",
-                  "pm.test(\"Response should contains success\", function () {",
-                  "    pm.response.to.have.status(expectedReponseCode);",
-                  "    pm.response.to.be.error;",
-                  "    pm.response.not.to.have.jsonBody(\"error\");",
-                  "});",
-                  "",
-                  "var jsonData = JSON.parse(responseBody);",
-                  "var responseCode = jsonData.error.httpReturnCode;",
-                  "var message = jsonData.error.message;",
-                  "",
-                  "if(responseCode == 404 && message == putVerificationTokenMessage){",
-                  "    tests[\"Failed because of missing put verification token\"] = false;",
-                  "}"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "e7971a12-a2b3-4ce0-9b19-ca4eef7da6ba",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "auth_id",
-                "value": "{{auth_id_value}}",
-                "type": "text"
-              },
-              {
-                "key": "auth_token",
-                "value": "{{auth_token_value}}",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"PNC Test Site\",\n  \"siteId\": \"PNCSiteId\"\n}"
-            },
-            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}"
-          },
-          "response": []
-        }
-      ],
-      "_postman_id": "90c8bc89-293f-498f-823f-ba2c1cfe1f31"
-    },
-    {
       "name": "GET Requests",
       "item": [
         {
@@ -2612,7 +2545,76 @@
     },
     {
       "name": "PUT Requests",
-      "item": [],
+      "item": [
+        {
+          "name": "PUT: Partners site",
+          "item": [
+            {
+              "name": "Partners site",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "c1e57fb0-a221-44ef-9723-deade8c40267",
+                    "exec": [
+                      "const expectedReponseCode = 200;",
+                      "const putVerificationTokenMessage = \"1 failure condition:  Put verification token not found in header\";",
+                      "var isFailedDueToPutVerificationToken = false;",
+                      "",
+                      "pm.test(\"Response should contains success\", function () {",
+                      "    pm.response.to.have.status(expectedReponseCode);",
+                      "    pm.response.to.be.error;",
+                      "    pm.response.not.to.have.jsonBody(\"error\");",
+                      "});",
+                      "",
+                      "var jsonData = JSON.parse(responseBody);",
+                      "var responseCode = jsonData.error.httpReturnCode;",
+                      "var message = jsonData.error.message;",
+                      "",
+                      "if(responseCode == 404 && message == putVerificationTokenMessage){",
+                      "    tests[\"Failed because of missing put verification token\"] = false;",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "e7971a12-a2b3-4ce0-9b19-ca4eef7da6ba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "value": "{{auth_id_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "auth_token",
+                    "value": "{{auth_token_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"PNC Test Site\",\n  \"siteId\": \"PNCSiteId\"\n}"
+                },
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "90c8bc89-293f-498f-823f-ba2c1cfe1f31",
+          "_postman_isSubFolder": true
+        }
+      ],
       "_postman_id": "3e40ca66-d11c-44b0-8de2-1393fddb0cbf"
     }
   ],
@@ -2640,109 +2642,109 @@
   ],
   "variable": [
     {
-      "id": "73c1dcd4-16d0-494e-b921-d3d5e0d597be",
+      "id": "0d920b65-8c85-41c6-9bde-7959b6403c36",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "a2557b1a-f124-4bae-b5ae-85c9bc25eec6",
+      "id": "3c204d70-0f22-466a-a491-f00c5ead7e72",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "25b6590f-ef14-4911-aca0-5e5d4830eb90",
+      "id": "7d03ce5f-3502-4ae2-a038-6af6d36794f4",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "bf446bb0-968c-47d6-8e84-0baf726b0ab3",
+      "id": "d181e83c-cf3b-486f-8be0-b0821d570eca",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "f0273e70-11bb-42bd-9df3-f763c5cd23b5",
+      "id": "b44047b7-25a7-47a1-9741-41a51cb61768",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "f6dde31c-e433-4cc9-a0d6-2de96e381871",
+      "id": "5b8af7c4-ed31-4fff-86cd-9106ca1d0e00",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "dc367ce7-30be-4b11-825a-a7984b54fe35",
+      "id": "60d1d42a-6cb1-4f24-bbbc-fb47be0b9866",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "aa5de863-794b-4dfd-b2a0-1a5c489134ec",
+      "id": "a751c35c-0ec5-46f2-ae3a-833f4090556b",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "d8938ae2-cffd-40f4-b32c-38c5e004e79b",
+      "id": "1fedad53-5cef-45f0-b8d4-364876d1c0f5",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "06905ef9-a3da-4197-a27f-80caec03eda2",
+      "id": "1c8366fd-28c1-46d7-beab-86c3911eafa3",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "89f177e5-a8ae-4a11-9477-99212e1ffc98",
+      "id": "6c982f78-9c40-41c0-955f-d48a20b1ee18",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "0ecc7e34-bf70-4b52-9534-e68e039a3413",
+      "id": "12c8e734-8199-428c-8dab-91bf34e67765",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "fc5e59b5-6689-45c3-988c-4d0505109f0b",
+      "id": "ddec8a35-0aa8-4e47-abd3-bd907b423ab8",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "90f900df-4604-4199-9d4e-5306fed07a28",
+      "id": "138ad322-7f61-4581-bd75-a3098ad453d3",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "45375ca5-abd2-4350-a721-19fe710f3015",
+      "id": "6c2733fc-7636-4669-aa2f-28d150abf30c",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "0073391f-593a-4d85-8899-56318897dee4",
+      "id": "b2597675-6387-48eb-968b-9eeddd5632b7",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "7a6c4121-9c10-4613-8a6e-47a0f5a34215",
+      "id": "f789041e-a063-47ac-8a4d-ad84070cbd75",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "0ac43bef-32fe-4fe8-80f7-a63c2dc76ba0",
+      "id": "f341b13b-771c-4ef4-8111-b4d6803db49e",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
