@@ -2198,20 +2198,20 @@
                           "            var enrollmentRequest = enrollmentRequestByPracticeNpi.enrollmentRequests[i];",
                           "            console.log(\"*****prosessing ER: \" + enrollmentRequest.requestId);",
                           "            ",
+                          "            var foundValidMilestone = false;",
                           "            for(var k = 0; k < enrollmentRequest.milestones.length; k++){",
                           "                var milestone = enrollmentRequest.milestones[k];",
                           "                var createdDateString = milestone.createdDate;",
-                          "            var createdDate = new Date(createdDateString.split(\"T\")[0]);",
-                          "            console.log(\"************* modifiedTime: \" + modifiedTime + \" *** fromDate: \" + fromDate + \" **** toDate: \" + toDate);",
-                          "            ",
+                          "                var createdDate = new Date(createdDateString.split(\"T\")[0]);",
+                          "                console.log(\"************* createdDate: \" + createdDate + \" *** fromDate: \" + fromDate + \" **** toDate: \" + toDate);",
+                          "",
+                          "                if(createdDate >= fromDate && createdDate <= toDate){",
+                          "                    foundValidMilestone = true;",
+                          "                    break;",
+                          "                }",
                           "            }",
                           "            ",
-                          "            pm.expect(modifiedTime >= fromDate).to.be.true;",
-                          "            pm.expect(modifiedTime <= toDate).to.be.true;",
-                          "            ",
-                          "            ",
-                          "            ",
-                          "            ",
+                          "            pm.expect(foundValidMilestone).to.be.true;",
                           "        }",
                           "    }",
                           "});"
@@ -3305,121 +3305,121 @@
   ],
   "variable": [
     {
-      "id": "40af3392-08a9-42f2-bbda-d07b5afe7ded",
+      "id": "9694048e-f93e-4249-9de9-7cb5a56cd7df",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "9fc3828b-032b-4998-ba7c-98fd8e0350e1",
+      "id": "ecdddc09-9fc9-4e86-8987-6956c5a26821",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "13796a34-6f74-4985-b576-668253a33213",
+      "id": "0e8c0b90-8429-4087-87bc-c7a88a7c8bbb",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "44ca515c-5d7f-42b7-913d-375e19bca9f3",
+      "id": "77a7cbc5-2be6-4aea-8d44-23a3b9e40b8b",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "51ba6daa-06af-47f1-9c3c-9165352d79f7",
+      "id": "81b6b101-5c8e-42e2-ab1a-14b4918fbb56",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "2d6ff31c-f30c-498e-a583-9b2ddb679d96",
+      "id": "f9ccc4c6-1f4f-4e46-9ad2-c3547e60e31d",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "28200b75-9b35-48ae-ade4-5ec45d4cca52",
+      "id": "3fbae014-c694-4d3d-8b49-a38023c8e58d",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "308d8d06-e0ec-4ba7-beef-e9ba6e647426",
+      "id": "59e4ff20-5624-426f-af61-66513bd4dd4e",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "08639769-c488-4f10-866f-429fa4b8cb33",
+      "id": "6e75af3a-da56-4960-b194-7d9919e5e68c",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "91d44838-5ae3-45bd-aef3-605736e20806",
+      "id": "a57440e1-635c-4ce6-a362-37682e34d442",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "710589b4-96af-4bec-b18f-898d7d67539b",
+      "id": "d82f0d56-48f5-4956-9295-dd947c30d83c",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "128e1cd1-7633-47a0-ae56-5fab667417b0",
+      "id": "78e5c4f1-b065-4e4c-b6cc-7ae3c6407c23",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "d1378162-05db-4ad7-8423-21175e0b68b7",
+      "id": "be004326-078b-425f-a491-5a3cde2878e4",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "350e99b4-54b4-4dc5-87a1-951c92467855",
+      "id": "bfed3994-797f-40df-ac37-2f1bb64f7438",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "ba091c3d-980b-4170-8ad3-727d4d45cb39",
+      "id": "055a9a54-6232-4230-8bf6-ae29a01faa00",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "93ff4f9c-90d3-4bb5-a868-cac2c3d851b3",
+      "id": "b15acb77-2dab-49fb-bb89-b379683c00f9",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "a28e987c-acc8-45d0-9f75-acaa26760386",
+      "id": "d020f011-287e-4019-945e-5402450b92d0",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "bc65bd50-57c1-4d8c-ba72-b70ddcc8e428",
+      "id": "966096e8-fbba-4750-80c2-9b588c68fcf8",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "12693858-486b-4844-9597-8d3fdbdb8256",
+      "id": "394ee6e6-6c32-4eaf-a96c-22177c759c9d",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "e71fc568-ec02-45c1-b739-2f72a1a435b1",
+      "id": "4b7b2a70-95f4-48e1-8efc-3bb31feafa3c",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
