@@ -3908,35 +3908,17 @@
                       "script": {
                         "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
                         "exec": [
-                          "pm.test(\"Status code is 200\", function() {\r",
-                          "    pm.response.to.have.status(200);\r",
-                          "});\r",
-                          "\r",
-                          "pm.test(\"Enrollments found between the date range \" + (pm.variables.get(\"fromDate\")) + \" and \" + (pm.variables.get(\"toDate\")) + \" successfully\", function() {\r",
-                          "    pm.expect(pm.response.text()).to.include(\"true\");\r",
-                          "});\r",
-                          "\r",
-                          "\r",
-                          "pm.test(\"The returned enrollment requests created date is in between: \" + (pm.variables.get(\"fromDate\")) + \" and \" + (pm.variables.get(\"toDate\")), function() {\r",
-                          "    var fromDate = new Date(pm.variables.get(\"fromDate\").split(\"T\")[0]);\r",
-                          "    var toDate = new Date(pm.variables.get(\"toDate\").split(\"T\")[0]);\r",
-                          "    var jsonResponce = JSON.parse(responseBody);\r",
-                          "    var enrollmentRequestByPracticeNpis = jsonResponce.enrollmentRequestsByPracticeNpi;\r",
-                          "    for (var j = 0; j < enrollmentRequestByPracticeNpis.length; j++) {\r",
-                          "        var enrollmentRequestByPracticeNpi = enrollmentRequestByPracticeNpis[j];\r",
-                          "        console.log((\"*******processing NPI: \" + enrollmentRequestByPracticeNpi.npi)+\"*******\");\r",
-                          "\r",
-                          "        for (var i = 0; i < enrollmentRequestByPracticeNpi.enrollmentRequests.length; i++) {\r",
-                          "            var enrollmentRequest = enrollmentRequestByPracticeNpi.enrollmentRequests[i];\r",
-                          "            console.log(\"*****prosessing ER: \" + enrollmentRequest.requestId);\r",
-                          "            var createdTimeString = enrollmentRequest.createdTime;\r",
-                          "            var createdTime = new Date(createdTimeString.split(\"T\")[0]);\r",
-                          "\r",
-                          "            pm.expect(createdTime >= fromDate).to.be.true;\r",
-                          "            pm.expect(createdTime <= toDate).to.be.true;\r",
-                          "        }\r",
-                          "    }\r",
-                          "});"
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PARTNER MISSING: Invalid Site ID.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          ""
                         ],
                         "type": "text/javascript"
                       }
@@ -4715,145 +4697,145 @@
   ],
   "variable": [
     {
-      "id": "6b2cdada-a9ea-468e-accd-01d8a6f08b8a",
+      "id": "dac65af2-6eaf-451d-a579-cb60ba5f46da",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "15f0b5eb-1f3f-4f83-b66b-e5c1f1e0858a",
+      "id": "cb1e09d2-5528-4cf5-8402-0213a68db3e3",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "12fa5ead-e6d2-4d79-afdb-5f2159103d67",
+      "id": "5b3a3ac0-65cc-48ee-89df-69cd441423a6",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "d7dda615-5ada-476c-9766-c337c97da563",
+      "id": "f4d3d953-e7c8-4169-8fe5-9167464c82de",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "f88b39dc-41d1-4007-9bce-54b2fd8b319a",
+      "id": "fad3c1d7-b557-46da-9a33-efb09b3b11fc",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "a6f94392-9f14-4276-8876-20904ac264dd",
+      "id": "9991c727-d9ce-457d-95a3-28ad0a8cf8e9",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "12c4e16d-3a4e-47a6-abfc-4033c4f67f42",
+      "id": "2cdc3e53-465b-4f5c-80c3-0a7295828fd8",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "ce132338-34b3-4892-bc3b-0e245037e6bb",
+      "id": "5a0867d1-ce6c-4e3a-a912-9bf20b674709",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "fcc03e23-4d11-45ac-a19c-fbf2cf40b2a1",
+      "id": "fef2a482-24de-474a-89ff-3adf6fc5448c",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "786b2699-9589-4725-b688-fab942224dda",
+      "id": "395b1b04-6ed8-414e-9101-6ac866b1294d",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "1e79aa76-3326-435c-8eac-9ac9195f8622",
+      "id": "5cb6be21-d358-4756-af16-fdc2fd953772",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "fc4bec80-ef6b-40b5-86e7-901719e9a43b",
+      "id": "77fc5534-f095-4782-86e3-d3387bba51b0",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "c44a9ccf-6fce-4518-95be-11c8a1862075",
+      "id": "308ba229-3bbe-40cd-9a0a-b950d1656945",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "aa8dc766-12a4-4b66-87f5-801dec0ff9d5",
+      "id": "d556c21b-9084-4a4a-aa8a-951105bd8055",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "6a1c9d48-4106-4e15-8178-eb7a8c414b05",
+      "id": "932fa406-e254-4a1b-9b48-4ea74b7c774d",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "19c121a0-b814-4810-99b8-87fe85b4c7c2",
+      "id": "ec86e5e1-21c8-492e-b035-2c0b6d0f8c67",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "06e50cd0-ed52-435b-a057-52a6c4490a41",
+      "id": "c3a50c5a-0429-4f26-a601-102749de70d0",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "0ee7b8aa-65a8-4829-8f1e-32ae32b079c8",
+      "id": "7917b87c-860a-4739-9485-34889433f725",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "5ade7818-71a7-497e-8059-9bcf16ac7709",
+      "id": "4f7be7d4-12bf-46fa-b669-dc7911bd2218",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "42c3ff4f-e034-4ec8-b1b2-5997fd567b11",
+      "id": "74dd2777-31e2-466e-b27b-fb418f2b6dcc",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "b0c7a5e2-8b15-49de-8da1-7b107cce126e",
+      "id": "5747f8df-1b6e-4795-8ad6-d741a8baff9f",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "0639321c-5560-4234-bef4-296f390ecbf8",
+      "id": "f7bb6ec9-2c3f-4b68-a181-4a65a95ccfc5",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "166fefe9-9276-49cc-a5c3-6a4b56ce918b",
+      "id": "4325e7e1-d4b3-47c7-afb3-c367b77c1063",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "68e7784a-feee-4017-9c46-eced2530988f",
+      "id": "588fcb02-e3e1-4b00-92ce-4f6a90916f33",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
