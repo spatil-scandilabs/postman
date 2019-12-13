@@ -371,10 +371,10 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"payerPlansToEnroll\": [\n    {\n      \"planId\": \"NewPlan191\",\n      \"transactionTypesToEnroll\": [\n        {\n          \"transactionType\": \"ERA\"\n        }\n      ]\n    }\n  ]\n}"
+                  "raw": "{\n  \"payerPlansToEnroll\": [\n    {\n      \"transactionTypesToEnroll\": [\n        {\n          \"transactionType\": \"ERA\"\n        }\n      ]\n    }\n  ]\n}"
                 },
                 "url": {
-                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/enrollments?{{auth_id_key}}={{auth_id_value}}&{{auth_token_key}}={{auth_token_value}}",
+                  "raw": "{{URL}}/api/v1.2/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/{{taxId}}/practices/{{npi}}/enrollments?auth_id={{auth_id_value}}&auth_token={{auth_token_value}}",
                   "host": [
                     "{{URL}}"
                   ],
@@ -393,11 +393,11 @@
                   ],
                   "query": [
                     {
-                      "key": "{{auth_id_key}}",
+                      "key": "auth_id",
                       "value": "{{auth_id_value}}"
                     },
                     {
-                      "key": "{{auth_token_key}}",
+                      "key": "auth_token",
                       "value": "{{auth_token_value}}"
                     }
                   ]
@@ -628,19 +628,19 @@
   ],
   "variable": [
     {
-      "id": "3d68335c-5ee2-4c1c-8e09-ddb89fe75e85",
+      "id": "393ae7af-8f61-4530-bbcf-cce79caaff13",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "25960cf3-2083-4524-87e2-baca51c3b189",
+      "id": "ef466029-d814-49ad-b17d-f3db3a493c5a",
       "key": "auth_id_value",
       "value": "pnckey1",
       "type": "string"
     },
     {
-      "id": "aaad8aaa-af13-45bc-86c9-d11a016f0257",
+      "id": "844c442a-5e1e-43c6-8155-c30bc8464a69",
       "key": "auth_token_value",
       "value": "",
       "type": "string"
