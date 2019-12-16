@@ -5516,36 +5516,36 @@
                         "header": [
                           {
                             "key": "auth_id",
-                            "value": "{{auth_id_value}}",
-                            "type": "text"
+                            "type": "text",
+                            "value": "{{auth_id_value}}"
                           },
                           {
                             "key": "auth_token",
-                            "value": "{{auth_token_value}}",
-                            "type": "text"
+                            "type": "text",
+                            "value": "{{auth_token_value}}"
                           },
                           {
                             "key": "tin",
-                            "value": "{{taxId}}",
-                            "type": "text"
+                            "type": "text",
+                            "value": "{{taxId}}"
                           },
                           {
                             "key": "put-verification-token",
-                            "value": "{{putVerificationToken}}",
-                            "type": "text"
+                            "type": "text",
+                            "value": "{{putVerificationToken}}"
                           },
                           {
                             "key": "Content-Type",
                             "name": "Content-Type",
-                            "value": "application/json",
-                            "type": "text"
+                            "type": "text",
+                            "value": "application/json"
                           }
                         ],
                         "body": {
                           "mode": "raw",
                           "raw": "{\n  \"bankInformation\": {\n    \"currentBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678901234,\n      \"accountType\": \"CHECKING\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    },\n    \"previousBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678905678,\n      \"accountType\": \"SAVINGS\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    }\n  },\n  \"enrollmentUnit\": \"GROUP\",\n  \"formContact\": {\n    \"person\": {\n      \"email\": \"test12@test.com\",\n      \"fax\": \"999-999-9999\",\n      \"firstName\": \"FirstName\",\n      \"gender\": \"UNKNOWN\",\n      \"jobTitle\": \"Manager\",\n      \"lastName\": \"LastName\",\n      \"middleName\": \"MiddleName\",\n      \"nameTitlePrefix\": \"nameTitlePrefix\",\n      \"nameTitleSuffix\": \"nameTitleSuffix\",\n      \"phone\": \"999-999-9999\"\n    }\n  },\n  \"plan\": {\n    \"legacyId\": [\n    \t\"LegacyId1\",\n    \t\"LegacyId2\",\n    \t\"LegacyId3\",\n    \t\"LegacyId4\",\n    \t\"LegacyId5\"\n    ],\n    \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n  }\n}"
                         },
-                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId7}}"
                       },
                       "response": []
                     }
@@ -6511,169 +6511,169 @@
   ],
   "variable": [
     {
-      "id": "d7794cb1-9cc0-4100-afb6-8639e0ce1473",
+      "id": "2631e161-77e5-4e9d-8e67-ccb29d08b557",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "ed7a3353-528d-4935-84cd-661603eba0a5",
+      "id": "4de28195-1060-4074-9aaf-b1a24c1f7f81",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "9c67a3a9-7daf-44ba-ac7a-0f004bf99ef5",
+      "id": "76616656-237e-41f5-bf39-fe2c7c339d46",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "f4b20d9b-66dc-4ccd-9ee0-0db05930dfc7",
+      "id": "ed5a5867-047d-4829-87e8-1f42ce1b68bf",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "f9a5503b-978d-4809-b044-3318e642f2e0",
+      "id": "3c0b3a7c-d175-4878-90b9-082d3510f7cc",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "47f4f277-55e4-4997-8cbe-95b6e9fe5dc2",
+      "id": "f7237a6f-0c57-4d58-9537-afe119f1fd12",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "d40ec753-8865-4cde-9bdf-9d2d641fefec",
+      "id": "3c872341-db53-4774-861c-389657736886",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "da66ca43-453c-4ba9-86d3-cafde644ce12",
+      "id": "3cdd2482-bd65-456f-b07d-a92d559a9460",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "8c7aa150-26b0-4bd9-ad77-daff47f9f8e6",
+      "id": "f104721c-a68d-4d28-9f46-093ad09a2fa6",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "c7885778-92d7-4177-b82b-7900923bc582",
+      "id": "a1bf2c54-8552-4c57-80c3-6f94c9323c83",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "e345a16a-3e26-49e9-b292-9b0c1a56f0de",
+      "id": "10bb64ce-ab77-4809-b3c8-2f99271e146f",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "bc4b9143-1c9c-4dae-bb01-05f2dafd2ea9",
+      "id": "483f4845-a56a-4ee4-ad4d-ae90ea87cb14",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "79fd7cab-df84-4080-b908-0f81b3c1daab",
+      "id": "fc918136-0e7c-466e-b2a6-e176d57e35c9",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "eb1aabd2-14cd-4d1a-ae8a-48a79a4f78a3",
+      "id": "51801e7c-e6f5-4f3b-a2f9-9a3599dbb693",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "8ad9bc08-95cf-44a1-9c88-e2af6fa56bfb",
+      "id": "7cf413f9-c05e-42d6-a009-977273c0913e",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "81a62e11-276a-4e0e-96c8-99f902096c24",
+      "id": "b23e63dd-1c8e-4c9b-8fb0-f3abe12a3eb7",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "6d070282-ddfd-4220-9e89-a32603613ae5",
+      "id": "05e9488c-4f75-4aaf-ba8b-acfa8fde31d0",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "9305b4c8-c62f-4840-a701-97e18c34a82d",
+      "id": "13e81058-f6ef-41d1-8156-b29ca1a7e557",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "846c6706-98eb-4d2c-9509-3278c0d46ba3",
+      "id": "4464702d-1333-4254-84cc-4db908eab9a8",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "a82e001f-ef18-43cd-b942-209df5520c53",
+      "id": "a9f0685c-b045-402b-842d-133207205368",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "12e617d1-c3a4-4a2b-ad62-2319131aa69d",
+      "id": "2b8bc405-19d0-4861-b644-35b0f2fb6cb7",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "a2e39455-b280-41f6-8340-40dd71480b9d",
+      "id": "f763d352-7ae0-4e92-9317-38ce1df8aa3b",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "73e035ea-3235-4f56-b16f-d0e0d01e21cd",
+      "id": "d2d6be85-9825-4149-ace7-87cd4b73294b",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "d7ecf3e6-cf4a-4e4a-8a30-703e202e9952",
+      "id": "c9dddd00-5367-4b84-ac2a-9818a0c953f2",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "061b0971-8337-4433-a5f4-f7283d3587c5",
+      "id": "120b1c5e-2976-40dd-b3bf-0d78864d4d5e",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "2e545d4a-a0ad-4a55-8223-b59092f26bf6",
+      "id": "0afe2297-9374-4808-8b11-c1761f05151c",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "33623144-2932-4176-ac94-b58b1d4cac91",
+      "id": "e03079af-4094-485e-89a0-9fee39d00eb4",
       "key": "individualNpi",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "6e901d51-2dfb-47c7-a790-763abe49f997",
+      "id": "e1fc082c-f4b5-4ea5-8d12-c26838959c83",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
