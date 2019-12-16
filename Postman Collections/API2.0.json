@@ -5690,6 +5690,676 @@
               ],
               "_postman_id": "a2daad2c-2cd2-4d25-95ca-867ed5e591b1",
               "_postman_isSubFolder": true
+            },
+            {
+              "name": "Add Legacy Ids: Type 2 NPI Copy",
+              "item": [
+                {
+                  "name": "Add Legacy Id",
+                  "item": [
+                    {
+                      "name": "Generate Token",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
+                            "exec": [
+                              "var jsonData = JSON.parse(responseBody);",
+                              "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                              "",
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test(\"apitoken copied successfully\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "704965f9-7a9b-4d8d-9cd3-64987c81bb78",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "apikey",
+                              "value": "autopnckey1",
+                              "type": "text"
+                            },
+                            {
+                              "key": "apisecret",
+                              "value": "autopnckey2",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": "{{URL}}/api/authtoken",
+                        "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Get the plan detail",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test((pm.variables.get(\"uniquePlanId\")) + \" Plan found in the responce\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"true\");",
+                              "});",
+                              "",
+                              "var jsonData = JSON.parse(responseBody);",
+                              "postman.setEnvironmentVariable(\"putVerificationToken\", jsonData.putVerificationToken);",
+                              "",
+                              "pm.test(\"Token coppied\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"putVerificationToken\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "52439f2c-cf27-4665-b78a-86e5dbbbfb76",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "auth_id",
+                            "value": "{{auth_id_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_token",
+                            "value": "{{auth_token_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "tin",
+                            "value": "{{taxId}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Add the legacy Ids to the plans",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test(\"Legacy Ids added successfully to the Medical Group\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"true\");",
+                              "});",
+                              "",
+                              ""
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "71475eae-805b-464b-8ccf-8ca8453c65c0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "auth_id",
+                            "value": "{{auth_id_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_token",
+                            "value": "{{auth_token_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "tin",
+                            "value": "{{taxId}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "value": "{{putVerificationToken}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"bankInformation\": {\n    \"currentBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678901234,\n      \"accountType\": \"CHECKING\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    },\n    \"previousBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678905678,\n      \"accountType\": \"SAVINGS\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    }\n  },\n  \"enrollmentUnit\": \"GROUP\",\n  \"formContact\": {\n    \"person\": {\n      \"email\": \"test12@test.com\",\n      \"fax\": \"999-999-9999\",\n      \"firstName\": \"FirstName\",\n      \"gender\": \"UNKNOWN\",\n      \"jobTitle\": \"Manager\",\n      \"lastName\": \"LastName\",\n      \"middleName\": \"MiddleName\",\n      \"nameTitlePrefix\": \"nameTitlePrefix\",\n      \"nameTitleSuffix\": \"nameTitleSuffix\",\n      \"phone\": \"999-999-9999\"\n    }\n  },\n  \"plan\": {\n    \"legacyId\": [\n      \"Id1\",\n      \"Id2\",\n      \"Id3\"\n    ],\n    \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n  }\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Get the updated plan details for legacy Ids",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test((pm.variables.get(\"uniquePlanId\")) + \" Plan found in the responce\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"true\");",
+                              "});",
+                              "",
+                              "var jsonData = JSON.parse(responseBody);",
+                              "postman.setEnvironmentVariable(\"putVerificationToken\", jsonData.putVerificationToken);",
+                              "",
+                              "pm.test(\"Token coppied\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"putVerificationToken\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "b5c94db0-46aa-4a2b-863a-908ae65591bf",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "auth_id",
+                            "value": "{{auth_id_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_token",
+                            "value": "{{auth_token_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "tin",
+                            "value": "{{taxId}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Add/remove no legacy Ids to the plans",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test(\"Legacy Ids removed successfully to the Medical Group\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"true\");",
+                              "});",
+                              "",
+                              ""
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "356f5109-40ba-4053-9586-3757d3cf81a4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "auth_id",
+                            "type": "text",
+                            "value": "{{auth_id_value}}"
+                          },
+                          {
+                            "key": "auth_token",
+                            "type": "text",
+                            "value": "{{auth_token_value}}"
+                          },
+                          {
+                            "key": "tin",
+                            "type": "text",
+                            "value": "{{taxId}}"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "type": "text",
+                            "value": "{{putVerificationToken}}"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "type": "text",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"bankInformation\": {\n    \"currentBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678901234,\n      \"accountType\": \"CHECKING\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    },\n    \"previousBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678905678,\n      \"accountType\": \"SAVINGS\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    }\n  },\n  \"enrollmentUnit\": \"GROUP\",\n  \"formContact\": {\n    \"person\": {\n      \"email\": \"test12@test.com\",\n      \"fax\": \"999-999-9999\",\n      \"firstName\": \"FirstName\",\n      \"gender\": \"UNKNOWN\",\n      \"jobTitle\": \"Manager\",\n      \"lastName\": \"LastName\",\n      \"middleName\": \"MiddleName\",\n      \"nameTitlePrefix\": \"nameTitlePrefix\",\n      \"nameTitleSuffix\": \"nameTitleSuffix\",\n      \"phone\": \"999-999-9999\"\n    }\n  },\n  \"plan\": {\n    \"legacyId\": [\n    ],\n    \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n  }\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Get the updated plan details for no legacy Id",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test((pm.variables.get(\"uniquePlanId\")) + \" Plan found in the responce\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"true\");",
+                              "});",
+                              "",
+                              "var jsonData = JSON.parse(responseBody);",
+                              "postman.setEnvironmentVariable(\"putVerificationToken\", jsonData.putVerificationToken);",
+                              "",
+                              "pm.test(\"Token coppied\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"putVerificationToken\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "9dddc601-7745-40be-84a1-37a89820d3b1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "auth_id",
+                            "value": "{{auth_id_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_token",
+                            "value": "{{auth_token_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "tin",
+                            "value": "{{taxId}}",
+                            "type": "text"
+                          }
+                        ],
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Add blank legacy Ids to the plans",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test(\"Legacy Ids added successfully from the Medical Group\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"true\");",
+                              "});",
+                              "",
+                              ""
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "6532e667-189d-4986-b75b-3daf68f3540e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "auth_id",
+                            "value": "{{auth_id_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_token",
+                            "value": "{{auth_token_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "tin",
+                            "value": "{{taxId}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "value": "{{putVerificationToken}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"bankInformation\": {\n    \"currentBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678901234,\n      \"accountType\": \"CHECKING\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    },\n    \"previousBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678905678,\n      \"accountType\": \"SAVINGS\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    }\n  },\n  \"enrollmentUnit\": \"GROUP\",\n  \"formContact\": {\n    \"person\": {\n      \"email\": \"test12@test.com\",\n      \"fax\": \"999-999-9999\",\n      \"firstName\": \"FirstName\",\n      \"gender\": \"UNKNOWN\",\n      \"jobTitle\": \"Manager\",\n      \"lastName\": \"LastName\",\n      \"middleName\": \"MiddleName\",\n      \"nameTitlePrefix\": \"nameTitlePrefix\",\n      \"nameTitleSuffix\": \"nameTitleSuffix\",\n      \"phone\": \"999-999-9999\"\n    }\n  },\n  \"plan\": {\n    \"legacyId\": [\n    \t\"LegacyId1\",\n    \t\"LegacyId2\",\n    \t\"LegacyId3\",\n    \t\"LegacyId4\",\n    \t\"LegacyId5\"\n    ],\n    \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n  }\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+                      },
+                      "response": []
+                    }
+                  ],
+                  "_postman_id": "3cde716e-a687-48e1-b69d-1a6ebf2092d3",
+                  "_postman_isSubFolder": true
+                },
+                {
+                  "name": "Create Enrollments",
+                  "item": [
+                    {
+                      "name": "Create single Enrollment for Type 2 NPI",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "d4f41bd2-a452-4a95-a28c-4da0b665f7e0",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test(\"Enrollment creates successfully\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"FULL_SERVICE\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "5496c52a-89b8-479b-8157-1a170b1f6084",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_id",
+                            "value": "{{auth_id_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "auth_token",
+                            "value": "{{auth_token_value}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "tin",
+                            "value": "{{taxId}}",
+                            "type": "text"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "value": "{{putVerificationToken}}",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enrollmentRequests\": [\n    {\n      \"legacyId\": [\n        \"LegacyId1\"\n        \n      ],\n      \"registrationId\": \"\",\n      \"transactionTypesToEnroll\": [\n        \"ERA\"\n      ],\n      \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n    }\n  ]\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/enrollmentrequests"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Create multiple Enrollment for Type 2 NPI",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "637262a6-610a-4ed2-8832-cdecf2b8c81a",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              ""
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "7fb02465-f382-439f-931e-68bbc31f8f04",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "type": "text",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "auth_id",
+                            "type": "text",
+                            "value": "{{auth_id_value}}"
+                          },
+                          {
+                            "key": "auth_token",
+                            "type": "text",
+                            "value": "{{auth_token_value}}"
+                          },
+                          {
+                            "key": "tin",
+                            "type": "text",
+                            "value": "{{taxId}}"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "type": "text",
+                            "value": "{{putVerificationToken}}"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enrollmentRequests\": [\n    {\n      \"legacyId\": [\n        \"LegacyId1\",\n        \"LegacyId2\",\n        \"LegacyId3\"\n        \n      ],\n      \"registrationId\": \"\",\n      \"transactionTypesToEnroll\": [\n        \"ERA\"\n      ],\n      \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n    }\n  ]\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/enrollmentrequests"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Create Enrollment without Legacy Ids for Type 2 NPI",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "9ce639fc-7676-479f-a60b-88fff6082c5f",
+                            "exec": [
+                              "pm.test(\"Status code is 200\", function () {",
+                              "    pm.response.to.have.status(200);",
+                              "});",
+                              "",
+                              "pm.test(\"Enrollment creates successfully\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"FULL_SERVICE\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "5dfb6173-11b0-4620-9cd9-27d64ef89f26",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "type": "text",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "auth_id",
+                            "type": "text",
+                            "value": "{{auth_id_value}}"
+                          },
+                          {
+                            "key": "auth_token",
+                            "type": "text",
+                            "value": "{{auth_token_value}}"
+                          },
+                          {
+                            "key": "tin",
+                            "type": "text",
+                            "value": "{{taxId}}"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "type": "text",
+                            "value": "{{putVerificationToken}}"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enrollmentRequests\": [\n    {\n      \"legacyId\": [\n        \n      ],\n      \"registrationId\": \"\",\n      \"transactionTypesToEnroll\": [\n        \"CSI\"\n      ],\n      \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n    }\n  ]\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/enrollmentrequests"
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Create Enrollment wrong Legacy Id for Type 2 NPI",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "id": "57644a44-1825-45ab-bb34-aabc7c91c657",
+                            "exec": [
+                              "pm.test(\"Status code is 400\", function () {",
+                              "    pm.response.to.have.status(400);",
+                              "});",
+                              "",
+                              "pm.test(\"INVALID LEGACY ID: Legacy Id value is wrong\", function () {",
+                              "    pm.expect(pm.response.text()).to.include(\"Invalid legacy ID. Please pass a legacy ID associated with the NPI.\");",
+                              "});"
+                            ],
+                            "type": "text/javascript"
+                          }
+                        }
+                      ],
+                      "_postman_id": "f3441716-baac-4634-a1ab-45bfe88f638b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "type": "text",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "auth_id",
+                            "type": "text",
+                            "value": "{{auth_id_value}}"
+                          },
+                          {
+                            "key": "auth_token",
+                            "type": "text",
+                            "value": "{{auth_token_value}}"
+                          },
+                          {
+                            "key": "tin",
+                            "type": "text",
+                            "value": "{{taxId}}"
+                          },
+                          {
+                            "key": "put-verification-token",
+                            "type": "text",
+                            "value": "{{putVerificationToken}}"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enrollmentRequests\": [\n    {\n      \"legacyId\": [\n      \t\"TEST123\"\n        \n      ],\n      \"registrationId\": \"\",\n      \"transactionTypesToEnroll\": [\n        \"EDI\"\n      ],\n      \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n    }\n  ]\n}"
+                        },
+                        "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/enrollmentrequests"
+                      },
+                      "response": []
+                    }
+                  ],
+                  "_postman_id": "e7b617d9-4c8e-47d2-98b4-2ba9badbe7e5",
+                  "_postman_isSubFolder": true
+                }
+              ],
+              "_postman_id": "22873c2d-316e-494e-ad1a-038a0a344081",
+              "_postman_isSubFolder": true
             }
           ],
           "_postman_id": "ba0aad0a-5a66-4c44-bc91-c385eef44567",
@@ -5723,157 +6393,157 @@
   ],
   "variable": [
     {
-      "id": "bf51f7d4-1de1-4bc7-81ab-96b43ae726ec",
+      "id": "7a41ab4f-8121-48d8-b160-a04e7ff6a87f",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "cf7465f1-4f07-4731-b769-968a3fa4d337",
+      "id": "9db7be06-aa88-43a6-ad1c-fd02f26cea2b",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "b8bb3d19-0a91-4851-9848-eaa189d1b433",
+      "id": "feeea30b-1cd5-45f3-b448-6adf1d7f48c5",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "72a34c36-a08f-4d9b-bf4b-0fa75004bc37",
+      "id": "d7b745a3-39ac-4706-93de-502177d55d3b",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "bde6ca05-1d73-48ea-86be-7a149f359c2c",
+      "id": "69d20daa-6528-405a-ba05-d05eb16a1528",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "fd78bb5c-8ab7-4385-8835-17a034b06225",
+      "id": "0c561326-4c03-4f54-a61f-05d3a08c4b53",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "e281b2c0-4ccf-492e-b0d1-5072cb41942a",
+      "id": "c17bf9f2-e936-4250-8f12-2860e35e05af",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "dd0f9e0d-d5bb-4ffd-b711-86bfa10d2202",
+      "id": "1f02aac8-8432-475d-96d2-e3dc06dcc080",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "a2d01bb6-7581-4309-b754-f2db5aad4485",
+      "id": "aa8ce44e-64fe-4bcf-ad31-3d9936bea52e",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "886ea9e0-a3c1-477a-b7f3-76410faee6b2",
+      "id": "db2aaaaf-9e33-4a7d-9214-480d673c2fc4",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "01729953-58dc-40cc-a816-5231e3764dfc",
+      "id": "01cbb86e-0582-449e-b308-0ac020c85f35",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "61e71720-2c1f-4b7c-a472-e576a29da575",
+      "id": "12295423-3d6e-4f96-90c2-118f7346a463",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "252199f4-92a2-4f3c-bcfd-1fd931cfb701",
+      "id": "70eb3f98-6611-4179-b245-458f9d62fcb5",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "9d1eac4d-f229-464d-9bec-b81ce0e74377",
+      "id": "d545e786-b9af-472c-9089-3d4a9411c25b",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "991581a7-0064-43f5-b4c1-69e7c9dc7afd",
+      "id": "1d2286fe-48aa-4b9f-af84-fd6dcf459abd",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "2a787648-bf9b-4365-ac56-4907fbc461a5",
+      "id": "d5433c3b-99fe-44fb-936b-84d0bb624610",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "b767d915-70be-441b-b25d-1a5e810aac44",
+      "id": "90814b13-b042-435f-8af4-5d01b94223bb",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "6741f71a-27e1-4dd3-9fd2-f324e24a7675",
+      "id": "0ccc28cd-8f2b-4715-a980-55f09b747176",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "a012cb6b-1e76-4365-8d5a-a9428629bcee",
+      "id": "d1ec54ad-2881-4b51-a5c9-a5a7b28697bb",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "67b74ec3-c6d4-4b45-af52-72d2f7845a6a",
+      "id": "57971515-a361-4cef-9b7a-5eafeafb66f9",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "15da66ff-76f9-40dd-856b-d84a077ab9f8",
+      "id": "af5c65bc-4676-4e71-a0f4-fdee249d815a",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "e23014d0-85cd-4873-b9c9-4cc1b397953f",
+      "id": "dedae63f-1541-445c-a9c2-c10a82fa58b0",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "a824339c-b3f7-4acf-af56-6a195388a88c",
+      "id": "4e2eafd0-858b-41a0-a786-288fb7737591",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "21b755bc-df75-42b3-966c-65f78b35ca92",
+      "id": "512c3bfb-f55e-42ee-993b-7dd8318ecef6",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "d9282554-d87b-4a4c-8c59-a99c347dc185",
+      "id": "c6e553f2-81dc-4fe8-a450-eb18559854ef",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "b6e99b6d-6fe3-4c45-ad3c-97e8c2c58238",
+      "id": "ecf9a09d-f4b6-434c-87fc-ecb522d1bd72",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
