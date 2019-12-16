@@ -4438,6 +4438,63 @@
           ],
           "_postman_id": "3ae7ddad-42c2-4eb6-a2f4-66fd3f329208",
           "_postman_isSubFolder": true
+        },
+        {
+          "name": "Generate Token Copy",
+          "item": [
+            {
+              "name": "Generate Token",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
+                    "exec": [
+                      "var jsonData = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"apitoken copied successfully\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "58364606-509c-4aee-aded-84def331ba96",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "apikey",
+                      "value": "autopnckey1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "apisecret",
+                      "value": "autopnckey2",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{URL}}/api/authtoken",
+                "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "29548449-09d0-4067-9264-e3929f43e721",
+          "_postman_isSubFolder": true
         }
       ],
       "_postman_id": "69d0f880-59f4-43ba-b3fa-002229db4e2d"
@@ -5019,63 +5076,6 @@
       "name": "TOG-84: Legacy Id chnages",
       "item": [
         {
-          "name": "Generate Token",
-          "item": [
-            {
-              "name": "Generate Token",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
-                      "",
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"apitoken copied successfully\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "58364606-509c-4aee-aded-84def331ba96",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "apikey",
-                      "value": "autopnckey1",
-                      "type": "text"
-                    },
-                    {
-                      "key": "apisecret",
-                      "value": "autopnckey2",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": "{{URL}}/api/authtoken",
-                "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "29548449-09d0-4067-9264-e3929f43e721",
-          "_postman_isSubFolder": true
-        },
-        {
           "name": "Test",
           "_postman_id": "a64b3fc5-c7eb-4a8b-87e1-4afdf386180a",
           "protocolProfileBehavior": {
@@ -5084,7 +5084,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+            "url": ""
           },
           "response": []
         }
@@ -5116,145 +5116,145 @@
   ],
   "variable": [
     {
-      "id": "c3b8da7f-c2d3-4499-8ba0-f4f25d810ade",
+      "id": "92f2b4f3-c719-4e8e-822b-23af8e35b8df",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "d361c4e9-4711-4952-8144-77aee8af6f53",
+      "id": "d6887229-dc70-4e7c-9958-29aa28473d6d",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "2114c7b0-002e-4453-8192-81488b6652ed",
+      "id": "0ae72d69-4690-4e2d-bb89-5b7bcf003df9",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "1ebbf8ec-b5a5-482a-95f4-ad20143a5205",
+      "id": "9a565df6-470e-4d3a-bcd3-c8792ca6d855",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "2e81c117-22e6-459e-9e82-964ad25e0522",
+      "id": "1fba3e30-7a99-4bdf-a954-410c196c0806",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "03017c9e-0386-40d0-abdf-7b8d106cdd9e",
+      "id": "438e40fc-bbca-4c24-b2af-c2ade8719fdd",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "3cf20b38-97cd-4e5e-9222-9501f814e796",
+      "id": "d9e004f5-36c1-45a5-a859-8b681dceff00",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "d0dfbf2a-eb48-40c3-af66-375ab741b7d4",
+      "id": "967f7902-5de1-437d-a243-c1532505aeca",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "ebc6a144-712b-468e-864c-a4581ba9a811",
+      "id": "cc727955-eb73-4e6d-9549-4f3e19988fbf",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "4b4b6f1c-5782-4b88-b97f-3a227335e91c",
+      "id": "24b4f9b4-a0c1-478a-a793-50883a2e5f66",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "898b7538-b0e9-43fe-b486-fae28643fbc6",
+      "id": "5b0b688e-af05-49e0-bb71-999db50f19a6",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "2a483f9d-a863-4f44-849b-5d9902c30347",
+      "id": "9d1b0308-2ee9-4f00-9ae8-ef4084e831cc",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "b95fd441-9b75-4650-87bf-d7cdd620c2f0",
+      "id": "01836f8b-e17b-450a-b3b9-beb42ef51b80",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "1c0ceae3-40c5-478d-9524-2dc9b8eac384",
+      "id": "174c4297-e855-4ab4-a46a-571ec711c89e",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "4de2a6fc-9012-4813-8f9e-ea49852831ef",
+      "id": "28761a98-f448-4c89-9bf5-7dcbb552b361",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "20fea9bb-3106-421e-9e55-81fc28f841a7",
+      "id": "6390935a-32a8-424e-bd7f-77c4214cb435",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "021122d7-0d7f-47fd-89f1-117247b65d01",
+      "id": "b506e247-a8f4-4c18-8425-7d0cb4c22d93",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "290b83e5-693f-426c-83ff-7e55007baa2d",
+      "id": "cce23d2b-fbe4-4010-b4db-587c28326f00",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "7c6d47e2-cd99-4cc6-9e82-d86c832eea88",
+      "id": "1c08e795-e319-40c9-8080-b52bf54bb43e",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "d846329d-84fa-4d15-9a88-50c94c22e6b0",
+      "id": "20f765cd-17a4-4805-8506-b4ef379b51d3",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "4f7617f1-0439-4707-9d1b-77cbe5e2fcf8",
+      "id": "c4a0f85a-0ebe-47bd-ab5c-529abad5bd43",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "28bad88e-04d8-4b62-86df-e5d253b3e2ad",
+      "id": "1d1dab58-ae72-49e3-a04f-5b6dc57cda34",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "859bb0c7-ba2d-46c8-ad83-b148df252cb2",
+      "id": "fcdc50be-b56b-4707-8e2a-edb25df2f78f",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "c90f0ca9-a5de-4be3-8cf5-659a41006720",
+      "id": "88990207-4864-4ef6-a5ff-1da50952a4b6",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
