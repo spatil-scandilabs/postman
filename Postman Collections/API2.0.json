@@ -5134,74 +5134,74 @@
                     "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
                   },
                   "response": []
-                },
-                {
-                  "name": "Add the legacy Ids to the plans",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
-                        "exec": [
-                          "pm.test(\"Status code is 200\", function () {",
-                          "    pm.response.to.have.status(200);",
-                          "});",
-                          "",
-                          "pm.test(\"Legacy Ids added successfully to the Medical Group\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"true\");",
-                          "});",
-                          "",
-                          ""
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "_postman_id": "8a144aed-702a-46b4-8bdf-587b5ea09b71",
-                  "protocolProfileBehavior": {
-                    "disableBodyPruning": true
-                  },
-                  "request": {
-                    "method": "PUT",
-                    "header": [
-                      {
-                        "key": "auth_id",
-                        "value": "{{auth_id_value}}",
-                        "type": "text"
-                      },
-                      {
-                        "key": "auth_token",
-                        "value": "{{auth_token_value}}",
-                        "type": "text"
-                      },
-                      {
-                        "key": "tin",
-                        "value": "{{taxId}}",
-                        "type": "text"
-                      },
-                      {
-                        "key": "put-verification-token",
-                        "value": "{{putVerificationToken}}",
-                        "type": "text"
-                      },
-                      {
-                        "key": "Content-Type",
-                        "name": "Content-Type",
-                        "value": "application/json",
-                        "type": "text"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n  \"bankInformation\": {\n    \"currentBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678901234,\n      \"accountType\": \"CHECKING\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    },\n    \"previousBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678905678,\n      \"accountType\": \"SAVINGS\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    }\n  },\n  \"enrollmentUnit\": \"GROUP\",\n  \"formContact\": {\n    \"person\": {\n      \"email\": \"test12@test.com\",\n      \"fax\": \"999-999-9999\",\n      \"firstName\": \"FirstName\",\n      \"gender\": \"UNKNOWN\",\n      \"jobTitle\": \"Manager\",\n      \"lastName\": \"LastName\",\n      \"middleName\": \"MiddleName\",\n      \"nameTitlePrefix\": \"nameTitlePrefix\",\n      \"nameTitleSuffix\": \"nameTitleSuffix\",\n      \"phone\": \"999-999-9999\"\n    }\n  },\n  \"plan\": {\n    \"legacyId\": [\n      \"LegacyId1\",\n      \"LegacyId2\",\n      \"LegacyId3\"\n    ],\n    \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n  }\n}"
-                    },
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
-                  },
-                  "response": []
                 }
               ],
               "_postman_id": "a2daad2c-2cd2-4d25-95ca-867ed5e591b1",
               "_postman_isSubFolder": true
+            },
+            {
+              "name": "Add the legacy Ids to the plans",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Legacy Ids added successfully to the Medical Group\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"true\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "8a144aed-702a-46b4-8bdf-587b5ea09b71",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "value": "{{auth_id_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "auth_token",
+                    "value": "{{auth_token_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "tin",
+                    "value": "{{taxId}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "put-verification-token",
+                    "value": "{{putVerificationToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankInformation\": {\n    \"currentBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678901234,\n      \"accountType\": \"CHECKING\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    },\n    \"previousBankProfile\": {\n      \"accountDocumentationType\": \"BANK_LETTER\",\n      \"accountNumber\": 12345678905678,\n      \"accountType\": \"SAVINGS\",\n      \"address\": {\n        \"city\": \"City\",\n        \"phone\": \"999-999-9999\",\n        \"state\": \"AL\",\n        \"street1\": \"Street1\",\n        \"street2\": \"Street2\",\n        \"zip\": 12345,\n        \"zipExtension\": 1234\n      },\n      \"bankName\": \"Test Bank\",\n      \"routingNumber\": 123456789\n    }\n  },\n  \"enrollmentUnit\": \"GROUP\",\n  \"formContact\": {\n    \"person\": {\n      \"email\": \"test12@test.com\",\n      \"fax\": \"999-999-9999\",\n      \"firstName\": \"FirstName\",\n      \"gender\": \"UNKNOWN\",\n      \"jobTitle\": \"Manager\",\n      \"lastName\": \"LastName\",\n      \"middleName\": \"MiddleName\",\n      \"nameTitlePrefix\": \"nameTitlePrefix\",\n      \"nameTitleSuffix\": \"nameTitleSuffix\",\n      \"phone\": \"999-999-9999\"\n    }\n  },\n  \"plan\": {\n    \"legacyId\": [\n      \"LegacyId1\",\n      \"LegacyId2\",\n      \"LegacyId3\"\n    ],\n    \"uniquePlanId\": \"PNCTP_PROFESSIONAL\"\n  }\n}"
+                },
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
+              },
+              "response": []
             },
             {
               "name": "Get the updated plan detail",
@@ -5353,157 +5353,157 @@
   ],
   "variable": [
     {
-      "id": "5de89d97-ada9-4200-ae0f-3b9d21a6533c",
+      "id": "072e693b-31df-4b66-ba0b-2c180e7ddde9",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "e57eb1c4-10c5-4434-8bb6-345417af4740",
+      "id": "97290e52-e68f-4499-b196-05a2819d845e",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "677ca363-56f3-438d-bfb3-d3c6c1dee589",
+      "id": "5c06afd6-58e5-45b5-8c82-1ed604d18987",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "f4ed0f6e-46f9-4dc3-a729-98cc5d9ad021",
+      "id": "4e749210-739c-43cf-a774-3abc08892c98",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "3d725827-21ea-4409-8320-024c990ac834",
+      "id": "fda29f4a-a3f7-41e7-b424-467b4ec3409d",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "b0393230-60dd-491b-963e-fccd8143d355",
+      "id": "92c566df-5d83-4aae-b9c8-14af8b471c12",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "35629c21-62a7-458d-b045-7ca3f0ea4719",
+      "id": "0138d40f-7d7a-4e77-a130-3eb84f797af2",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "dcdee8e5-6263-4d21-833d-9e46cc3b9fc6",
+      "id": "deb22967-f16b-4a79-a16a-206c251f9da0",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "d7be131e-b870-45a9-9093-56a571a38328",
+      "id": "d730aabb-b687-40dd-b7d4-fea6bbb134fc",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "da566239-92c4-49f8-8056-be0ad1b78603",
+      "id": "384e65cb-cbf9-4fb9-b3b9-96861f3223bd",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "7cf2290a-fd2c-4cf6-8be1-348e24471f7a",
+      "id": "57d74c34-b7bd-41bd-b276-35a159ccf81e",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "cae11a22-1fc7-4285-84c7-7045210629d5",
+      "id": "d1ce9aeb-7c6d-4cfe-a25f-90dd0a9833fb",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "9e7ee4de-1476-411c-a4f3-4ca94bec2af1",
+      "id": "718ea37f-e89e-477c-bb6f-39bf93d2841d",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "9f3f3b3f-228a-42d0-9f3c-df554145dfb2",
+      "id": "8e29443b-b06e-461c-a6e5-223dcd4e984c",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "0dff755f-717c-4006-8084-27923bc08166",
+      "id": "6dcafc18-149c-4d65-8f1e-2801eb697c91",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "e6d332d3-b0d4-45dc-851c-b44ca30ed251",
+      "id": "a6eb8ff3-7f9f-4990-945f-fdee7fb45d4e",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "90fb5b9a-3ea1-4488-ad6c-9245e9ca62ee",
+      "id": "6e2865b4-b12f-4f1a-968c-1d96507e1905",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "183cbada-2dc4-4893-a900-c0e8968dd111",
+      "id": "daaa3991-5f0a-40d0-8435-4c1b6c5f413e",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "0187a3ce-6c42-47c8-ad8a-91f71b0be507",
+      "id": "b6071efb-864e-44f5-9f2d-16243e3048e6",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "636f839f-cc41-4036-8b78-3d2219cd8949",
+      "id": "a664316f-6e81-4150-80f9-c02fc730989a",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "017c98a0-6dda-42c0-bf81-94b04be98a80",
+      "id": "52acefee-311e-4e80-846b-42112d8cd4d1",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "953bebc2-13f4-4d78-9a34-e698cb050b12",
+      "id": "b5b0a89d-6d43-4366-9fea-09bb79e3df08",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "3d9c1eb0-5273-4f6a-b81b-b72d4701fa8c",
+      "id": "8d73fb99-c566-4bd7-bc1f-c1ac13caf7e3",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "57a5f8e1-81e5-4d55-b34c-8c51fae49166",
+      "id": "4ab45b0a-9d22-4d1b-bd36-773440c37a88",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "3c5965f5-a743-4ad8-866f-7cbc95808bf3",
+      "id": "4944804b-f513-4125-8193-817c29243988",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "276ce726-4736-440b-b400-217ea9aec4a3",
+      "id": "59530023-2aca-466f-b2b2-0f303871d9df",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
