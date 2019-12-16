@@ -5016,125 +5016,127 @@
       "_postman_id": "3e40ca66-d11c-44b0-8de2-1393fddb0cbf"
     },
     {
-      "name": "TOG-84: Legacy Id chnages",
+      "name": "OG-Stories",
       "item": [
         {
-          "name": "Generate Token",
+          "name": "TOG-84: Legacy Id chnages",
           "item": [
             {
               "name": "Generate Token",
+              "item": [
+                {
+                  "name": "Generate Token",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
+                        "exec": [
+                          "var jsonData = JSON.parse(responseBody);",
+                          "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                          "",
+                          "pm.test(\"Status code is 200\", function () {",
+                          "    pm.response.to.have.status(200);",
+                          "});",
+                          "",
+                          "pm.test(\"apitoken copied successfully\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "58364606-509c-4aee-aded-84def331ba96",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "apikey",
+                          "value": "autopnckey1",
+                          "type": "text"
+                        },
+                        {
+                          "key": "apisecret",
+                          "value": "autopnckey2",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": "{{URL}}/api/authtoken",
+                    "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "29548449-09d0-4067-9264-e3929f43e721",
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "Get the plan detail",
               "event": [
                 {
                   "listen": "test",
                   "script": {
-                    "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
+                    "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
                     "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
-                      "",
                       "pm.test(\"Status code is 200\", function () {",
                       "    pm.response.to.have.status(200);",
                       "});",
                       "",
-                      "pm.test(\"apitoken copied successfully\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                      "pm.test((pm.variables.get(\"uniquePlanId\")) + \" Plan found in the responce\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"true\");",
+                      "});",
+                      "",
+                      "var jsonData = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"putVerificationToken\", jsonData.putVerificationToken);",
+                      "",
+                      "pm.test(\"Token coppied\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"putVerificationToken\");",
                       "});"
                     ],
                     "type": "text/javascript"
                   }
                 }
               ],
-              "_postman_id": "58364606-509c-4aee-aded-84def331ba96",
+              "_postman_id": "a64b3fc5-c7eb-4a8b-87e1-4afdf386180a",
               "protocolProfileBehavior": {
                 "disableBodyPruning": true
               },
               "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "apikey",
-                      "value": "autopnckey1",
-                      "type": "text"
-                    },
-                    {
-                      "key": "apisecret",
-                      "value": "autopnckey2",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": "{{URL}}/api/authtoken",
-                "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "value": "{{auth_id_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "auth_token",
+                    "value": "{{auth_token_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "tin",
+                    "value": "{{taxId}}",
+                    "type": "text"
+                  }
+                ],
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
               },
               "response": []
             }
           ],
-          "_postman_id": "29548449-09d0-4067-9264-e3929f43e721",
+          "_postman_id": "ba0aad0a-5a66-4c44-bc91-c385eef44567",
           "_postman_isSubFolder": true
-        },
-        {
-          "name": "Get the plan detail",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "678a0da2-91aa-46be-9928-cfd17fe52e0f",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test((pm.variables.get(\"uniquePlanId\")) + \" Plan found in the responce\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"true\");",
-                  "});",
-                  "",
-                  "var jsonData = JSON.parse(responseBody);",
-                  "postman.setEnvironmentVariable(\"putVerificationToken\", jsonData.putVerificationToken);",
-                  "",
-                  "pm.test(\"Token coppied\", function () {",
-                  "    pm.expect(pm.response.text()).to.include(\"putVerificationToken\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "_postman_id": "a64b3fc5-c7eb-4a8b-87e1-4afdf386180a",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "auth_id",
-                "value": "{{auth_id_value}}",
-                "type": "text"
-              },
-              {
-                "key": "auth_token",
-                "value": "{{auth_token_value}}",
-                "type": "text"
-              },
-              {
-                "key": "tin",
-                "value": "{{taxId}}",
-                "type": "text"
-              }
-            ],
-            "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/plans/{{uniquePlanId}}"
-          },
-          "response": []
         }
       ],
-      "_postman_id": "ba0aad0a-5a66-4c44-bc91-c385eef44567"
-    },
-    {
-      "name": "OG-Stories",
-      "item": [],
       "_postman_id": "8e32b707-aaba-4ccc-9d56-06b9eed0d297"
     }
   ],
@@ -5162,157 +5164,157 @@
   ],
   "variable": [
     {
-      "id": "e46ffa19-7c53-4edc-a75b-3a04df348f6d",
+      "id": "9c20c9a6-343c-4fc9-92b8-7e0bf9238007",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "786e264b-019d-45ae-a8c3-231ed73c9a4f",
+      "id": "1d599baf-6b8b-4700-9244-0a2341473c4d",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "d3d6fab7-1633-4cff-9e6c-270c6c95fe57",
+      "id": "541e046d-3047-42ca-8f83-c47bab13d0c0",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "cbc25718-7f57-47dd-9c39-f541bf7affc3",
+      "id": "50be6f33-6d14-408e-b3e9-4ec3c682167b",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "35750a79-40bb-46fd-8951-0019ab3930cc",
+      "id": "3b16cf6a-5c09-4b72-a7cf-1b6e74b3703d",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "bb1cbaf5-8581-4bb1-a0a5-f21b703b2e2a",
+      "id": "3f07f2af-bf18-4184-b6c5-b4f9ac5c141e",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "6b23e5c4-6af7-415b-8a53-85c90780a186",
+      "id": "ed29d24b-67ed-4047-9091-8dcaf103cc8a",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "7ff776d2-f6a0-4971-8743-5ab465433ca6",
+      "id": "0f377a54-7b3b-4991-86ed-d6df50d405f9",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "dcbc8cd7-fb2e-40f1-9279-cf057599a987",
+      "id": "b16d4d9d-5360-4e2c-8a3f-62cdbfed12dc",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "2fe2202d-e132-45c6-8ba0-535201ce8c02",
+      "id": "abcd1f0d-4833-400e-b44d-197d36f4236d",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "5375d280-e252-42dc-9b00-9aaaa33446e6",
+      "id": "757476e3-76b0-4c44-b0a2-e63818355924",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "7e218a83-e568-42e7-9d52-ec0ebd9b9e7e",
+      "id": "55e080a5-2185-497b-bd8d-fdea9cab1c92",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "bc8a15c9-564a-4882-b253-f6ee071c06a9",
+      "id": "330ec10b-4ee4-41f1-aeee-82423d4ffccb",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "df83d647-314c-40bb-9c41-26cc750adabb",
+      "id": "499b5d07-fa67-47c4-8f13-58454fe76386",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "be7c5cc8-f38c-45d5-839d-fd797a9295ba",
+      "id": "baaae4e2-4ffd-498d-8cc0-95ed680c7e3b",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "78b9e6ba-0f14-47ce-a0ef-97189775026f",
+      "id": "988c57b9-9191-4980-b6fa-40234223e338",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "09d5b030-ab18-4147-bc79-b18b8f488012",
+      "id": "a48f23ec-eac7-478d-b51a-a59a07c9c02d",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "82cdd3fb-2272-4efe-95eb-3e16944fb058",
+      "id": "45113ca8-82a2-4118-9aab-d513f8f17176",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "4d021124-407a-4ae8-a267-059a1cb3f705",
+      "id": "e6583180-a157-43bb-8a3d-060b0758053b",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "a6c74d32-757b-4227-aa7b-7f10981a20c4",
+      "id": "ad19412c-647c-4ce3-b68b-1c73e97300cd",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "cd1f40a1-5a32-4d81-be35-3c0abfb534db",
+      "id": "be50a5ac-64c2-4e89-99bf-1e8d4c85f635",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "2f94164c-4109-483b-a17b-eaa819d4e40b",
+      "id": "2ed9dabd-715b-4cf6-9ca5-1da2ea5c67d9",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "1a26d094-cf25-40dd-b7bb-41e02b846a6b",
+      "id": "f1472f8f-2ebb-415e-b125-5a8e02cb6800",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "2a3da275-76ce-4af0-86db-b9ca7a2c64a7",
+      "id": "a3652a57-20ee-402e-bc0f-0687b7a2ca74",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "15afa1e4-c995-4663-85b1-e82865fd84a4",
+      "id": "1be4650f-3222-434f-8ac2-dc53767c9f54",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "929a9897-0d6d-4fea-a0c0-71594f7b9ed0",
+      "id": "8ca933c9-8bdd-4fa6-ae42-efc72d39001d",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
