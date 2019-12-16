@@ -66,6 +66,63 @@
           "_postman_isSubFolder": true
         },
         {
+          "name": "Generate Token Copy",
+          "item": [
+            {
+              "name": "Generate Token",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
+                    "exec": [
+                      "var jsonData = JSON.parse(responseBody);",
+                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
+                      "",
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"apitoken copied successfully\", function () {",
+                      "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "58364606-509c-4aee-aded-84def331ba96",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "apikey",
+                      "value": "autopnckey1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "apisecret",
+                      "value": "autopnckey2",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "{{URL}}/api/authtoken",
+                "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "29548449-09d0-4067-9264-e3929f43e721",
+          "_postman_isSubFolder": true
+        },
+        {
           "name": "1: NPI Type Verification",
           "item": [
             {
@@ -5059,145 +5116,145 @@
   ],
   "variable": [
     {
-      "id": "6f3ddc13-9fdc-487a-a603-8a58cd680b6a",
+      "id": "a0abbe71-4078-4f7e-9db7-a50d87a4b45c",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "facc00dc-3f0a-49d4-aff8-7c117b82c040",
+      "id": "64f98c16-7c04-4ed2-8db3-c4e6c50af7a6",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "de25205f-c261-42be-bd8d-096b310e4faa",
+      "id": "8395c0c1-5971-4c2a-8a69-b9429098912b",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "27fc84e7-a0ee-4a66-8831-070949c53ab5",
+      "id": "5bb43ff1-e3fd-48b7-bae2-2007e42a6045",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "86c458bc-fb6d-420c-9ce7-ab0408c5df76",
+      "id": "b649ac0f-fc81-411a-9a63-be6721ff3edf",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "35eba36a-2238-4c02-b922-e17332d8d408",
+      "id": "924088c5-ba35-4b27-9a67-3802756133ca",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "57b7bdb8-b363-4e27-96fa-56447f789d57",
+      "id": "9f868691-4be1-4fcb-86fb-e417460ea816",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "e1581032-6e28-42c0-b652-c73069746179",
+      "id": "aaca85ab-f72d-449d-b7c3-39bf3b43b343",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "974edd96-76d4-45f6-96d8-cf7c2f340dd9",
+      "id": "0839141e-4141-46f2-bb11-da9e70970fca",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "59951188-af1f-43bc-b85b-cb4c4107c14b",
+      "id": "000ffd6a-8d0b-436d-9fde-37a170b049b1",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "c915f626-66db-4d4b-b624-77d066c6d203",
+      "id": "a1f29918-a454-4bea-822b-cc188e55c003",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "534e7f4e-aadd-4336-acb5-2cadc0851425",
+      "id": "c49d1250-94b0-443f-8273-e1fd5cd86ee6",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "b6b9c835-da03-47fa-9e81-9659c5af9df3",
+      "id": "12b30155-3506-42c8-a968-2fdc0c2607bf",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "da0f237f-a0bd-4839-ad37-5428b988200f",
+      "id": "8d464eb8-ddbd-4731-93b5-3397ad803a3c",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "0a63cb45-55e2-4742-8a1d-29363e897649",
+      "id": "7d771224-f37b-478c-aec6-d94397c035d6",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "2799b74e-2571-4568-93a6-0f63cdbe2cbd",
+      "id": "871c0451-5381-4ad2-853a-d038aa43ec29",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "18fcfba1-8ad4-4677-8b8a-898b155d6b27",
+      "id": "1d12472f-1e31-4236-95fa-2f685bbfb651",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "30edfb3f-325c-403d-8896-be0ac632f200",
+      "id": "a8cb582b-0389-460d-bde7-4de8f120ba9c",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "e858f51d-e3d7-4ab3-935c-67a7fd6c2dfa",
+      "id": "5e883c25-a97f-457d-b492-cea3294fc7ab",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "5846e5f6-bb7c-4609-b0fd-2ac4365fc9e9",
+      "id": "ca779b8f-7807-457b-be4f-6891c84a1c8c",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "7022e98d-6f07-46ed-ac13-a028c5a46260",
+      "id": "1b454fc8-3deb-436b-adc9-ab2ebf4e5466",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "b59dfccd-3c14-4b8d-b38d-f654d02db73b",
+      "id": "3de27823-2dff-4464-9013-97f48886a77b",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "b4f040a5-9440-428a-8aed-624b5622643c",
+      "id": "54c3dfd8-4cf6-4243-af30-720fccb30657",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "95fbf363-9d3c-4197-8e4d-3afd866c4806",
+      "id": "5b475c3e-0f4e-407a-bb22-f42880e29642",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
