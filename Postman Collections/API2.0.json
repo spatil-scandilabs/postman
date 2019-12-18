@@ -5106,6 +5106,295 @@
               ],
               "_postman_id": "b2061a28-0419-4861-8a28-db5e2a81140c",
               "_postman_isSubFolder": true
+            },
+            {
+              "name": "Case7: Valid Site and invalid Partner, Date range Copy",
+              "item": [
+                {
+                  "name": "Valid Site and invalid Partner (other partner) and Date Range (Invalid)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "})"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "b0b46d7d-85c4-4f6d-93ac-fbdf2bf1e802",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId}}/enrollments/from/{{fromDate3}}/to/{{toDate3}}",
+                    "description": "Site= Valid; \nPartner= Invalid (Different Partner)\nDate Range= Invalid (Invalid range)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Site and invalid Partner (other partner) and Date Range (wrong data range)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 412\", function () {",
+                          "    pm.response.to.have.status(412);",
+                          "});",
+                          "",
+                          "pm.test(\"DATE FORMAT INVALID\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"MadaketAPIDateFormatException\");",
+                          "});",
+                          "",
+                          "pm.test(\"Provided date format is wrong\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "c18c3d76-cf2e-4b43-a563-f3caa07d993b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId}}/enrollments/from/{{fromDate4}}/to/{{toDate4}}",
+                    "description": "Site= Valid; \nPartner= Invalid (Different Partner)\nDate Range= Invalid (Wrong Date range)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Site and invalid Partner (other partner) and Date Range (swapping data range)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "})"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "843f73ad-ec09-4681-9101-258cc6ef8da4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId}}/enrollments/from/{{toDate}}/to/{{fromDate}}",
+                    "description": "Site= Valid; \nPartner= Invalid (Different Partner)\nDate Range= Invalid (Swapping Date range)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Site and invalid Partner (not present in the application) and Date Range (invalid data range)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "})"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "91dd1288-5705-465f-81ea-b021a0b6cdfc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}/enrollments/from/{{fromDate3}}/to/{{toDate3}}",
+                    "description": "Site= Valid; \nPartner= Invalid (Not present in the application)\nDate Range= Invalid (invalid Date range)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Site and invalid Partner (not present in the application) and Date Range (wrong data range)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 412\", function () {",
+                          "    pm.response.to.have.status(412);",
+                          "});",
+                          "",
+                          "pm.test(\"DATE FORMAT INVALID\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"MadaketAPIDateFormatException\");",
+                          "});",
+                          "",
+                          "pm.test(\"Provided date format is wrong\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "f32642b2-35e0-4144-873c-90666f98cd6d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}/enrollments/from/{{fromDate4}}/to/{{toDate4}}",
+                    "description": "Site= Valid; \nPartner= Invalid (Not present in the application)\nDate Range= Invalid (Wrong Date range)"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Valid Site and invalid Partner (not present in the application) and Date Range (swapping data range)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "})"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "c03e2e53-2f97-4271-8425-c707ea9766b1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}/enrollments/from/{{toDate}}/to/{{fromDate}}",
+                    "description": "Site= Valid; \nPartner= Invalid (Not present in the application)\nDate Range= Invalid (Swapping Date range)"
+                  },
+                  "response": []
+                }
+              ],
+              "_postman_id": "b7fe73cf-cfee-4fc9-954a-945fc8a59085",
+              "_postman_isSubFolder": true
             }
           ],
           "_postman_id": "3ae7ddad-42c2-4eb6-a2f4-66fd3f329208",
@@ -7425,169 +7714,169 @@
   ],
   "variable": [
     {
-      "id": "af9f9d2d-a5c8-4cd8-93e2-0741742c4519",
+      "id": "094ceed1-d013-47f4-8e68-10e29a29fe93",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "aa1980e9-8621-4c96-9d50-49171a0550ba",
+      "id": "7a860885-d560-4a2a-973b-24ce639540c6",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "71cc887c-4035-43cb-a29b-1e09db84582d",
+      "id": "5927bd52-88ba-4efb-8f9c-46046b20369f",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "4de43468-9636-457b-9799-5f925e8a6e2e",
+      "id": "2884a2e2-ff98-4432-bfd8-0a87f05da967",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "d9b4a0d8-ffe5-42f6-a178-53b3dec18ba9",
+      "id": "9ded072a-eeb2-42d4-9ef1-b8acb73027e6",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "9a0e1b01-665e-403d-8e20-ea2b6ce77d50",
+      "id": "87ae9baf-d9d4-404a-922b-9643a8556ffb",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "9129f9de-8028-4482-acf3-ed396c2eba2e",
+      "id": "9ff33417-19f9-4e67-a41e-7924218656e0",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "81a194a8-7bba-4e9a-936e-fbe70ca05695",
+      "id": "cbedd211-9989-4126-ab37-fe4cc82681d1",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "d316a49c-d970-42d2-8499-45da554700af",
+      "id": "1f3b1b4f-a4af-4132-a879-d6ecbb5dd866",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "7881a5b7-e2ee-4e2e-be0e-ceef3444d99c",
+      "id": "b92733bb-6092-4f0c-9e19-bf950c2915fd",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "34ba3e6f-c0fd-4738-923e-f9131e980ed1",
+      "id": "2ec5bfc4-1d26-4133-8f05-40d455befc3c",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "f2ba4584-88ad-4db5-ad27-e4218c7f35f7",
+      "id": "b6b9beaf-f460-49cc-a233-7735a81bef06",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "2beff693-bb57-41b8-bb79-62e3471e9d07",
+      "id": "f18c29e3-f2d8-470e-9b7c-35618e050a8d",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "2d27f0ba-2cad-4d4f-bd5a-0567eeee9f92",
+      "id": "1df9dfa6-1c00-4f92-9276-90f360c2cfc6",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "963a5210-e081-4ada-a7b9-ac11e2011ea4",
+      "id": "fa844ab9-c2e3-493d-be84-ec04274edf14",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "9348ced4-1fa3-4126-a79b-ba1424a35051",
+      "id": "228b5d7e-f1ad-4dd1-bdc9-b5f047751d32",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "57bc7945-e347-4ce4-947c-679b6a7972c9",
+      "id": "f23691df-1d55-4a45-8455-2eeae5f4b67f",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "2e3568ed-7cbe-4196-9b85-93898ce6d611",
+      "id": "50b07fd6-3814-4373-b224-a91444118696",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "f09b3e3a-eb60-48a0-95a0-0d02a988e0f0",
+      "id": "0283f6f4-fb78-4601-827c-f2855d617cf1",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "c01e89a9-5c22-42db-a349-83b510568fa9",
+      "id": "7903429e-2a11-48f6-9b6a-2d2bda43ba66",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "e60770d3-7799-40fa-ab1e-1b481c7a9a66",
+      "id": "bf464930-013a-48e5-97da-30b6e70e4eb0",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "2eba2d95-b005-4eb0-b728-0bcd7d5f6838",
+      "id": "1370a782-1d58-4d7a-ba3d-87e9676d0728",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "9af82e33-c585-484d-92e2-89ac75c113b3",
+      "id": "dc69a42f-ad33-42a5-84e7-e82e9b603220",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "b4b30bce-ee43-4dee-ab89-66c3ce5dcf03",
+      "id": "3d4243cb-c78f-4e69-b989-802d96ebc97f",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "2faa7829-33e8-4be7-897a-1a60afb97752",
+      "id": "49abfa0d-dafc-4b9d-8990-da9aa5afda59",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "18ad1c3a-6fe5-4016-aa1b-e4949f93afc6",
+      "id": "f545fdcc-352c-4ca3-bbfa-e81e0f483177",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "5054cd4a-ddd1-4eef-a66e-ab6cc0ab429f",
+      "id": "691dd193-0b58-490e-a4d3-1f1142d8e3f1",
       "key": "individualNpi",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "f5442a8f-f5ea-472b-91c3-4f1a2deb7e62",
+      "id": "a04ad703-94e2-42e8-b0e7-ef6699260b7e",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
