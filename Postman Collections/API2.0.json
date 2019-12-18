@@ -6310,6 +6310,121 @@
           "_postman_isSubFolder": true
         },
         {
+          "name": "POST: Partner enrollment statuses",
+          "item": [
+            {
+              "name": "enrollment status for valid partner",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "1f011a21-6148-43df-83dd-0d0a5da98d20",
+                    "exec": [
+                      "pm.test(\"Response should be ok\", function () {",
+                      "    pm.response.to.not.be.error;",
+                      "    pm.response.to.have.jsonBody(\"success\");",
+                      "    pm.response.to.have.jsonBody(\"enrollmentRequestsByPracticeNpi\");",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "ea1c4b33-8377-403e-bfa9-03f0f5a5a6f8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "value": "{{auth_id_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "auth_token",
+                    "value": "{{auth_token_value}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"medicalGroupTIN\": 137000,\n  \"practiceLocationNPI\": 1073819710,\n  \"partnerAdminShortName\": \"PNC\",\n  \"payerName\": \"Test Payer\",\n  \"customPayerId\": \"0TPNC1\",\n  \"transactionTypes\": [\n    \"CSI\"\n  ],\n  \n  \"modifiedFrom\": \"2019-06-15T12:00:00\",\n  \"modifiedTo\": \"2019-11-15T12:00:00\",\n  \"pageNumber\": 0,\n  \"pageSize\": 25,\n  \"startIndex\": 0\n}"
+                },
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
+                "description": "List enrollments of TRIZETTO partner"
+              },
+              "response": []
+            },
+            {
+              "name": "Enrollment status for other partner",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "67de08ec-7d5c-4cdc-a41d-9ac24f28d592",
+                    "exec": [
+                      "pm.test(\"Response should contains an error\", function () {",
+                      "    pm.response.to.have.status(412);",
+                      "    pm.response.to.be.error;",
+                      "    pm.response.to.have.jsonBody(\"error\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response should have proper message\", function () {",
+                      "     pm.expect(pm.response.text()).to.include(\"URI parameter partnerShortName does not match with partnerShortName in JSON\");",
+                      "});",
+                      "",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "_postman_id": "55f5846f-d4a4-4ee1-aa05-1d08f622a98e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "auth_id",
+                    "type": "text",
+                    "value": "{{auth_id_value}}"
+                  },
+                  {
+                    "key": "auth_token",
+                    "type": "text",
+                    "value": "{{auth_token_value}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"medicalGroupTIN\": 137000,\n  \"practiceLocationNPI\": 1073819710,\n  \"partnerAdminShortName\": \"TRIZETTO\",\n  \"siteId\": \"PNCSiteId\",\n  \"payerName\": \"Test Payer\",\n  \"customPayerId\": \"0TPNC1\",\n  \"transactionTypes\": [\n    \"CSI\"\n  ],\n  \"workflowId\": 18280,\n  \"modifiedFrom\": \"2019-06-15T12:00:00\",\n  \"modifiedTo\": \"2019-11-15T12:00:00\",\n  \"pageNumber\": 0,\n  \"pageSize\": 25,\n  \"startIndex\": 0\n}"
+                },
+                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
+                "description": "Expecting test fail: listing enrollment status for other valid partner"
+              },
+              "response": []
+            }
+          ],
+          "_postman_id": "2ed921fe-c35b-47aa-9d94-8317dddbc745",
+          "_postman_isSubFolder": true
+        },
+        {
           "name": "POST: Site enrollment status",
           "item": [
             {
@@ -6628,121 +6743,6 @@
             }
           ],
           "_postman_id": "09d11bae-0192-405c-92e9-5528f697602f",
-          "_postman_isSubFolder": true
-        },
-        {
-          "name": "POST: Partner enrollment statuses",
-          "item": [
-            {
-              "name": "enrollment status for valid partner",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "1f011a21-6148-43df-83dd-0d0a5da98d20",
-                    "exec": [
-                      "pm.test(\"Response should be ok\", function () {",
-                      "    pm.response.to.not.be.error;",
-                      "    pm.response.to.have.jsonBody(\"success\");",
-                      "    pm.response.to.have.jsonBody(\"enrollmentRequestsByPracticeNpi\");",
-                      "});",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "ea1c4b33-8377-403e-bfa9-03f0f5a5a6f8",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "value": "{{auth_id_value}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "auth_token",
-                    "value": "{{auth_token_value}}",
-                    "type": "text"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "name": "Content-Type",
-                    "value": "application/json",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"medicalGroupTIN\": 137000,\n  \"practiceLocationNPI\": 1073819710,\n  \"partnerAdminShortName\": \"PNC\",\n  \"payerName\": \"Test Payer\",\n  \"customPayerId\": \"0TPNC1\",\n  \"transactionTypes\": [\n    \"CSI\"\n  ],\n  \"workflowId\": 18280,\n  \"modifiedFrom\": \"2019-06-15T12:00:00\",\n  \"modifiedTo\": \"2019-11-15T12:00:00\",\n  \"pageNumber\": 0,\n  \"pageSize\": 25,\n  \"startIndex\": 0\n}"
-                },
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
-                "description": "List enrollments of TRIZETTO partner"
-              },
-              "response": []
-            },
-            {
-              "name": "Enrollment status for other partner",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "67de08ec-7d5c-4cdc-a41d-9ac24f28d592",
-                    "exec": [
-                      "pm.test(\"Response should contains an error\", function () {",
-                      "    pm.response.to.have.status(412);",
-                      "    pm.response.to.be.error;",
-                      "    pm.response.to.have.jsonBody(\"error\");",
-                      "});",
-                      "",
-                      "pm.test(\"Response should have proper message\", function () {",
-                      "     pm.expect(pm.response.text()).to.include(\"URI parameter partnerShortName does not match with partnerShortName in JSON\");",
-                      "});",
-                      "",
-                      ""
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "55f5846f-d4a4-4ee1-aa05-1d08f622a98e",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "auth_id",
-                    "type": "text",
-                    "value": "{{auth_id_value}}"
-                  },
-                  {
-                    "key": "auth_token",
-                    "type": "text",
-                    "value": "{{auth_token_value}}"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"medicalGroupTIN\": 137000,\n  \"practiceLocationNPI\": 1073819710,\n  \"partnerAdminShortName\": \"TRIZETTO\",\n  \"siteId\": \"PNCSiteId\",\n  \"payerName\": \"Test Payer\",\n  \"customPayerId\": \"0TPNC1\",\n  \"transactionTypes\": [\n    \"CSI\"\n  ],\n  \"workflowId\": 18280,\n  \"modifiedFrom\": \"2019-06-15T12:00:00\",\n  \"modifiedTo\": \"2019-11-15T12:00:00\",\n  \"pageNumber\": 0,\n  \"pageSize\": 25,\n  \"startIndex\": 0\n}"
-                },
-                "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/enrollments/status",
-                "description": "Expecting test fail: listing enrollment status for other valid partner"
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "2ed921fe-c35b-47aa-9d94-8317dddbc745",
           "_postman_isSubFolder": true
         }
       ],
@@ -8617,169 +8617,169 @@
   ],
   "variable": [
     {
-      "id": "1d291665-6149-4a1d-8b72-e6496f66c3da",
+      "id": "d627e682-bf56-4846-96e3-cea5f0c1bc28",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "88ccd843-f002-4308-94dc-e5e46416f08d",
+      "id": "b8b5bce5-e268-4d1c-a90c-ebe535dc19c9",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "a556c8e4-be33-4dfe-b760-74687b2c7769",
+      "id": "4065b2d8-dbe3-47dd-b10b-3eb82ff14422",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "1ea8c343-a378-403b-8631-88d722574c51",
+      "id": "7c74dc6c-d547-4df9-aa23-86cba105e69d",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "c7ad01c7-8e7f-47e7-9a81-4f5bde2f97b3",
+      "id": "a1e3cb2f-8616-49fc-aed6-1207800cdcb2",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "c59fa077-6abf-49a7-a272-bdb0a29f9967",
+      "id": "33c5bc2d-1f2b-4679-b4a7-042dc2b210e4",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "7a63bcd6-22dd-4cfb-bc6c-6e6a74318904",
+      "id": "a28cb747-43db-481d-b86c-47f775b32b38",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "e9002d4a-185a-4c11-92d7-87ceb7e6c5a7",
+      "id": "8a0336c7-9112-426b-a2a1-3c8f8a27b742",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "f1d02255-ae2a-4eff-b85a-01c4929f427b",
+      "id": "b78e0848-a7e0-4967-8907-b9405bd91fde",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "233a83b6-d047-4206-98df-62186423c357",
+      "id": "c844332a-5deb-42b2-8c25-801b0c6bff01",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "30f3718f-9e12-41d7-9676-6102e1994518",
+      "id": "448d005a-4dce-46b1-a77b-9c2520610fa0",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "fbb5ffa8-5d85-4b39-8e2f-d3c5c4e077c7",
+      "id": "b97dc367-d8c0-4c62-8222-3b4682171b30",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "b4ae78a2-5019-4e3d-a7c1-5e3a1e846335",
+      "id": "3f1a5308-3895-446d-baab-cf379f129d22",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "fcda1297-4bd8-4bf2-b658-ededbdf71afe",
+      "id": "45c7b199-c213-42c7-b305-286cae654b1e",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "b254e318-fef8-45c2-b4f6-0931841ad8a7",
+      "id": "8b20ec67-51e4-4181-9693-a37c3677d57f",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "c64b6a6c-3405-48ed-a2ee-b0f943de4f8e",
+      "id": "f8180675-5bd7-440f-bd51-b7bdf4cbe2f1",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "e21e78cd-1de7-489f-922e-e313112fa881",
+      "id": "fe91ab92-dcbc-463d-bb76-1682432684ca",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "0163ad50-e275-4a66-91c5-666ef62d6dc5",
+      "id": "31ba54c7-56e9-4f51-92c5-1c0638fb3782",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "ae7db337-da5d-4238-8a57-c3ddda755446",
+      "id": "17550e98-25eb-41bc-953f-f3a7c94a236d",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "27dc3f15-ed6a-4808-bc8b-3a750c079f36",
+      "id": "3c57d332-ffe8-4e72-8a61-f47f60b744d5",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "1149d59a-f685-48ca-95e7-a94d5202ed70",
+      "id": "527d06f9-f5fc-4c56-814e-6cbcec345561",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "9ee9c55f-6dbd-4373-8fe6-7e6ee4afdf56",
+      "id": "f66eb935-0e78-45cb-b359-9cead12f636c",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "54c3b15f-b207-47d3-831a-1feea3bc98b9",
+      "id": "efdc0136-ccf1-4635-bbeb-c667f805a576",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "bafa5b3a-6afc-48b0-b1d9-d2dcb4963d01",
+      "id": "16ca0f9c-35da-41f6-9fa7-079f076229d0",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "5f3d95eb-488b-4bb4-90fc-a8ec2b0ba308",
+      "id": "596d9e3d-eb98-4990-917d-6d6089eefdef",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "44dc5ebe-de77-4412-9fd1-abdbdb22a209",
+      "id": "2a8ef7a3-54f7-43ef-8310-c30a92f60921",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "ffc5d547-ef64-410f-9350-0e717a9433ab",
+      "id": "c1bb9824-5a76-455e-af50-f41c7e61ed78",
       "key": "individualNpi",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "17f7003e-593a-4a46-91d5-394d7cdde0d6",
+      "id": "1b701787-83e0-441c-b782-8774bebfeed1",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
