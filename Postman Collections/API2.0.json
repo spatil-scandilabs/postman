@@ -5250,100 +5250,6 @@
                     "description": "Site= Valid; \nPartner= Invalid (Different Partner)\nDate Range= Invalid (Swapping Date range)"
                   },
                   "response": []
-                },
-                {
-                  "name": "Valid Site and invalid Partner (not present in the application) and Date Range (invalid data range)",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                        "exec": [
-                          "pm.test(\"Status code is 404\", function () {",
-                          "    pm.response.to.have.status(404);",
-                          "});",
-                          "",
-                          "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
-                          "});",
-                          "",
-                          "pm.test(\"Partner not found\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"false\");",
-                          "})"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "_postman_id": "91dd1288-5705-465f-81ea-b021a0b6cdfc",
-                  "protocolProfileBehavior": {
-                    "disableBodyPruning": true
-                  },
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "auth_id",
-                        "type": "text",
-                        "value": "{{auth_id_value}}"
-                      },
-                      {
-                        "key": "auth_token",
-                        "type": "text",
-                        "value": "{{auth_token_value}}"
-                      }
-                    ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}/enrollments/from/{{fromDate3}}/to/{{toDate3}}",
-                    "description": "Site= Valid; \nPartner= Invalid (Not present in the application)\nDate Range= Invalid (invalid Date range)"
-                  },
-                  "response": []
-                },
-                {
-                  "name": "Valid Site and invalid Partner (not present in the application) and Date Range (wrong data range)",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
-                        "exec": [
-                          "pm.test(\"Status code is 412\", function () {",
-                          "    pm.response.to.have.status(412);",
-                          "});",
-                          "",
-                          "pm.test(\"DATE FORMAT INVALID\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"MadaketAPIDateFormatException\");",
-                          "});",
-                          "",
-                          "pm.test(\"Provided date format is wrong\", function () {",
-                          "    pm.expect(pm.response.text()).to.include(\"false\");",
-                          "});"
-                        ],
-                        "type": "text/javascript"
-                      }
-                    }
-                  ],
-                  "_postman_id": "f32642b2-35e0-4144-873c-90666f98cd6d",
-                  "protocolProfileBehavior": {
-                    "disableBodyPruning": true
-                  },
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "auth_id",
-                        "type": "text",
-                        "value": "{{auth_id_value}}"
-                      },
-                      {
-                        "key": "auth_token",
-                        "type": "text",
-                        "value": "{{auth_token_value}}"
-                      }
-                    ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName3}}/sites/{{siteId}}/enrollments/from/{{fromDate4}}/to/{{toDate4}}",
-                    "description": "Site= Valid; \nPartner= Invalid (Not present in the application)\nDate Range= Invalid (Wrong Date range)"
-                  },
-                  "response": []
                 }
               ],
               "_postman_id": "b7fe73cf-cfee-4fc9-954a-945fc8a59085",
@@ -7667,169 +7573,169 @@
   ],
   "variable": [
     {
-      "id": "f1cdf2a2-e975-4186-b6e0-e3d02a41c7ff",
+      "id": "4b635823-9b1a-43df-b4a8-7f8310c6286b",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "38d8f659-d384-4eca-ae2a-d2bd2f0c90ff",
+      "id": "107f6f7d-4e47-4dc3-8e9f-27f15ca5ec75",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "5748429e-b997-447d-9064-00063e6cf78d",
+      "id": "78d4b63e-3c48-4903-b718-25ab930c87f2",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "c72e80f1-64b8-4eaa-a0d3-b2902a0f5d69",
+      "id": "c28a80f2-21eb-45be-bca5-064c0e62ee4e",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "e1acb10a-f49a-4536-898e-684eb1286547",
+      "id": "af688258-6326-4aae-a748-62a0d8b863cc",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "ef210ad2-9cc3-4505-ae80-d3ff51ce2d09",
+      "id": "4af4c7a0-c0a6-4954-8c93-4f89a0df9ab4",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "174210d1-9387-4c51-98d9-8ec9facec1bf",
+      "id": "408613e5-f9ff-4c8d-9c6b-cef6059ca0e0",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "22f00589-4a7c-4cdc-a19d-4da825312702",
+      "id": "7410c45e-e304-4f04-ad24-32c9a67c9326",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "346586a4-d495-4d4a-ae2f-862359857f08",
+      "id": "37d3d087-fcaf-414d-a834-e85c48c4d94d",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "6d3d2625-ee11-4b64-adf8-7325239d3f66",
+      "id": "87e50306-16d5-4397-b6aa-f213137d88de",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "7a480b43-2304-4f35-9d80-9e0a172cecda",
+      "id": "bc8b74af-8005-4f6f-a296-236cd90f4717",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "c11ba3f3-a136-49ae-8fff-05bf48484219",
+      "id": "cf77ac69-e7e0-47b4-85a7-e45e243dc43f",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "a09355c5-8647-4d3b-92b2-f92b66793659",
+      "id": "7c8558ab-b2d9-4e0a-90a6-ec8a7afb09fc",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "4b6590af-d965-424d-8717-2e619ad87228",
+      "id": "40c1025f-9c28-4030-acaa-a0d225d79cf6",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "4a8ee9b3-4ee9-42f6-89f5-92c6ad4d6567",
+      "id": "e66a89d9-9e34-46c0-866b-f34896b134b9",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "e0b1fd3d-fca7-41d5-b5ab-db327a823108",
+      "id": "c5aae349-ff7d-4512-ae1d-654ede7d69aa",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "97bf5c65-e55b-4e7f-8dfa-e00642b2a6ea",
+      "id": "5702eda8-1ef5-4473-ba21-d8c1accfb0de",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "41bc8f14-6860-4fcc-8495-bf383006a46a",
+      "id": "df380d6c-4841-4bcd-9707-5dee7051135b",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "e81479a0-6643-478c-b7ea-22d948bc2c22",
+      "id": "c0d4bf33-8c8c-450a-b86c-3e696a7ecd62",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "6f388a94-7e45-4cec-bcbe-6b6c75d5dc5b",
+      "id": "b9a3bffd-fb88-43a1-b1b1-2314d2a66cf2",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "cc63054d-2233-42f2-861b-bf0199402fb0",
+      "id": "c7f0b9c6-4ad4-48a9-a8f5-8b9fbf8fae97",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "49fe6417-ffc6-4ede-b0c3-efb48b47d2de",
+      "id": "c31c9914-e9cb-4899-87e2-c51f9a635e29",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "e1022077-8da3-4d8c-af04-b9904ef8edc9",
+      "id": "cea10809-2bd7-43ca-84fc-9fa54a8ef949",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "d74cda28-3ea8-45b4-b568-60dc3f9cca30",
+      "id": "8ed17c0a-516e-4c88-8a70-47fdc8a4c062",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "60eef708-519e-4b26-9879-8b38b063da4f",
+      "id": "691299ea-9dfb-48d7-9a4c-f5e559984e5e",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "4b66cc73-f571-46a0-9590-b68d71034fc1",
+      "id": "e35172eb-bd2e-4646-b867-92a9780cf66f",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "80ea8684-b4fd-45f2-98db-911c2a01adb0",
+      "id": "251cc6be-6982-4622-8e1c-a3e30b758caa",
       "key": "individualNpi",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "c59729b2-de9c-499e-9d53-6d19046d4f82",
+      "id": "978d39d0-f3c1-408e-acd5-7d0ca923a296",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
