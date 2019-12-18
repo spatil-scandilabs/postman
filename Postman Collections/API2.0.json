@@ -4869,6 +4869,53 @@
                   "response": []
                 },
                 {
+                  "name": "Valid Date Range and invalid Partner (other partner) and Site (not present)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "e3fbe8cd-3c9f-4abb-afec-f4d84c4fd0bd",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"PARTNER MISSING: Partner not found.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Partner not found\");",
+                          "});",
+                          "",
+                          "pm.test(\"Partner not found\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "})"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "08f2e4e4-d04b-4da2-b67f-2835ee335410",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName2}}/sites/{{siteId3}}/enrollments/from/{{fromDate}}/to/{{toDate}}",
+                    "description": "Date Range= Valid; \nPartner= Invalid (Different Partner)\nSite= Invalid (Not present in the application)"
+                  },
+                  "response": []
+                },
+                {
                   "name": "Valid Date Range and invalid Partner (other partner) and Site (wrong data)",
                   "event": [
                     {
@@ -7425,169 +7472,169 @@
   ],
   "variable": [
     {
-      "id": "981aa866-25b1-4b0e-97fa-c549cad9b9b4",
+      "id": "a2e0f575-074a-4772-94f9-e76f20fbe713",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "fad09a3a-9fe4-4f61-a4fc-817b3d35f670",
+      "id": "396c9ea5-92e1-4f9a-87f6-5901b1e49beb",
       "key": "npi1",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "bfd0b0e2-8923-4b99-a092-e32377088bac",
+      "id": "fc4ef21e-9aeb-4363-9189-474a4fd2fa25",
       "key": "npi2",
       "value": "1063828648",
       "type": "string"
     },
     {
-      "id": "daca796e-2bcd-49eb-be7d-e356ce098336",
+      "id": "44dba4f4-de99-4207-a73a-d8e8af1fedf0",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "97c81fcd-9aef-4640-bc98-457f0c581b21",
+      "id": "c0f65fbe-0421-4d8d-9e77-f0862854a7bb",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "13ab0805-f2d9-47e6-b38e-0b05a64a0b03",
+      "id": "1466cf89-1025-41ab-bf24-b20ecf7bb7d4",
       "key": "npi5",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "91e36852-0edd-494c-9045-73adfc675029",
+      "id": "cfda453d-7082-4b39-bc72-d2962ef46964",
       "key": "npi6",
       "value": "1114903994",
       "type": "string"
     },
     {
-      "id": "72601cb6-e926-4b30-a2b1-54b5cd7bfe96",
+      "id": "0ab52720-16d7-46bd-b953-4860bec54a1c",
       "key": "npi7",
       "value": "1376655704",
       "type": "string"
     },
     {
-      "id": "bf72a480-f35e-438c-a800-40f176ba7a9d",
+      "id": "2d579fa8-3475-439e-baab-eb4930e97c9a",
       "key": "npi8",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "53977741-4150-4d9f-b4f6-26876e84c714",
+      "id": "e93fa2e0-4652-4842-ae43-0138dc41ea17",
       "key": "npi9",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "943c44e8-6c6b-49d6-85e0-eec75fdf86c8",
+      "id": "228ecacc-eb88-400a-890c-7200324355ba",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "301e21f5-8fc2-49e6-b735-21ed8371f59e",
+      "id": "103fb141-3df6-491e-b3fb-6d41e8f61e27",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "39487660-5b9e-4535-b468-0f58af9a794a",
+      "id": "3f1e80a1-faf7-4c8c-9088-bb342b127b33",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "05be7966-2e46-4e25-8c50-58541b46f128",
+      "id": "a47ef41d-316b-4766-b94f-af9b09c5b209",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "884a3059-1fb2-4d51-b91b-b23318c45826",
+      "id": "35ea6e5a-1479-4a0c-af89-d6bbbe4b677e",
       "key": "siteId1",
       "value": "jaredpnc",
       "type": "string"
     },
     {
-      "id": "4ff93432-93c5-4ee3-93d4-1f5bfcb006b5",
+      "id": "dd7116ce-ebb1-4fb4-b6c9-4c488ae483a9",
       "key": "siteId2",
       "value": "api13id",
       "type": "string"
     },
     {
-      "id": "63fec09b-0d66-44c6-9fa2-d78dcc263241",
+      "id": "9a117336-69bb-4a3d-96da-94a9fbc00370",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "997b68fb-06d0-4ae1-9e7c-3bf5222d4b1e",
+      "id": "101e166d-991b-4992-b79b-e2e256ae0a73",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "c514f4cc-3d25-424d-8872-ede955a86730",
+      "id": "a1460984-a1ea-4619-9ff0-cc2fc994cd81",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "2eb1e6ea-5297-4150-93fd-3c8d1c34fb70",
+      "id": "956c0f8a-edd0-4322-a547-2878012cdde4",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "4e435855-e69c-4211-9f89-c3b006da49e1",
+      "id": "62f8b15c-e9a1-4ca4-b9d7-603799fd0bdf",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "a7f11efd-8204-499e-b195-a01d2c1d2953",
+      "id": "bc56fa34-6e8b-4fa7-a5f1-a0290f1e88f3",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "62e057af-7704-48a4-8451-95476b3f8de2",
+      "id": "4a052c0c-ee7e-4b0a-83d4-1278470bedd9",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "58f28415-70df-44b6-83aa-afad563f0713",
+      "id": "f9a56bd8-5338-4938-a568-c8aebf40d20f",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "075a72d2-514e-4744-a2ce-69169b4f2c16",
+      "id": "935554ef-4510-4f2e-9ee8-a0796051fbe4",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "39852075-5fa8-4a04-ba4e-13091e9d42d6",
+      "id": "b93ed848-94a4-4e3b-9f98-deb412a0ce37",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "4d7edffb-e96b-4790-9124-e0c91cc1fee8",
+      "id": "1600957d-bcad-4ecd-bd03-ebd31005ffcd",
       "key": "individualNpi",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "10e6f02f-4d5b-441b-a14e-2ac57dfd1fdc",
+      "id": "0dd41f83-9b24-4c9e-9a3e-99db69152d79",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
