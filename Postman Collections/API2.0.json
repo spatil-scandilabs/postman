@@ -8966,10 +8966,10 @@
               "_postman_isSubFolder": true
             },
             {
-              "name": "Case7: Invalid Request Id",
+              "name": "Case6: Invalid Request Id",
               "item": [
                 {
-                  "name": "Type 1 specific enrollment request with invalid request id(different request id with same partner)",
+                  "name": "Type 2 specific enrollment request with invalid request id(different request id with same partner)",
                   "event": [
                     {
                       "listen": "test",
@@ -9017,7 +9017,7 @@
                       }
                     ],
                     "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI}}/enrollments/{{requestId1}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Valid; \nRequest Id= Invalid(differnet NPI with same partner)"
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nType 2 NPI= Valid; \nRequest Id= Invalid(differnet NPI with same partner)"
                   },
                   "response": []
                 },
@@ -12826,217 +12826,217 @@
   ],
   "variable": [
     {
-      "id": "01b36a0b-c107-46ec-b6d5-4ce031623c03",
+      "id": "58e2f9ad-8333-47ca-a1f6-7058aff3822b",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "ebb325ea-ec51-49ae-a1ed-1ca8d1ccea84",
+      "id": "69e7ad8d-7af6-45cb-89c5-38b92c19ab06",
       "key": "npi1",
       "value": "5734568635",
       "type": "string"
     },
     {
-      "id": "73aed9ab-b032-425f-acbe-80dbfb20c8ef",
+      "id": "93e6ffae-0cfb-432c-865b-f667c1290477",
       "key": "npi2",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "11829e3f-30d8-4947-a7e8-88dfb63bdd72",
+      "id": "175d6740-2ad8-4b95-a017-d09c77886ee8",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "207069cc-2b58-403e-ab58-a41a7172a161",
+      "id": "1c73df5f-e56a-4114-9b27-d6029c6b31fb",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "c28c8430-1205-4083-8499-920ab736b864",
+      "id": "05b6d83a-bbdc-4233-b827-6127fa9bea0f",
       "key": "individualNPI",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "ec980b66-0983-437c-9d95-73ee3abe740b",
+      "id": "ce995345-5e66-4add-9a3f-968e99bf645e",
       "key": "individualNPI1",
       "value": "1215058680",
       "type": "string"
     },
     {
-      "id": "2742eafb-fcf2-4a4e-8021-9ed4fae681a3",
+      "id": "55856af8-3e37-4e9f-95db-d2f70b13a093",
       "key": "individualNPI2",
       "value": "1770904724",
       "type": "string"
     },
     {
-      "id": "fd9b2389-083c-477d-98b1-a23edd690850",
+      "id": "97fcfb4d-aa2d-43d6-aa32-4c8610e2f12a",
       "key": "individualNPI3",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "2cac7020-bdf4-4e03-be78-c30d4a8d5447",
+      "id": "c5ebea52-d39b-4d43-8181-f0f01c725c7f",
       "key": "individualNPI4",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "539bf7f5-db72-471f-9623-a9dde8dfc449",
+      "id": "08ebd755-9cb9-4610-be70-eb99bcb02e58",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "473b7d29-db7e-4eb4-897f-4fda40e178e2",
+      "id": "870ee63f-4f84-46b7-a876-c4f184667171",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "98e5ed58-f722-40b1-b81c-c90895b9a2f3",
+      "id": "e6111851-6805-4b50-a804-966fa31ab108",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "5c372ae5-d204-44f0-a4b3-370c02777cb0",
+      "id": "50eba523-4e42-4411-ac4a-cbee285eeeb0",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "8d733cc4-7177-4a48-9353-352854dd0f9e",
+      "id": "92237392-54f8-4d1d-9f78-ebd782f03094",
       "key": "siteId1",
       "value": "136sid136",
       "type": "string"
     },
     {
-      "id": "4ed7825f-528a-4fe6-878b-f83a411e02fa",
+      "id": "6c00da3a-c900-4bbb-98b8-c4765612b654",
       "key": "siteId2",
       "value": "i134mg",
       "type": "string"
     },
     {
-      "id": "76410d56-2a85-413c-82e9-8f0e82678c51",
+      "id": "aa11a087-717b-4e1d-b7c5-c3defc69f9bc",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "6eae755f-62e8-453a-b19f-98fb266679f7",
+      "id": "9fd3163f-3436-4472-9096-a61ab681fa7c",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "db11e7b2-a418-4022-9b95-3433ff3b7946",
+      "id": "a6e6f687-52e9-4259-bae5-679182c282d9",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "af408fca-dbcc-4fd1-a32a-9a48db16d4fb",
+      "id": "95339371-eefb-45c7-8594-aaedb18995ab",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "639b2196-904a-4984-8c58-d7655216bf8b",
+      "id": "a7041aee-438b-435c-855d-189e2e1f252a",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "3edc47d3-ad86-4718-a112-0783a533ffa8",
+      "id": "2589f61d-fe0a-426c-b423-9348c78a2fe4",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "78ade6d2-9f0f-4c67-ade2-4375146a61be",
+      "id": "d7d1689e-ae51-4912-acfe-87f4b99f774f",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "cb5caf93-866f-4a42-a91a-a14269c7f8f1",
+      "id": "b045197b-72ec-4d45-b801-8b07049af856",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "ed2bac6b-4d55-43d7-a026-6ba9d5802954",
+      "id": "5fee835b-c50d-4fbc-ac00-d378bbb1ba68",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "649ea585-62aa-4da9-ad8b-b4440bdb3748",
+      "id": "bfcb1595-2a39-41ae-b8bf-6d6b2b14aaca",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
     },
     {
-      "id": "223c909b-3404-451b-8d62-f20b856a6a6a",
+      "id": "d15e5674-1cf0-41a4-a8fe-9a9f42b19686",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "ca8fe68f-6d91-42ee-b0da-5d44fc87de00",
+      "id": "6adda407-e180-4098-8643-9f8e31899849",
       "key": "taxId1",
       "value": "136136136",
       "type": "string"
     },
     {
-      "id": "8de8a01e-b42b-41b0-ba58-0e204b998259",
+      "id": "5da90b2b-e960-4752-a434-c4bea19b57eb",
       "key": "taxId2",
       "value": "134134134",
       "type": "string"
     },
     {
-      "id": "245601ad-3c2c-4234-87a1-8e12b11f89b3",
+      "id": "e10e0186-c61b-4b4f-9596-f084c60f62e4",
       "key": "taxId3",
       "value": "736354836",
       "type": "string"
     },
     {
-      "id": "1e0680e7-fb86-4a83-8fe2-b2a9ed063f85",
+      "id": "597d5817-03c7-4f1f-9454-b7aff1c1442d",
       "key": "taxId4",
       "value": "562jdt875",
       "type": "string"
     },
     {
-      "id": "80a41779-7de4-4146-9da1-e30ed8af15fe",
+      "id": "9c9dfb89-039a-4432-b4e5-7bfcdc67a991",
       "key": "requestId",
       "value": "961304",
       "type": "string"
     },
     {
-      "id": "8cdccce4-94b0-4ce1-86ba-10b8999b7623",
+      "id": "4cc3e766-37cf-4fa0-8dd7-a30eaf7d342a",
       "key": "requestId1",
       "value": "961378",
       "type": "string"
     },
     {
-      "id": "91cf4712-05cb-40ef-b193-1f082dcbd6cc",
+      "id": "4a39422d-350e-4319-8b37-35c6b47ce2ca",
       "key": "requestId2",
       "value": "961370",
       "type": "string"
     },
     {
-      "id": "e7a7d9d0-6447-473a-b427-af6682719794",
+      "id": "5d4b0503-e881-4191-9b06-b52c466891d1",
       "key": "requestId3",
       "value": "786374986",
       "type": "string"
     },
     {
-      "id": "4689c1b7-b659-44c7-8769-e8cbc52879e4",
+      "id": "e1c7c22e-fba6-4490-bad3-c367165f0ccf",
       "key": "requestId4",
       "value": "why63j",
       "type": "string"
