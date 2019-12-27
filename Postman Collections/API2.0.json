@@ -8642,7 +8642,7 @@
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid TIN(not present in the application)",
+                  "name": "Type 1 specific enrollments with invalid TIN(not present in the application)",
                   "event": [
                     {
                       "listen": "test",
@@ -8688,13 +8688,13 @@
                         "value": "{{taxId3}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Invalid(not present in the application); \nNPI=  Valid; \nType 1 NPI= Valid; \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Invalid(not present in the application); \nNPI=  Valid; \nType 1 NPI= Valid"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid TIN(wrong TIN)",
+                  "name": "Type 1 specific enrollments with invalid TIN(wrong TIN)",
                   "event": [
                     {
                       "listen": "test",
@@ -8740,8 +8740,8 @@
                         "value": "{{taxId4}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Invalid(Wrong TIN); \nNPI=  Valid; \nType 1 NPI= Valid;\nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Invalid(Wrong TIN); \nNPI=  Valid; \nType 1 NPI= Valid"
                   },
                   "response": []
                 }
@@ -8753,7 +8753,7 @@
               "name": "Case5: Invalid Type 2 NPI",
               "item": [
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(different NPI with same partner)",
+                  "name": "Type 1 specific enrollments with invalid type 2 NPI(different NPI with same partner)",
                   "event": [
                     {
                       "listen": "test",
@@ -8800,13 +8800,13 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi1}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (different NPI with same partner); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi1}}/providers/{{individualNPI}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (different NPI with same partner); \nType 1 NPI= Valid"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(different partner's NPI)",
+                  "name": "Type 1 specific enrollments with invalid type 2 NPI(different partner's NPI)",
                   "event": [
                     {
                       "listen": "test",
@@ -8852,13 +8852,13 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi2}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (different partner's NPI); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi2}}/providers/{{individualNPI}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (different partner's NPI); \nType 1 NPI= Valid"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(NPI not present in the application)",
+                  "name": "Type 1 specific enrollments with invalid type 2 NPI(NPI not present in the application)",
                   "event": [
                     {
                       "listen": "test",
@@ -8904,13 +8904,13 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi3}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (Not present in the application); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi3}}/providers/{{individualNPI}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (Not present in the application); \nType 1 NPI= Valid"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(wrong NPI)",
+                  "name": "Type 1 specific enrollments with invalid type 2 NPI(wrong NPI)",
                   "event": [
                     {
                       "listen": "test",
@@ -8956,8 +8956,8 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi4}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (Wrong NPI); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi4}}/providers/{{individualNPI}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (Wrong NPI); \nType 1 NPI= Valid"
                   },
                   "response": []
                 }
@@ -8969,7 +8969,7 @@
               "name": "Case6: Invalid Type 1 NPI",
               "item": [
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 1 NPI(different NPI with same partner)",
+                  "name": "Type 1 specific enrollments with invalid type 1 NPI(different NPI with same partner)",
                   "event": [
                     {
                       "listen": "test",
@@ -9016,13 +9016,13 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI1}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(differnet NPI with same partner); \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI1}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(differnet NPI with same partner)"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 1 NPI(different NPI with different partner)",
+                  "name": "Type 1 specific enrollments with invalid type 1 NPI(different NPI with different partner)",
                   "event": [
                     {
                       "listen": "test",
@@ -9069,13 +9069,13 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI2}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(differnet NPI with different partner); \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI2}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(differnet NPI with different partner)"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 1 NPI(NPI not present in the application)",
+                  "name": "Type 1 specific enrollments with invalid type 1 NPI(NPI not present in the application)",
                   "event": [
                     {
                       "listen": "test",
@@ -9122,13 +9122,13 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI3}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(Not present in the application); \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI3}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(Not present in the application)"
                   },
                   "response": []
                 },
                 {
-                  "name": "Type 1 specific enrollment request with invalid type 1 NPI(wrong NPI)",
+                  "name": "Type 1 specific enrollments with invalid type 1 NPI(wrong NPI)",
                   "event": [
                     {
                       "listen": "test",
@@ -9174,8 +9174,8 @@
                         "value": "{{taxId}}"
                       }
                     ],
-                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI4}}/enrollments/{{requestId}}",
-                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(Wrong NPI); \nRequest Id= Valid"
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI4}}/enrollments",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(Wrong NPI)"
                   },
                   "response": []
                 }
@@ -11563,217 +11563,217 @@
   ],
   "variable": [
     {
-      "id": "939f5d81-5ead-4a6e-a580-1fa8dc776cb4",
+      "id": "95998844-4ea8-4454-a757-5105913662dd",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "a42b2a85-2516-4af2-821d-09d0029d4338",
+      "id": "a8ffb680-fe6c-491e-ac05-80f058377623",
       "key": "npi1",
       "value": "5734568635",
       "type": "string"
     },
     {
-      "id": "bd492a7c-7e34-4bef-a060-a317a56d837b",
+      "id": "cd5d6326-a93c-4a76-a979-f7649a09a0f8",
       "key": "npi2",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "3943ebf0-123e-435c-824d-0680d3ed2256",
+      "id": "fe269bc2-ca30-4136-9f96-2a3b93e12d64",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "2dd3e11d-6db7-4a74-8b9f-2cde2ab68a64",
+      "id": "6e3e7ae2-b8ed-4082-8e93-ea59e3597864",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "b7db2d26-a7b8-4e8e-a632-e0d7b69af5ce",
+      "id": "b4a71f00-93e4-47b9-8863-eb2c92a583c5",
       "key": "individualNPI",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "beab157f-2933-465b-aeac-df9ba2f5a758",
+      "id": "68e7842f-1448-460c-b5e2-cf67165c64e9",
       "key": "individualNPI1",
       "value": "1215058680",
       "type": "string"
     },
     {
-      "id": "16f659c9-8afb-478f-8797-6381b16a321a",
+      "id": "1b48c27a-f6f0-4898-a1aa-d1fbc959a7c4",
       "key": "individualNPI2",
       "value": "1770904724",
       "type": "string"
     },
     {
-      "id": "a5b37982-671f-4511-a398-fb96f3b12419",
+      "id": "7160c245-3d04-4576-a976-6acc552245eb",
       "key": "individualNPI3",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "8987b9f0-a118-43a1-9b44-506a7ef68ced",
+      "id": "7c356e39-996c-4db9-8837-f3382e082861",
       "key": "individualNPI4",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "91aedbce-88d6-47a2-a446-5301e60e1650",
+      "id": "a5da2961-b440-4b34-b646-bb591379fd63",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "4d6b5671-14fb-41cf-b0ac-62c0ed3aba55",
+      "id": "e2d0d640-b3dd-49fc-b6e0-6be634897b78",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "356dc9e2-8768-44c5-8430-072996062da1",
+      "id": "8341c8f7-bffe-46a7-b3cb-ad0a0cc42e26",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "1e92d2aa-1a51-4fa7-9e9c-e7a4737085b6",
+      "id": "dc143dfe-0288-4a99-8e81-d65d0534abba",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "637bbda0-2ac5-4f1e-a7da-f609b99c59af",
+      "id": "06baebaf-079f-4cf4-a4cf-0cbf80adce6f",
       "key": "siteId1",
       "value": "136sid136",
       "type": "string"
     },
     {
-      "id": "46c10ecd-2688-404c-bf1d-a2340388cfc3",
+      "id": "fab932b1-ce2c-49a6-8918-3d07c2cd3a49",
       "key": "siteId2",
       "value": "i134mg",
       "type": "string"
     },
     {
-      "id": "7fe8c5cc-5a5f-4652-b563-929683712078",
+      "id": "d72974fc-067b-4d51-8bbe-13c268a4fad4",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "ddec2ee6-c255-4ce3-8592-7373c83d20de",
+      "id": "6ef6b7d5-1711-47b1-9fe9-042340cd2db6",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "0108dcf4-3597-4324-8cfd-dbcf09459808",
+      "id": "5a302af1-aea5-47ca-8920-d41102156fac",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "6947b2ba-47d2-4b79-ae72-0eaaecefdf18",
+      "id": "73b56d09-9c71-4742-a929-b2876209b8a5",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "84fbfcec-3001-4384-8ee8-fc06453317b2",
+      "id": "008450ac-2730-42dc-b0ac-1e6451afa065",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "6b5411f6-8d21-4dfd-bc36-b73953519d1f",
+      "id": "ec3b9cf2-8bd0-4811-9027-af069c0d463d",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "1b75db39-8137-405f-9074-d61ee40d5cb0",
+      "id": "b97e8857-fc4d-41d6-9765-77a26ebc9069",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "dd7db7a1-6fca-41c6-ab02-01c4e891d35c",
+      "id": "7cc4e374-92d3-4e47-8d86-116ffe7b72a2",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "cdb0b61a-3226-46ec-92fc-db1a74e09476",
+      "id": "0de29871-dae7-458f-82de-80a54714e426",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "ddc9a3ab-bce1-4ea2-b620-cec2f67cc58b",
+      "id": "b28b0dea-3ceb-45e3-8c3e-776cd60ca430",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
     },
     {
-      "id": "77c5c1ac-15cc-4d89-8de2-42b01ec9d3bf",
+      "id": "36b340fa-212e-4f6f-886c-b92e56ab75b5",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "9bc67db7-ac0b-49d4-a35f-00d0362ede80",
+      "id": "ac0d9e81-7466-4195-8ddb-03970ce1bbb9",
       "key": "taxId1",
       "value": "136136136",
       "type": "string"
     },
     {
-      "id": "18026874-4fe0-4b22-9a52-7183c1a4a42f",
+      "id": "6544a26b-b3b0-4460-809d-ea9718ce7672",
       "key": "taxId2",
       "value": "134134134",
       "type": "string"
     },
     {
-      "id": "a0384d2a-abba-41a1-b3c1-9f33c2961a98",
+      "id": "52a1341a-caa2-43de-94fb-ac606827c362",
       "key": "taxId3",
       "value": "736354836",
       "type": "string"
     },
     {
-      "id": "a8093a6b-6699-4ccf-86ac-ee1412299f96",
+      "id": "b7b6d07c-a4eb-4ae9-b915-2814637f24ea",
       "key": "taxId4",
       "value": "562jdt875",
       "type": "string"
     },
     {
-      "id": "f22b91bb-1a07-4d8f-ac05-ec5fd4044043",
+      "id": "50f2e701-7de4-4452-8161-8414eee6a885",
       "key": "requestId",
       "value": "961304",
       "type": "string"
     },
     {
-      "id": "1c0b3ccd-1821-4bf2-87ee-93c8a3022d23",
+      "id": "6018648e-1ea3-4087-93b3-291a4a7966ef",
       "key": "requestId1",
       "value": "961378",
       "type": "string"
     },
     {
-      "id": "9cb0fd69-37ed-481a-b002-244555e87c4d",
+      "id": "36277277-5f0e-4e52-8473-fdf0f6ebf61a",
       "key": "requestId2",
       "value": "961370",
       "type": "string"
     },
     {
-      "id": "fc2db93d-df0d-4bed-9e7a-647f4fc5a0ba",
+      "id": "4d4f0eb2-ac34-466c-8f1b-6fd9fd0e9c7d",
       "key": "requestId3",
       "value": "786374986",
       "type": "string"
     },
     {
-      "id": "41ba6626-d076-4db7-afc1-22bdaed78e01",
+      "id": "7d0fcb30-fd9c-498c-92eb-9b8e7e3495e3",
       "key": "requestId4",
       "value": "why63j",
       "type": "string"
