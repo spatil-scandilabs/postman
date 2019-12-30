@@ -11057,13 +11057,276 @@
             },
             {
               "name": "Case5: Invalid Type 2 NPI",
-              "item": [],
+              "item": [
+                {
+                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(different NPI with same partner)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "456e890b-f28c-4ff1-bcfe-2a0f5132ad7f",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Practice location not availbale.\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "",
+                          "pm.test(\"PRACTICE NOT UNDER MEDICALGROUP\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Practice Location (npi) exists but is not linked to the given Medical Group.\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "1db602c4-6981-4e46-b644-e345945ad081",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      },
+                      {
+                        "key": "tin",
+                        "type": "text",
+                        "value": "{{taxId}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi1}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (different NPI with same partner); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(different partner's NPI)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "456e890b-f28c-4ff1-bcfe-2a0f5132ad7f",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Practice location not linked to Medical group\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PRACTICE NOT UNDER MEDICAL GROUP\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Practice Location (npi) exists but is not linked to the given Medical Group.\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "245f87f8-78bf-4787-afe3-55834cfef40c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      },
+                      {
+                        "key": "tin",
+                        "type": "text",
+                        "value": "{{taxId}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi2}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (different partner's NPI); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(NPI not present in the application)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "456e890b-f28c-4ff1-bcfe-2a0f5132ad7f",
+                        "exec": [
+                          "pm.test(\"Status code is 404\", function () {",
+                          "    pm.response.to.have.status(404);",
+                          "});",
+                          "",
+                          "pm.test(\"Practice location not linked to Medical group\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"PRACTICE NOT UNDER MEDICAL GROUP\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Practice Location (npi) exists but is not linked to the given Medical Group.\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "be1c0bdf-515c-4261-a6fb-e2fd009534f9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      },
+                      {
+                        "key": "tin",
+                        "type": "text",
+                        "value": "{{taxId}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi3}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (Not present in the application); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Type 1 specific enrollment request with invalid type 2 NPI(wrong NPI)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "456e890b-f28c-4ff1-bcfe-2a0f5132ad7f",
+                        "exec": [
+                          "pm.test(\"Status code is 400\", function () {",
+                          "    pm.response.to.have.status(400);",
+                          "});",
+                          "",
+                          "pm.test(\"Wrong NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"NPI INVALID: NPI should be valid\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Invalid NPI. Must be 10 digits or Extended npi\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "958ece70-1868-4ff8-a3a4-43aeba15f880",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      },
+                      {
+                        "key": "tin",
+                        "type": "text",
+                        "value": "{{taxId}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi4}}/providers/{{individualNPI}}/enrollments/{{requestId}}",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Invalid (Wrong NPI); \nType 1 NPI= Valid; \nRequest Id= Valid"
+                  },
+                  "response": []
+                }
+              ],
               "_postman_id": "6291c00e-97b5-4ec3-b507-a60c771a72bf",
               "_postman_isSubFolder": true
             },
             {
               "name": "Case6: Invalid Type 1 NPI",
-              "item": [],
+              "item": [
+                {
+                  "name": "Type 1 specific enrollment request with invalid type 1 NPI(wrong NPI)",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "id": "456e890b-f28c-4ff1-bcfe-2a0f5132ad7f",
+                        "exec": [
+                          "pm.test(\"Status code is 400\", function () {",
+                          "    pm.response.to.have.status(400);",
+                          "});",
+                          "",
+                          "pm.test(\"Wrong NPI\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"false\");",
+                          "});",
+                          "pm.test(\"NPI INVALID: NPI should be valid\", function () {",
+                          "    pm.expect(pm.response.text()).to.include(\"Invalid or missing NPI. Must be 10 digits, no spaces or dashes.\");",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "_postman_id": "1207c38b-6a75-4dae-9d52-0fdb039da176",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "auth_id",
+                        "type": "text",
+                        "value": "{{auth_id_value}}"
+                      },
+                      {
+                        "key": "auth_token",
+                        "type": "text",
+                        "value": "{{auth_token_value}}"
+                      },
+                      {
+                        "key": "tin",
+                        "type": "text",
+                        "value": "{{taxId}}"
+                      }
+                    ],
+                    "url": "{{URL}}/api/v2.0/partners/{{partnerShortName}}/sites/{{siteId}}/medical-groups/masked-tin-in-header/practices/{{npi}}/providers/{{individualNPI4}}/enrollments/{{requestId}}",
+                    "description": "Partner= Valid;\nSite Id= Valid;\nTIN= Valid; \nNPI= Valid;\nType 1 NPI= Invalid(Wrong NPI); \nRequest Id= Valid"
+                  },
+                  "response": []
+                }
+              ],
               "_postman_id": "6fa1ae2c-c276-48cb-a98b-e5d14597501e",
               "_postman_isSubFolder": true
             },
@@ -13453,217 +13716,217 @@
   ],
   "variable": [
     {
-      "id": "3857c0b8-2566-409f-8c70-7b2299dbbced",
+      "id": "03f8263b-cd2b-4813-b273-d552ef784e68",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "86a40fa5-0719-4139-8518-b9cf1f19aeeb",
+      "id": "628a38cb-8949-40c9-992a-c7e55dc4f1ab",
       "key": "npi1",
       "value": "5734568635",
       "type": "string"
     },
     {
-      "id": "20f6f3da-0744-4b46-81cc-51b5e8308a78",
+      "id": "6ee2507b-0109-40b4-81f7-f51611cf4c95",
       "key": "npi2",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "dcdc6279-fd4c-4d0d-be78-cfd1b657dfa9",
+      "id": "fc021be0-27bb-4cd0-9d55-ad824229dc98",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "62bff04f-f3f5-4dcd-a029-f373d4143f70",
+      "id": "cd0dedad-99f8-4971-8131-67c1329a957c",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "f9f85ed0-0ac2-45b6-ad01-6027c1e06142",
+      "id": "68e01833-ebff-4867-ae41-b4ffaff8517f",
       "key": "individualNPI",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "addd1753-4b99-4d22-b3aa-e7a0adfb0fc1",
+      "id": "0d1d958e-ec53-4805-bd2a-ea926415e787",
       "key": "individualNPI1",
       "value": "1215058680",
       "type": "string"
     },
     {
-      "id": "0e68eda1-e428-4b10-a039-9348e559d274",
+      "id": "369bb98f-47fc-4b11-a08a-9eeb3e2330b9",
       "key": "individualNPI2",
       "value": "1770904724",
       "type": "string"
     },
     {
-      "id": "54655152-8242-4067-8820-942050beb13a",
+      "id": "f4c4825b-e8d1-4414-b175-cd19104b0f84",
       "key": "individualNPI3",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "7a38bb86-d05c-408b-975d-251a35bb93e9",
+      "id": "9fbaa047-de70-482f-8b6c-3a3975080189",
       "key": "individualNPI4",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "7c9e22e6-e003-497f-9a4a-dc1bf45a5703",
+      "id": "ca10cf21-0b34-42c6-80ee-976ba68fd552",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "882d7e1f-a65d-4459-92f6-b3faa26422ba",
+      "id": "235290d8-183d-4723-997a-85c316c89995",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "25bd3a24-81eb-46eb-ba1b-c21bfa6e9b41",
+      "id": "96593ef7-931b-442b-9014-b93e5a4f5b71",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "f34733f2-80f6-4bf4-b26e-b5236a969421",
+      "id": "6ac198e7-a9c9-44f0-a179-ed1b0aaf25dd",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "61642e61-e25e-458b-988c-d1a182f2559a",
+      "id": "8d6ca0f7-1768-4175-82bb-77d426e027ab",
       "key": "siteId1",
       "value": "136sid136",
       "type": "string"
     },
     {
-      "id": "592ee3a9-3fa8-4a19-bc8f-0738d520d47c",
+      "id": "38ce5056-967f-4d9a-8a65-d8fddf9e009d",
       "key": "siteId2",
       "value": "i134mg",
       "type": "string"
     },
     {
-      "id": "c2a27876-215f-4399-a801-941fcca55217",
+      "id": "867827c2-b4cf-4b7a-af90-28bef103d9db",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "c378bdf8-bba4-465b-91f7-57e13b7a9d0d",
+      "id": "72fb2ff2-9b6e-40c2-b4b0-ab5fdcb26182",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "4c12dca4-1a4a-4da4-962c-4b3e1a238cfd",
+      "id": "c115720d-97a9-4b52-bb3e-3b8256b79a8c",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "8eaa3b22-9e35-4014-b87e-cb09e72c19ee",
+      "id": "6ebfea61-fff2-4bb2-bc84-7fbb7ef95c8d",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "66e22c9e-b3e0-41cb-a57b-5cca5bebef41",
+      "id": "61757fae-89e3-414d-96c6-9dceaf762a4e",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "60143a61-ebac-4394-848e-07bed9f7603c",
+      "id": "8b9f864c-92fd-4287-b02f-c9c93c660608",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "945596cd-e9bc-4d80-8b77-a0556386a53a",
+      "id": "23099992-e4bf-4021-94a8-beb6966c8a5d",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "89012cde-f2fe-418e-ad5e-2183482d6f40",
+      "id": "7bc3eef3-b827-4caa-bb77-8d46ae1dda29",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "f49432cd-1bde-4c60-90ae-113a29a5ae3c",
+      "id": "e1aee99d-93d2-4e54-8ed0-a14e36f45b76",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "ee852df6-1fcf-45c4-abdb-03b3bde80266",
+      "id": "983ba1e2-e216-4f45-945b-324f230b5075",
       "key": "uniquePlanId7",
       "value": "dd5a970d-a96d-46df-80a9-7e4dbe466c31",
       "type": "string"
     },
     {
-      "id": "4a92ec72-0ee4-45e3-8454-20113111a530",
+      "id": "7e317ca7-62e3-48c3-bcdd-ce156ab77b5d",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "4f39e6d0-db69-42fd-a9e1-c70957bf8302",
+      "id": "09e5fe77-4fe3-4fc6-833d-04d0072e5888",
       "key": "taxId1",
       "value": "136136136",
       "type": "string"
     },
     {
-      "id": "d208d315-3450-414f-86f4-cbe9d5416a92",
+      "id": "04cf3e73-c7f8-4cc5-9d49-d0d9a00b5338",
       "key": "taxId2",
       "value": "134134134",
       "type": "string"
     },
     {
-      "id": "4de24b63-b704-44ec-b639-30c0bc5dff4c",
+      "id": "8886297d-dedd-4ab1-9367-a60133ab39fd",
       "key": "taxId3",
       "value": "736354836",
       "type": "string"
     },
     {
-      "id": "c3c9c7b6-03da-4c0c-af0a-e3d0e87afc2a",
+      "id": "df2de531-ab88-48c9-9dd6-cac086ccf7d1",
       "key": "taxId4",
       "value": "562jdt875",
       "type": "string"
     },
     {
-      "id": "98454d18-170d-41d6-8959-32af2508c4f2",
+      "id": "62e615d5-7a1d-4125-ac4a-99c57009f15e",
       "key": "requestId",
       "value": "961304",
       "type": "string"
     },
     {
-      "id": "6a55998b-e4de-40c5-8a41-3d6c40e2f328",
+      "id": "4d67c37a-b3c0-49f6-9581-6efbc70db3d8",
       "key": "requestId1",
       "value": "961378",
       "type": "string"
     },
     {
-      "id": "a37dcb83-cd75-422f-af78-89a863561e55",
+      "id": "615d40e5-f999-462d-903f-590fd3291d14",
       "key": "requestId2",
       "value": "961370",
       "type": "string"
     },
     {
-      "id": "e8bd43b4-5f02-407a-8e3f-2a827ba0422d",
+      "id": "dcf4fbd8-5647-4cc2-8ec6-5594e67090fe",
       "key": "requestId3",
       "value": "786374986",
       "type": "string"
     },
     {
-      "id": "e4115cbc-5ae0-4a3a-a62c-d46f9aef2f46",
+      "id": "6ed618b9-d283-44b6-95d1-965718b3bc62",
       "key": "requestId4",
       "value": "why63j",
       "type": "string"
