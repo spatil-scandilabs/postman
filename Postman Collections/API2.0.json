@@ -12909,63 +12909,6 @@
           ],
           "_postman_id": "e5dd639b-e6f7-49db-88bb-952a9451de74",
           "_postman_isSubFolder": true
-        },
-        {
-          "name": "Generate Token Copy",
-          "item": [
-            {
-              "name": "Generate Token",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "42dade5c-6028-4d3a-89db-709c677ac81c",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "postman.setEnvironmentVariable(\"auth_token_value\", jsonData.apitoken);",
-                      "",
-                      "pm.test(\"Status code is 200\", function () {",
-                      "    pm.response.to.have.status(200);",
-                      "});",
-                      "",
-                      "pm.test(\"apitoken copied successfully\", function () {",
-                      "    pm.expect(pm.response.text()).to.include(\"apitoken\");",
-                      "});"
-                    ],
-                    "type": "text/javascript"
-                  }
-                }
-              ],
-              "_postman_id": "de7eb9a5-033b-48e5-9b3f-99a822f01b28",
-              "protocolProfileBehavior": {
-                "disableBodyPruning": true
-              },
-              "request": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "apikey",
-                      "value": "autopnckey1",
-                      "type": "text"
-                    },
-                    {
-                      "key": "apisecret",
-                      "value": "autopnckey2",
-                      "type": "text"
-                    }
-                  ]
-                },
-                "url": "{{URL}}/api/authtoken",
-                "description": "This request is used to generate Auth_Token and copy the token to the environment variable."
-              },
-              "response": []
-            }
-          ],
-          "_postman_id": "bc4e6f0a-7252-4d8f-aee7-ba047c0dfd75",
-          "_postman_isSubFolder": true
         }
       ],
       "_postman_id": "69d0f880-59f4-43ba-b3fa-002229db4e2d"
@@ -17106,235 +17049,235 @@
   ],
   "variable": [
     {
-      "id": "63cab997-f241-427a-a8b6-790365407bc0",
+      "id": "a05456f1-f1a4-4c7f-9fa0-7262832d57f3",
       "key": "npi",
       "value": "1649240540",
       "type": "string"
     },
     {
-      "id": "dbaf9eac-4168-4df2-9587-6a55061703c8",
+      "id": "9926406c-98ef-4b87-a3a4-542d3b8c2140",
       "key": "npi1",
       "value": "5734568635",
       "type": "string"
     },
     {
-      "id": "84f3bed4-92df-4fae-8c0c-ed2528553aad",
+      "id": "b5236168-9425-4565-a68d-c2e0bc07d709",
       "key": "npi2",
       "value": "1073819710",
       "type": "string"
     },
     {
-      "id": "a5caf4f0-dd02-4445-9e0a-2bfc7804f737",
+      "id": "07343119-aa9e-4222-8ced-7a659672fa2b",
       "key": "npi3",
       "value": "4319737249",
       "type": "string"
     },
     {
-      "id": "ee53c5d8-b59b-473c-8762-1a9567029a58",
+      "id": "df60a7c6-dcd8-41a1-9a80-166c04e2fde3",
       "key": "npi4",
       "value": "bnmeufku8",
       "type": "string"
     },
     {
-      "id": "48e53461-05bf-4c34-af17-055cf43df0f4",
+      "id": "0da841dd-2e8a-4ac6-9235-7fbf15da3d95",
       "key": "individualNPI",
       "value": "1518016351",
       "type": "string"
     },
     {
-      "id": "e4e98ca9-327b-4c74-8de5-e0d35fefe6e8",
+      "id": "06442f0e-fa43-4708-b572-3c4f5849712d",
       "key": "individualNPI1",
       "value": "1215058680",
       "type": "string"
     },
     {
-      "id": "c9a8faff-d256-47f9-844e-f35561a0fb9a",
+      "id": "b810e375-9372-43c7-9cd7-c0dbe714d9c5",
       "key": "individualNPI2",
       "value": "1770904724",
       "type": "string"
     },
     {
-      "id": "66784fb1-5547-476c-b496-960e07dc089b",
+      "id": "415dea1d-8580-4f9d-aa50-afcd5ffcdaa0",
       "key": "individualNPI3",
       "value": "1975429873",
       "type": "string"
     },
     {
-      "id": "7c0209a6-8f6c-4a25-850a-31ecfbfbb0b6",
+      "id": "ed3815a7-3e1c-4501-b573-37dc40a0c68b",
       "key": "individualNPI4",
       "value": "wft51234u",
       "type": "string"
     },
     {
-      "id": "7b1d1c10-6527-4805-a616-cf5d254c43b8",
+      "id": "3a80b356-0403-43b7-a755-4c906fdf8c98",
       "key": "partnerShortName",
       "value": "PNC",
       "type": "string"
     },
     {
-      "id": "65de0715-b71f-4e97-acb2-f6c09ef332b3",
+      "id": "b8328a10-6a4b-4bbb-a49f-b481291f91f7",
       "key": "partnerShortName2",
       "value": "TRIZETTO",
       "type": "string"
     },
     {
-      "id": "4907bdc4-ff11-4479-8ecd-88719b7bc3c8",
+      "id": "0ee6d2af-b3c1-44a2-9565-1dd3f82c705a",
       "key": "partnerShortName3",
       "value": "TESTPARTNER",
       "type": "string"
     },
     {
-      "id": "1d15b022-a837-4e16-9039-817f77577707",
+      "id": "bb1a3245-af9d-42fc-a6ee-a78daf5d9ecd",
       "key": "siteId",
       "value": "PNCSiteId",
       "type": "string"
     },
     {
-      "id": "59cebf25-4ec8-4aa0-9f40-0f1c85656e18",
+      "id": "72c09a70-22f5-4065-aa9f-513ee3571b03",
       "key": "siteId1",
       "value": "136sid136",
       "type": "string"
     },
     {
-      "id": "1ad2644c-fe4b-43f5-8af9-fda72199fdd5",
+      "id": "dcce4d9a-c9c5-4853-82f0-5d022bc5abac",
       "key": "siteId2",
       "value": "i134mg",
       "type": "string"
     },
     {
-      "id": "9983a1fb-4ce1-4da3-95de-5e4828af0e30",
+      "id": "aabb4774-54b9-434f-abd2-0f2b296f20b9",
       "key": "siteId3",
       "value": "1234abcd",
       "type": "string"
     },
     {
-      "id": "2441b9f0-143b-47e4-8d45-14f585a52bb9",
+      "id": "08b6dec7-385a-460f-b853-30b4f8d86779",
       "key": "siteId4",
       "value": "fsdf asfas sadfasd",
       "type": "string"
     },
     {
-      "id": "5ba28dee-aa18-4847-87de-b1577069b345",
+      "id": "34b504ff-94be-423b-b2a0-40baa9047d9e",
       "key": "fromDate",
       "value": "2019-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "e7717b52-8c26-4f41-bfde-ed90d5ccb055",
+      "id": "2934a687-ba2e-4651-95e8-06cce0014d3c",
       "key": "fromDate3",
       "value": "1987-06-01T00:00:00",
       "type": "string"
     },
     {
-      "id": "4cc28bb9-060f-4cd2-9bf5-6905b65c641a",
+      "id": "63d4465b-faac-408e-a990-e195ad637b82",
       "key": "fromDate4",
       "value": "3563536354",
       "type": "string"
     },
     {
-      "id": "e9f8596d-9941-4c50-b290-5f9589d2b312",
+      "id": "19839cde-c4c2-439c-a9eb-458cbe18a2f6",
       "key": "toDate",
       "value": "2019-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "3c2a0ddb-acf0-4278-8185-51e3dae8fd73",
+      "id": "5fb53554-f642-4dce-8889-1f137e17be4c",
       "key": "toDate3",
       "value": "1987-06-30T00:00:00",
       "type": "string"
     },
     {
-      "id": "57744ee1-1aeb-4cf0-8a52-e5430d426436",
+      "id": "ac06d05c-aee2-492b-ad93-4a22f071b3de",
       "key": "toDate4",
       "value": "99847334",
       "type": "string"
     },
     {
-      "id": "a43d06d9-4f3d-4083-ad2b-6ea6a2cac468",
+      "id": "61ec5482-6c11-49a0-9762-81d81050281c",
       "key": "taxId",
       "value": "000137000",
       "type": "string"
     },
     {
-      "id": "7ef2e3a8-dc1f-4990-b6c9-ed1fecbc8fb2",
+      "id": "74877d50-f0c6-488c-8cb7-c883918b486f",
       "key": "taxId1",
       "value": "136136136",
       "type": "string"
     },
     {
-      "id": "7425aa2e-96f9-4339-98a1-5faf9707de4a",
+      "id": "d76328f2-ab4c-4aef-8aa3-1d73c443b70f",
       "key": "taxId2",
       "value": "134134134",
       "type": "string"
     },
     {
-      "id": "fdd6c6c8-a276-4602-88bc-7248642ae59b",
+      "id": "b95297a7-9a7a-418f-b35c-0f69020c17cf",
       "key": "taxId3",
       "value": "736354836",
       "type": "string"
     },
     {
-      "id": "95cf35eb-9181-45eb-a8d5-66a1c38a1ee5",
+      "id": "9cc9368b-155d-4d04-911d-1413d60c8382",
       "key": "taxId4",
       "value": "562jdt875",
       "type": "string"
     },
     {
-      "id": "b2844327-35da-4f12-a888-dbf7d006be8d",
+      "id": "d97d8ba5-70a9-4793-99f6-8d238ae3a016",
       "key": "requestId",
       "value": "961304",
       "type": "string"
     },
     {
-      "id": "f2961616-3dfa-476f-b024-06256ff934bd",
+      "id": "3ca60c76-dbb2-42ff-805d-58b96aaba6d1",
       "key": "requestId1",
       "value": "961378",
       "type": "string"
     },
     {
-      "id": "bcbf7d10-6833-4603-a9ab-457106238661",
+      "id": "62c72056-0ecb-4b6f-a85b-dbeb0bcdc388",
       "key": "requestId2",
       "value": "961370",
       "type": "string"
     },
     {
-      "id": "4cc9ce4a-039d-447b-85c9-e5330a0df905",
+      "id": "ac4f0f75-c9bd-4c09-89a4-5be53691b2b6",
       "key": "requestId3",
       "value": "786374986",
       "type": "string"
     },
     {
-      "id": "14e976e4-a706-4da1-abfb-bff445e43cfa",
+      "id": "b27129cf-63c9-464e-9484-35bf0145d40b",
       "key": "requestId4",
       "value": "why63j",
       "type": "string"
     },
     {
-      "id": "a64f8f02-619f-4b51-8c46-4a9c81a3c013",
+      "id": "d9ad82d9-e908-46f5-94f8-53f355f085ca",
       "key": "uniquePlanId",
       "value": "PNCTP_PROFESSIONAL",
       "type": "string"
     },
     {
-      "id": "d525b4be-ba32-45f0-8256-6dc788b9ec72",
+      "id": "f1cd3b95-9a73-440d-b9f6-fa4c62d33fc9",
       "key": "uniquePlanId1",
       "value": "25edd3ca-92e7-4c2d-8739-8e8ff81f3191",
       "type": "string"
     },
     {
-      "id": "c3aff048-dbea-4ec9-90ce-60166dea30bc",
+      "id": "ff6f3f87-64ce-4745-bbb5-067a30471b00",
       "key": "uniquePlanId2",
       "value": "16972b01-e763-11e8-9fb6-0eacdc102110",
       "type": "string"
     },
     {
-      "id": "e158a221-b896-4454-a585-37981ba9fab3",
+      "id": "70e56d75-835c-41af-bd4b-e6112821a5ba",
       "key": "uniquePlanId3",
       "value": "263735gd-e763-34hf-9fb6-hsfbnge563853",
       "type": "string"
     },
     {
-      "id": "c875a488-e5b0-4224-846c-739cdfc88b54",
+      "id": "6a3ac86b-1a53-4b0e-9754-aa529009ce46",
       "key": "uniquePlanId4",
       "value": "fsfs 534534 dfsf 34535",
       "type": "string"
